@@ -14,13 +14,21 @@ The goal is to easily implement the main system of Path Of Exile.
 Most of the code consists of ScriptableObject,
 and the basic rule is to copy and use it so that the original data is not contaminated even if it is modified at runtime.
 
-Working on
-* Stat System
-* Mod System
-* Ability System
-* Tag System
-* Equipment System
-* Input System
+* Working on
+   * Main Systems
+      * GameplayStat
+      * GameplayTag
+      * GameplayMod
+
+   * Runtime
+      * Ability (Skill, Locomotion etc..)
+      * Item (Usable, Equipment etc..)
+      * PlayerCharacter based on AI movement
+   
+   * Managers
+      * TextManager for L10N
+      * InputManager for newer Unity Input system
+      * other necessary managers
 
 TODO
 * Playable Animation Event System
