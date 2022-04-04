@@ -4,8 +4,10 @@ Inspired by UE4 Gameplay Ability System.
 Data-driven framework. All abilities (even character movement) can be created as abilities and managed as data.
 
 The development intention is as follows.
-   *Programmers : Function-oriented Development
-   *Designers : Data-Driven Development
+* Programmers : Function-oriented Development
+* Designers : Data-Driven Development
+   
+The goal is to easily implement the main system of Path Of Exile.
 
 ## Description
 
@@ -25,13 +27,13 @@ TODO
 * Dedicated Server
 
 ## Getting Started
-* 유니티의 스크립트와 UE4의 GAS가 제대로 합쳐진다면 개발 속도가 빨라질 것으로 예상된다.
-* 나아가, 게임 제작중 만들어지는 데이터(아이템, 스킬, 스탯 등)를 에셋으로 만들수 있으므로 재사용 가능성을 확인해본다.
+* If Unity's script and UE4's GAS are properly combined, the development speed is expected to increase.
+* Furthermore, data (items, skills, stats, etc.) created during game production can be made into assets, so check the reusability.
 
-* 내부 규칙
-   * 업데이트를 남용하지 않는다.
-   * 기능은 간결해야한다. 이름으로 유추할 수 있어야한다.
-   * 가능하면 Has-A로 만들도록 한다.
+### Internal Rules
+   * Do not abuse updates.
+   * The function should be concise. You should be able to guess by name. (like Swift and objective-c)
+   * If possible, make it Has-A.
 
 ### Dependencies
 
@@ -45,19 +47,32 @@ TODO
 
 ### Executing program
 
+* Event Registerable Stats
+   
+   * Invokes an event when the stat changes due to the use of an item or skill.
+
+
 * Gameplay Mod
-* 스킬이나 아이템 등에 적용 가능한 스탯의 묶음.
-* ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
+
+   * A bundle of stats that can be applied to skills or items.
+   ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
+   
+
+* Event Registerable Tags
+
+   * Invokes an event when a tag is gained or lost.
+
+
+* Ability
+   
+   * You can express all kinds of abilities like projectiles, melee attacks, buffs, and even locomotion.
+   * For detailed specifications, please check UE4 GAS.
+
 
 * Equipment
-* a
 
-* 이벤트 등록 가능한 태그
-
-* 이벤트 등록 가능한 스탯
-
-* 
-
+   * You can easily edit the information of the equipment.
+   * Easily attach and detach VFX or SFX playback, animation playback and other effects.
 
 ## Help
 
