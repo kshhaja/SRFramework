@@ -45,13 +45,19 @@ TODO
 
 ### Dependencies
 
+* InputSystem is the only dependency
+   * The original input module had to inspect every frame, and the input-related codes were easy to fragment. (inputs on player, camera, ui, some other... etc)
+   * The new input system operates on an event-to-input basis. You can implement neatly by using the auto-generated code.
+   * Another plus is that key mapping is very easy.
+
 * working on Unity 2020.1. Basically, trying to minimize dependencies.
-* There are no additional packages or libraries needed yet.
+* There are no external packages or libraries needed yet.
 * Backward compatibility is considered after the stable version.
 
 ### Installing
 
 * Place the code in "your unity project/Asset" directory.
+* Install the input system via the package manager. ( Package Manager / Unity Registry / Input System )
 
 ### Executing program
 
