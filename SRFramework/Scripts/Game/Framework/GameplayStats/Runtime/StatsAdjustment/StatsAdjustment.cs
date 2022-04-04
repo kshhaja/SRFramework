@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 
+// will be remove
 namespace SlimeRPG.Framework.StatsSystem
 {
     [CreateAssetMenu(fileName = "StatsAdjustment", menuName = "Gameplay/Stats/Adjustment")]
