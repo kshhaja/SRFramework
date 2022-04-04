@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6775081608472623185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b04b8144bfbdb34ab935a006f47e43c, type: 3}
+  m_Name: explicits
+  m_EditorClassIdentifier: 
+  id: 
+  mods:
+  - {fileID: 11400000, guid: 1fa6e44e7980d8643a907b61bc2c008f, type: 2}
+  - {fileID: 11400000, guid: c57400072f623f44e86b7e2f696ae21d, type: 2}
+  - {fileID: 11400000, guid: f42a7b1e145bbd24d928804b87f64083, type: 2}
+  - {fileID: 11400000, guid: 1e4b99bb90614dd49afe51aa80392a2f, type: 2}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552c1e9025eba804cad3e19585cd8b80, type: 3}
+  m_Name: bow
+  m_EditorClassIdentifier: 
+  itemName: 
+  icon: {fileID: 0}
+  description: 
+  rarity: 0
+  lootObject: {fileID: 0}
+  level: 0
+  quality: 0
+  requirement:
+    level: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
+  stat: {fileID: 4217676141908234099}
+  equippedEffects: []
+  type: 0
+  hitSounds: []
+  swingSounds: []
+  attackEffects: []
+--- !u!114 &4217676141908234099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74835af30d05ccd4394e8e9df70c0dc9, type: 3}
+  m_Name: Stats
+  m_EditorClassIdentifier: 
+  explicits: {fileID: -6775081608472623185}
+  implicits: {fileID: 0}

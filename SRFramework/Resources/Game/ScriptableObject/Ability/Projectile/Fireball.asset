@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5775602411036766357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fd283322353ff42b30cd679073251e, type: 3}
+  m_Name: Effect
+  m_EditorClassIdentifier: 
+  gameplayEffect:
+    duration:
+      policy: 0
+      modifier: 0
+      multiplier: 0
+    adjustment: {fileID: 0}
+    conditionalGameplayEffects: []
+  gameplayEffectTags:
+    AssetTag: {fileID: 0}
+    GrantedTags:
+      list: []
+    OngoingTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    ApplicationTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    RemovalTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    RemoveGameplayEffectsWithTag:
+      list: []
+  period:
+    value: 0
+    executeOnApplication: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088f97ec243d5da4897940877bfb9ad8, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  abilityName: Fireball
+  abilityTags:
+    assetTag: {fileID: 0}
+    cancelAbilitiesWithTags:
+      list: []
+    blockAbilitiesWithTags:
+      list: []
+    activationOwnedTags:
+      list: []
+    ownerTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    sourceTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    targetTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+  effect: {fileID: -5775602411036766357}
+  cost: {fileID: 0}
+  coolDown: {fileID: 0}
+  secondaryAbility: {fileID: 0}
+  level: 1
+  quality: 0
+  icon: {fileID: 0}
+  clip: {fileID: -6401416218748139501, guid: 22bd395f98f774f47896dfe5dd8c8837, type: 3}
+  projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a, type: 3}
