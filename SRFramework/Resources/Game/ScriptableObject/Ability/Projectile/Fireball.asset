@@ -17,7 +17,7 @@ MonoBehaviour:
       policy: 0
       modifier: 0
       multiplier: 0
-    adjustment: {fileID: 0}
+    modContainer: {fileID: 0}
     conditionalGameplayEffects: []
   gameplayEffectTags:
     AssetTag: {fileID: 0}
@@ -81,10 +81,53 @@ MonoBehaviour:
         list: []
   effect: {fileID: -5775602411036766357}
   cost: {fileID: 0}
-  coolDown: {fileID: 0}
+  coolDown: {fileID: 3307077592412794172}
   secondaryAbility: {fileID: 0}
   level: 1
   quality: 0
   icon: {fileID: 0}
   clip: {fileID: -6401416218748139501, guid: 22bd395f98f774f47896dfe5dd8c8837, type: 3}
   projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a, type: 3}
+--- !u!114 &3307077592412794172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fd283322353ff42b30cd679073251e, type: 3}
+  m_Name: Cool Down
+  m_EditorClassIdentifier: 
+  gameplayEffect:
+    duration:
+      policy: 0
+      modifier: 0
+      multiplier: 0
+    modContainer: {fileID: 0}
+    conditionalGameplayEffects: []
+  gameplayEffectTags:
+    AssetTag: {fileID: 0}
+    GrantedTags:
+      list: []
+    OngoingTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    ApplicationTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    RemovalTagRequirements:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    RemoveGameplayEffectsWithTag:
+      list: []
+  period:
+    value: 0
+    executeOnApplication: 0

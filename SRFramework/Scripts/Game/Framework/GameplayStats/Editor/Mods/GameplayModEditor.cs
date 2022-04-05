@@ -65,7 +65,7 @@ namespace UnityEditor
 
             try
             {
-                //EditorGUILayout.HelpBox((target as GameplayMod).CreateDescription(previewLevel), MessageType.None);
+                EditorGUILayout.HelpBox(TextSample.Instance.ModText(target as GameplayMod, previewLevel), MessageType.None);
             }
             catch (FormatException e)
             {

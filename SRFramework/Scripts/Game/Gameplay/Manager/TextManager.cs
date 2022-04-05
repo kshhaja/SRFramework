@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using SlimeRPG.Utility;
-using System;
+using SlimeRPG.Framework.StatsSystem;
+
 
 namespace SlimeRPG.Manager
 {
@@ -10,26 +12,6 @@ namespace SlimeRPG.Manager
     {
         // managing l10n etc..
         // text ScriptableObject made by excel or something
-        private static TextContainer current;
-        public static TextContainer Current
-        {
-            get
-            {
-                if (current != null)
-                    return current;
-
-                current = Resources.Load<TextContainer>("TextContainer");
-                if (current != null)
-                    return current;
-
-                current = ScriptableObject.CreateInstance<TextContainer>();
-
-                return current;
-            }
-
-            set => current = value;
-        }
-
         public enum TextCategory
         {
             stat,
@@ -71,7 +53,7 @@ namespace SlimeRPG.Manager
                     result = true;
                     return container[language][category][id];
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     result = false;
                     return e.Message;
@@ -81,7 +63,7 @@ namespace SlimeRPG.Manager
 
 
         TextContainer textContainer;
-        
+
         public string LocalizedText(SystemLanguage language, TextCategory category, int id /*string hash*/)
         {
             return textContainer.LocalizedText(language, category, id, out var result);

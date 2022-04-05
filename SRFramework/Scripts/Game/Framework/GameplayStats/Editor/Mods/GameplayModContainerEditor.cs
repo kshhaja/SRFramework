@@ -60,10 +60,9 @@ namespace UnityEditor
             previewLevel = EditorGUILayout.IntSlider(previewLevel, 1, 20);
 
             GUILayout.Label($"Localized Text = {Application.systemLanguage}");
-            
 
-            //foreach (var text in (target as GameplayModContainer).ModDescriptions(previewLevel))
-            //    EditorGUILayout.HelpBox(text, MessageType.None);
+            foreach (var mod in (target as GameplayModContainer).mods)
+                EditorGUILayout.HelpBox(TextSample.Instance.ModText(mod, previewLevel), MessageType.None);
 
             EditorGUI.indentLevel--;
             GUILayout.EndVertical();
