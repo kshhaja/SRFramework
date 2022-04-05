@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace SlimeRPG.Gameplay.Character.Ability
 {
-    [CreateAssetMenu(menuName = "Gameplay/Ability/Locomotion", order = 4)]
     public class LocomotionAction : AbilityBase
     {
         protected Vector3 startPos;

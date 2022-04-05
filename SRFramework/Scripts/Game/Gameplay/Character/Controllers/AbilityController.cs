@@ -105,7 +105,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
                 if (ability.ability.effect.gameplayEffect.duration.policy == EDurationPolicy.Instant)
                     continue;
 
-                // ability.ability.
+
             }
         }
 

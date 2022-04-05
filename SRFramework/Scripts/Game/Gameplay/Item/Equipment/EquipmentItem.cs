@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SlimeRPG.Gameplay.Character;
-using SlimeRPG.Gameplay.Item.Mod;
+using SlimeRPG.Framework.StatsSystem;
 
 
 namespace SlimeRPG.Gameplay.Item

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using SlimeRPG.Framework.StatsSystem;
-using SlimeRPG.Gameplay.Item.Mod;
 
 
 namespace UnityEditor

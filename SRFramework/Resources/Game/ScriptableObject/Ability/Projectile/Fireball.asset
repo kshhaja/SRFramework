@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Fireball
   abilityTags:
-    assetTag: {fileID: 0}
+    assetTag: {fileID: 6930217736292554937, guid: b39fee1cd4b4c9c48bd3874244fdbc20, type: 2}
     cancelAbilitiesWithTags:
       list: []
     blockAbilitiesWithTags:

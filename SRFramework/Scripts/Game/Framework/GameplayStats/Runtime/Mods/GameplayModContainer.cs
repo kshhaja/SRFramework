@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 
-namespace SlimeRPG.Gameplay.Item.Mod
+namespace SlimeRPG.Framework.StatsSystem
 {
     [Serializable]
     public class GameplayModContainer : ScriptableObject
@@ -53,11 +53,21 @@ namespace SlimeRPG.Gameplay.Item.Mod
             }
         }
 
-        public virtual List<string> ModDescriptions(float index)
+        public List<ModifierGroup> ModsToStatList()
         {
-            List<string> descriptions = new List<string>();
-            mods.ForEach(x => descriptions.Add(x.CreateDescription((int)index)));
-            return descriptions;
+            List<ModifierGroup> stats = new List<ModifierGroup>();
+            foreach (var mod in mods)
+            {
+                stats.AddRange(mod.modifiers);
+            }
+            return stats;
         }
+
+        //public virtual List<string> ModDescriptions(float index)
+        //{
+        //    List<string> descriptions = new List<string>();
+        //    mods.ForEach(x => descriptions.Add(x.CreateDescription((int)index)));
+        //    return descriptions;
+        //}
     }
 }

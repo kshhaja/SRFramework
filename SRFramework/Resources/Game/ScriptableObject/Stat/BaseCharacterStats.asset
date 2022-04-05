@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b07f63defb4fd380b0d19663f92619, type: 3}
-  m_Name: TestCollection
+  m_Name: BaseCharacterStats
   m_EditorClassIdentifier: 
   definitions:
   - {fileID: 11400000, guid: ec18af6c506aa0b4babee2a4048adb39, type: 2}
   - {fileID: 11400000, guid: acaa46911b7a2eb478117637490891c9, type: 2}
   - {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
-  - {fileID: 11400000, guid: 8e927a3d8f0428247bf26c1cade3e9b2, type: 2}

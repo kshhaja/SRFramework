@@ -19,11 +19,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
         //public AbilitySystemCharacter Target;
 
         public GameplayEffectScriptableObject effect;
-        public AbstractAbilityScriptableObject secondaryAbility;
+        // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
+        public AbilityBase secondaryAbility;
 
         private bool useRigidbody = true;
         [SerializeField]
-        private float speed = 5.0f;
+        private float speed = 10.0f;
 
         [SerializeField]
         private float acceleration = 3.0f;
@@ -41,7 +42,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         {
             if (TryGetComponent<Rigidbody>(out var rigidbody))
             {
-                rigidbody.AddForce(gameObject.transform.forward * 50f);
+                rigidbody.AddForce(gameObject.transform.forward * speed);
             }
 
             StartCoroutine(LifeCycle());
@@ -66,6 +67,15 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         private void ProcessGameplayEffect(GameObject go)
         {
+            if (secondaryAbility)
+            {
+                secondaryAbility.Setup(source);
+                StartCoroutine(secondaryAbility.TryCastAbility());
+            }
+            gameObject.SetActive(false);
+            //StopAllCoroutines();
+            //Destroy(gameObject);
+
             if (go.tag != "Enemy" && go.tag != "Player")
                 return;
 
@@ -77,9 +87,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 if (targets.Contains(target) == false)
                 {
                     targets.Add(target);
-
-                    // 여기서 target이 하나씩 들어오는데, 미리 캡쳐해놓은 owner의 damage / attackpower를 가져와서 계산하는 로직이 필요하다.
-                    // 발사 전에 스펙만 적용하는걸 원칙으로 하기 때문에 이 발사체가 만들어질때 최초에 한번만 계산해놓으면 되겠다.
 
                     target.attributeController.ApplyGameplayEffect(effect);
                 }

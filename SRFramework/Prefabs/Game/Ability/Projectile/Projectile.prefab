@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee4cbf115a0efc44fb045f5084ab3339, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,9 +113,10 @@ MonoBehaviour:
   targets: []
   effect: {fileID: 0}
   secondaryAbility: {fileID: 0}
-  speed: 5
-  acceleration: 3
+  speed: 100
+  acceleration: 10
   lifeTime: 5
+  useGravity: 1
 --- !u!54 &8706532361532361579
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -46,9 +46,6 @@ namespace SlimeRPG.UI
 		[SerializeField, Tooltip("Should the icon assigned to the slot be throwable.")]
 		private bool allowThrowAway = true;
 
-		[SerializeField, Tooltip("The key which should be held down in order to begin the drag.")]
-		private DragKeyModifier dragKeyModifier = DragKeyModifier.None;
-
 		[SerializeField, Tooltip("Should the tooltip functionallty be enabled.")]
 		private bool tooltipEnabled = true;
 
@@ -456,13 +453,6 @@ namespace SlimeRPG.UI
 				return;
 			}
 
-			// Check if we have a key modifier and if it's held down
-			if (!DragKeyModifierIsDown())
-			{
-				eventData.Reset();
-				return;
-			}
-
 			// Start the drag
 			dragHasBegan = true;
 
@@ -471,22 +461,6 @@ namespace SlimeRPG.UI
 
 			// Prevent event propagation
 			eventData.Use();
-		}
-
-		public virtual bool DragKeyModifierIsDown()
-		{
-			//switch (dragKeyModifier)
-			//{
-			//	case DragKeyModifier.Control:
-			//		return (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl));
-			//	case DragKeyModifier.Alt:
-			//		return (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt));
-			//	case DragKeyModifier.Shift:
-			//		return (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
-			//}
-
-			// Default should be true
-			return true;
 		}
 
 		public virtual void OnDrag(PointerEventData eventData)

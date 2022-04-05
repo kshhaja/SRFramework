@@ -29,6 +29,13 @@ namespace SlimeRPG.Gameplay.Character.Controller
             poison,
         }
 
+        struct DamageAmount
+        {
+            Damage damage;
+            int Amount;
+        }
+
+
         [SerializeField]
         private StatsContainer statsContainer;
 
@@ -61,26 +68,23 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         void ApplyGameplayEffectInternal(GameplayEffectScriptableObject ge)
         {
-            if (ge.gameplayEffect.adjustment == null)
+            if (ge.gameplayEffect.modContainer == null)
                 return;
 
-            List<ModifierGroup> GetAllDamage(StatsAdjustment adjustment)
+            List<DamageAmount> ParseDamage(GameplayModContainer modContainer)
             {
-                List<ModifierGroup> damages = new List<ModifierGroup>();
-                foreach (var adj in adjustment.adjustment)
+                List<DamageAmount> damages = new List<DamageAmount>();
+                foreach (var mod in modContainer.ModsToStatList())
                 {
-                    // custom damage definition type
-                    //if (adj.definition is DamageDefinition)
-                        // damages.Add(adj);
+                    // if (mod.IsValid && mod.definition is DamageStatDefinition)
+                    //      switch (mod.damageType)
+                    //      ...
                 }
 
                 return damages;
             }
-
-            // 데미지 추출해서 따로 처리한다.
-            var all = GetAllDamage(ge.gameplayEffect.adjustment);
-
-            ge.gameplayEffect.adjustment.ApplyAdjustment(statsContainer);
+           
+            ge.gameplayEffect.modContainer.ApplyMods(statsContainer);
         }
     }
 }

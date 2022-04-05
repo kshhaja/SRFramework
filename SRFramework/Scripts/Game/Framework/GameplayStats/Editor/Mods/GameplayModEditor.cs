@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEditorInternal;
 using SlimeRPG.Framework.StatsSystem;
-using SlimeRPG.Gameplay.Item.Mod;
 
 
 namespace UnityEditor
@@ -66,7 +65,7 @@ namespace UnityEditor
 
             try
             {
-                EditorGUILayout.HelpBox((target as GameplayMod).CreateDescription(previewLevel), MessageType.None);
+                //EditorGUILayout.HelpBox((target as GameplayMod).CreateDescription(previewLevel), MessageType.None);
             }
             catch (FormatException e)
             {

@@ -2,7 +2,7 @@
 using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 
-namespace SlimeRPG.Gameplay.Item.Mod
+namespace SlimeRPG.Framework.StatsSystem
 {
     public abstract class AbstractModBase : ScriptableObject
     {

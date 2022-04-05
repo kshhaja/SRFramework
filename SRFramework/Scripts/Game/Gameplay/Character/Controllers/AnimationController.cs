@@ -93,7 +93,6 @@ namespace SlimeRPG.Gameplay.Character.Controller
             animator.SetTrigger("WeakAttack");
             yield return null;
             var state = animator.GetCurrentAnimatorStateInfo(fullbodyLayer);
-            Debug.Log(state.IsName("Attacks"));
             //yield return new WaitUntil(() => state.IsName("Attacks"));
 
             yield return null;
@@ -113,7 +112,8 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         protected virtual void FixedUpdate()
         {
-            UpdateAnimator();
+            // temporary shut down
+            // UpdateAnimator();
         }
 
         public virtual void UpdateAnimator()

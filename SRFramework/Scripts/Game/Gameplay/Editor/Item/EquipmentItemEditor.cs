@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using SlimeRPG.Gameplay.Item;
-using SlimeRPG.Gameplay.Item.Mod;
+using SlimeRPG.Framework.StatsSystem;
 
 
 namespace UnityEditor

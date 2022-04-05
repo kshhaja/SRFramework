@@ -3,7 +3,7 @@ using SlimeRPG.Framework.StatsSystem;
 using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 
-namespace SlimeRPG.Gameplay.Item.Mod
+namespace SlimeRPG.Framework.StatsSystem
 {
     [CreateAssetMenu(fileName = "ItemStatGroup", menuName = "Gameplay/Stats/ItemStatGroup")]
     public class ItemModContainer : ScriptableObject

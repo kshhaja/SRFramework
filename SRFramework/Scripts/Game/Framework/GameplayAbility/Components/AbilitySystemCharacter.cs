@@ -53,7 +53,7 @@ namespace SlimeRPG.Framework.Ability
 
         protected virtual void ApplyInstantGameplayEffect(GameplayEffectScriptableObject ge)
         {
-            ge.gameplayEffect.adjustment?.ApplyAdjustment(container);
+            ge.gameplayEffect.modContainer.ApplyMods(container);
         }
 
         protected virtual void ApplyDurationalGameplayEffect(GameplayEffectScriptableObject ge)

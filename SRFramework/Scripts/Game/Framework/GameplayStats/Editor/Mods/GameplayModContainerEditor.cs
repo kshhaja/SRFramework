@@ -1,9 +1,7 @@
-﻿using SlimeRPG.Gameplay.Item.Mod;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEditorInternal;
 using UnityEngine;
+using SlimeRPG.Framework.StatsSystem;
 
 
 namespace UnityEditor
@@ -64,10 +62,8 @@ namespace UnityEditor
             GUILayout.Label($"Localized Text = {Application.systemLanguage}");
             
 
-            foreach (var text in (target as GameplayModContainer).ModDescriptions(previewLevel))
-            {
-                EditorGUILayout.HelpBox(text, MessageType.None);
-            }
+            //foreach (var text in (target as GameplayModContainer).ModDescriptions(previewLevel))
+            //    EditorGUILayout.HelpBox(text, MessageType.None);
 
             EditorGUI.indentLevel--;
             GUILayout.EndVertical();

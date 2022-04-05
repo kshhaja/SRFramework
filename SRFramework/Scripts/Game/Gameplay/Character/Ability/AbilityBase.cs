@@ -57,7 +57,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual IEnumerator TryCastAbility()
         {
-            // Todo: create montage event.
+                // Todo: create montage event.
 
             if (!CanActivateAbility())
                 yield break;
@@ -112,18 +112,19 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual bool CheckCost()
         {
-            if (cost == null) return true;
+            if (cost == null) 
+                return true;
 
             var ge = cost.gameplayEffect;
 
             if (ge.duration.policy != EDurationPolicy.Instant)
                 return true;
 
-            if (ge.adjustment)
+            if (ge.modContainer)
             {
-                foreach (var modifier in ge.adjustment.adjustment)
+                foreach (var modifier in ge.modContainer.ModsToStatList())
                 {
-                    if (modifier.operatorType != SlimeRPG.Framework.StatsSystem.OperatorType.Add) 
+                    if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add) 
                         continue;
 
                     var container = owner.attributeController.StatsContainer;
@@ -142,40 +143,36 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public virtual AbilityCooldownTime CheckCooldown()
         {
             float maxDuration = 0;
-            if (coolDown == null) return new AbilityCooldownTime();
+            if (coolDown == null) 
+                return new AbilityCooldownTime();
+            
             var cooldownTags = coolDown.gameplayEffectTags.GrantedTags;
 
             float longestCooldown = 0f;
 
-            // Check if the cooldown tag is granted to the player, and if so, capture the remaining duration for that tag
-            //for (var i = 0; i < source.AppliedGameplayEffects.Count; i++)
-            //{
-            //    var grantedTags = source.AppliedGameplayEffects[i].spec.GameplayEffect.gameplayEffectTags.GrantedTags;
-            //    for (var iTag = 0; iTag < grantedTags.Length; iTag++)
-            //    {
-            //        for (var iCooldownTag = 0; iCooldownTag < cooldownTags.Length; iCooldownTag++)
-            //        {
-            //            if (grantedTags[iTag] == cooldownTags[iCooldownTag])
-            //            {
-            //                // If this is an infinite GE, then return null to signify this is on CD
-            //                if (source.AppliedGameplayEffects[i].spec.GameplayEffect.gameplayEffect.DurationPolicy == EDurationPolicy.Infinite) return new AbilityCooldownTime()
-            //                {
-            //                    timeRemaining = float.MaxValue,
-            //                    totalDuration = 0
-            //                };
+            var appliedFx = owner.abilityController.appliedGameplayEffects;
+            for (var i = 0; i < appliedFx.Count; i++)
+            {
+                var grantedTags = appliedFx[i].ability.effect.gameplayEffectTags.GrantedTags;
+                if (grantedTags.HasAnyTags(cooldownTags))
+                {
+                    if (appliedFx[i].ability.effect.gameplayEffect.duration.policy == EDurationPolicy.Infinite)
+                        return new AbilityCooldownTime()
+                        {
+                            timeRemaining = float.MaxValue,
+                            totalDuration = 0
+                        };
 
-            //                var durationRemaining = source.AppliedGameplayEffects[i].spec.DurationRemaining;
 
-            //                if (durationRemaining > longestCooldown)
-            //                {
-            //                    longestCooldown = durationRemaining;
-            //                    maxDuration = source.AppliedGameplayEffects[i].spec.TotalDuration;
-            //                }
-            //            }
+                    var durationRemaining = appliedFx[i].ability.durationRemaining;
 
-            //        }
-            //    }
-            //}
+                    if (durationRemaining > longestCooldown)
+                    {
+                        longestCooldown = durationRemaining;
+                        maxDuration = appliedFx[i].ability.totalDuration;
+                    }
+                }
+            }
 
             return new AbilityCooldownTime()
             {

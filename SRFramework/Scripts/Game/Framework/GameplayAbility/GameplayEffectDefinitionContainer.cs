@@ -9,8 +9,7 @@ namespace SlimeRPG.Framework.Ability
     public struct GameplayEffectDefinitionContainer
     {
         public GameplayEffectDuration duration;
-        // ModContainer로 변경예정.
-        public StatsAdjustment adjustment;
+        public GameplayModContainer modContainer;
         public List<ConditionalGameplayEffectContainer> conditionalGameplayEffects;
     }
 
