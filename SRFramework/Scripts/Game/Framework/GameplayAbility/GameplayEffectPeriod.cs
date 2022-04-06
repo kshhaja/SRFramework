@@ -5,7 +5,7 @@ namespace SlimeRPG.Framework.Ability
     [Serializable]
     public struct GameplayEffectPeriod
     {
-        public float value;
+        public float interval;
         public bool executeOnApplication;
     }
 

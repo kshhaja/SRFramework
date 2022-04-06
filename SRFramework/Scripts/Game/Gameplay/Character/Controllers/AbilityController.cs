@@ -12,11 +12,12 @@ namespace SlimeRPG.Gameplay.Character.Controller
         public class GameplayEffectContainer
         {
             public AbilityBase ability;
-            public StatsAdjustment modifiers;
+            public StatAdjustmentCollection modifiers;
         }
 
         protected AttributeController attribute;
 
+        public GameplayTagContainer grantedTags;
         public List<GameplayEffectContainer> appliedGameplayEffects = new List<GameplayEffectContainer>();
         public List<AbilityBase> grantedAbilities = new List<AbilityBase>();
 
@@ -44,34 +45,8 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         protected virtual bool CheckTagRequirementsMet(GameplayEffectScriptableObject ge)
         {
-            /// Build temporary list of all gametags currently applied
-            //var appliedTags = new List<GameplayTagScriptableObject>();
-            //for (var i = 0; i < appliedGameplayEffects.Count; i++)
-            //{
-            //    appliedTags.AddRange(appliedGameplayEffects[i].ability.effect.gameplayEffectTags.GrantedTags);
-            //}
-
-            //// Every tag in the ApplicationTagRequirements.RequireTags needs to be in the character tags list
-            //// In other words, if any tag in ApplicationTagRequirements.RequireTags is not present, requirement is not met
-            //for (var i = 0; i < ge.gameplayEffectTags.ApplicationTagRequirements.RequireTags.Length; i++)
-            //{
-            //    if (!appliedTags.Contains(ge.gameplayEffectTags.ApplicationTagRequirements.RequireTags[i]))
-            //    {
-            //        return false;
-            //    }
-            //}
-
-            //// No tag in the ApplicationTagRequirements.IgnoreTags must in the character tags list
-            //// In other words, if any tag in ApplicationTagRequirements.IgnoreTags is present, requirement is not met
-            //for (var i = 0; i < ge.gameplayEffectTags.ApplicationTagRequirements.IgnoreTags.Length; i++)
-            //{
-            //    if (appliedTags.Contains(ge.gameplayEffectTags.ApplicationTagRequirements.IgnoreTags[i]))
-            //    {
-            //        return false;
-            //    }
-            //}
-
-            return true;
+            return grantedTags.HasAllTags(ge.gameplayEffectTags.ApplicationTagRequirements.requireTags)
+                && grantedTags.HasNoneTags(ge.gameplayEffectTags.ApplicationTagRequirements.ignoreTags);
         }
 
         public bool ApplyGameplayEffect(GameplayEffectScriptableObject ge)
@@ -102,7 +77,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
         {
             foreach (var ability in appliedGameplayEffects)
             {
-                if (ability.ability.effect.gameplayEffect.duration.policy == EDurationPolicy.Instant)
+                if (ability.ability.effect.duration.policy == Duration.instant)
                     continue;
 
 

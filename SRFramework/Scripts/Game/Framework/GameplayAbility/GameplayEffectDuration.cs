@@ -6,8 +6,9 @@ namespace SlimeRPG.Framework.Ability
     [Serializable]
     public struct GameplayEffectDuration
     {
-        public EDurationPolicy policy;
+        public Duration policy;
         public float modifier;
         public float multiplier;
+        public GameplayEffectPeriod period;
     }
 }

@@ -511,6 +511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b4cedde3f33584fab69395c4c4bffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grantedTags:
+    list: []
   grantedAbilities: []
 --- !u!114 &1425454321
 MonoBehaviour:

@@ -19,7 +19,7 @@ public class AddtionalStatsAdjustment : ItemStatsAdjustment
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(AddtionalStatsAdjustment))]
-public class AdditionalStatsAdjustmentEditor : StatsAdjustmentEditor
+public class AdditionalStatsAdjustmentEditor : StatAdjustmentCollectionEditor
 {
     protected override bool ShowID => false;
 }

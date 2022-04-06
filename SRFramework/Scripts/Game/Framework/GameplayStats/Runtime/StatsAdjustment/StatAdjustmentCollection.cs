@@ -6,8 +6,8 @@ using SlimeRPG.Framework.StatsSystem.StatsContainers;
 // will be remove
 namespace SlimeRPG.Framework.StatsSystem
 {
-    [CreateAssetMenu(fileName = "StatsAdjustment", menuName = "Gameplay/Stats/Adjustment")]
-    public class StatsAdjustment : ScriptableObject
+    [CreateAssetMenu(menuName = "Gameplay/Stats/Adjustment Collection")]
+    public class StatAdjustmentCollection : ScriptableObject
     {
         protected string randomId;
 
@@ -15,13 +15,9 @@ namespace SlimeRPG.Framework.StatsSystem
         [SerializeField]
         public string id;
 
-        [Tooltip("Apply this operator to all adjustments")]
-        [SerializeField]
-        public OperatorTypeNone forceOperator;
-
         [Tooltip("Available adjustments")]
         [SerializeField]
-        public List<ModifierGroup> adjustment = new List<ModifierGroup>();
+        public List<StatAdjustment> adjustment = new List<StatAdjustment>();
 
         public virtual string Id
         {
@@ -38,7 +34,6 @@ namespace SlimeRPG.Framework.StatsSystem
                 return id;
             }
         }
-
 
         public virtual void ApplyAdjustment(StatsContainer target, float index = 0)
         {

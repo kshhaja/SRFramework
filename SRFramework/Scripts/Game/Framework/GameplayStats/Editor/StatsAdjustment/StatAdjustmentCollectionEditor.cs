@@ -6,8 +6,8 @@ using SlimeRPG.Framework.StatsSystem;
 
 namespace UnityEditor
 {
-	[CustomEditor(typeof(StatsAdjustment), true)]
-	public class StatsAdjustmentEditor : Editor 
+	[CustomEditor(typeof(StatAdjustmentCollection), true)]
+	public class StatAdjustmentCollectionEditor : Editor 
 	{
 		public const int PICKER_CONTROL_ID = 398473;
 		protected const int HEADER_SPACING = 4;
@@ -16,16 +16,14 @@ namespace UnityEditor
 		private ReorderableList reorderableList;
 
 		private SerializedProperty idProperty;
-		private SerializedProperty forceOperationProperty;
 		private SerializedProperty adjustmentProperty;
 
 		protected virtual bool ShowID => true;
 
         protected virtual void OnEnable () 
 		{
-			idProperty = serializedObject.FindProperty(nameof(StatsAdjustment.id));
-			forceOperationProperty = serializedObject.FindProperty(nameof(StatsAdjustment.forceOperator));
-			adjustmentProperty = serializedObject.FindProperty(nameof(StatsAdjustment.adjustment));
+			idProperty = serializedObject.FindProperty(nameof(StatAdjustmentCollection.id));
+			adjustmentProperty = serializedObject.FindProperty(nameof(StatAdjustmentCollection.adjustment));
 
 			if (adjustmentProperty != null && adjustmentProperty.isArray)
 			{
@@ -44,12 +42,7 @@ namespace UnityEditor
 
 			if (ShowID)
 				EditorGUILayout.PropertyField(idProperty);
-
-			EditorGUI.BeginChangeCheck();
-			EditorGUILayout.PropertyField(forceOperationProperty);
-			if (EditorGUI.EndChangeCheck()) 
-				SyncModifiers();
-
+			
 			serializedObject.ApplyModifiedProperties();
 
 			reorderableList.DoLayoutList();
@@ -76,24 +69,8 @@ namespace UnityEditor
 
 			var element = adjustmentProperty.GetArrayElementAtIndex(adjustmentProperty.arraySize - 1);
 			var def = (StatDefinition)obj;
-			var propDef = element.FindPropertyRelative(nameof(ModifierGroup.definition));
+			var propDef = element.FindPropertyRelative(nameof(StatAdjustment.definition));
 			propDef.objectReferenceValue = def;
-		}
-
-		void SyncModifiers () 
-		{
-			for (var i = 0; i < adjustmentProperty.arraySize; i++) 
-			{
-				var element = adjustmentProperty.GetArrayElementAtIndex(i);
-
-				var propOperator = element.FindPropertyRelative("operatorType");
-				var propOperatorEnum = (OperatorTypeNone)forceOperationProperty.enumValueIndex;
-				if (propOperatorEnum != OperatorTypeNone.None) 
-				{
-					var operatorType = propOperatorEnum.ToOperatorType();
-					propOperator.enumValueIndex = (int)operatorType;
-				}
-			}
 		}
 
 		protected virtual void DisplayHeaderCallback(Rect rect)

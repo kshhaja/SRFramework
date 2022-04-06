@@ -36,20 +36,20 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         bool CheckAction()
         {
-            if (owner.movementController.isVaulting == false)
+            if (Instigator.movementController.isVaulting == false)
             {
-                Vector3 origin = owner.transform.position + kneeRaycastOrigin;
+                Vector3 origin = Instigator.transform.position + kneeRaycastOrigin;
 
-                if (detection.ThrowRayOnDirection(origin, owner.transform.forward, kneeRaycastLength, out hits[0], layer))
+                if (detection.ThrowRayOnDirection(origin, Instigator.transform.forward, kneeRaycastLength, out hits[0], layer))
                 {
                     if (hits[0].collider.gameObject.tag != tag)
                         return false;
 
                     Vector3 origin2 = hits[0].point + (-hits[0].normal * (landOffset)) + new Vector3(0, 5, 0);
-                    detection.ThrowRayOnDirection(owner.transform.position, Vector3.down, 1, out hits[2]);
+                    detection.ThrowRayOnDirection(Instigator.transform.position, Vector3.down, 1, out hits[2]);
                     if (detection.ThrowRayOnDirection(origin2, Vector3.down, 10, out hits[1], layer)) //Ground Hit
                     {
-                        height = hits[1].point.y - owner.transform.position.y;
+                        height = hits[1].point.y - Instigator.transform.position.y;
 
                         if (height > maxHeight
                             || hits[0].collider.gameObject.tag != tag
@@ -77,8 +77,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             else
                 animator.CrossFade("Reach High", 0.1f);
 
-            startPos = owner.transform.position;
-            startRot = owner.transform.rotation;
+            startPos = Instigator.transform.position;
             targetPos = hits[1].point;
             targetRot = Quaternion.LookRotation(-hits[0].normal);
             locomoTime = 0f;
@@ -106,7 +105,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public override bool Update()
         {
             bool ret = false;
-            if (owner.movementController.isVaulting)
+            if (Instigator.movementController.isVaulting)
             {
                 // owner.cc.disableCheckGround = true;
 
@@ -115,7 +114,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 var animState = animator.GetCurrentAnimatorStateInfo(0);
                 //var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
                 locomoTime += actualSpeed * animState.speed;
-                owner.transform.rotation = Quaternion.Lerp(startRot, targetRot, locomoTime);
+                Instigator.transform.rotation = Quaternion.Lerp(startRot, targetRot, locomoTime);
 
                 if (animState.IsName("Reach") || animState.IsName("Reach High"))
                 {
@@ -146,8 +145,8 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 {
                     if (locomoTime >= 0)
                     {
-                        owner.transform.rotation = Quaternion.Lerp(startRot, targetRot, locomoTime * 4);
-                        owner.transform.position = Vector3.Lerp(startPos, targetPos, locomoTime);
+                        Instigator.transform.rotation = Quaternion.Lerp(startRot, targetRot, locomoTime * 4);
+                        Instigator.transform.position = Vector3.Lerp(startPos, targetPos, locomoTime);
                     }
                     return true;
                 }
@@ -172,7 +171,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public override void OnAnimatorIK(int layerIndex)
         {
-            if (height <= 1 || owner.movementController.isVaulting == false)
+            if (height <= 1 || Instigator.movementController.isVaulting == false)
                 return;
 
             float curve = animator.GetFloat(handAnimVariableName);
@@ -187,13 +186,13 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
             if (positionIKHolder != Vector3.zero)
             {
-                targetIKPosition = owner.transform.InverseTransformPoint(targetIKPosition);
-                positionIKHolder = owner.transform.InverseTransformPoint(positionIKHolder);
+                targetIKPosition = Instigator.transform.InverseTransformPoint(targetIKPosition);
+                positionIKHolder = Instigator.transform.InverseTransformPoint(positionIKHolder);
 
                 float yVariable = Mathf.Lerp(lastFootPositionY, positionIKHolder.y, 0.25f);
                 lastFootPositionY = yVariable;
                 targetIKPosition.y += yVariable;
-                targetIKPosition = owner.transform.TransformPoint(targetIKPosition);
+                targetIKPosition = Instigator.transform.TransformPoint(targetIKPosition);
             }
 
             animator.SetIKRotation(foot, rotationHodler);

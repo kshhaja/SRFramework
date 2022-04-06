@@ -96,7 +96,7 @@ namespace UnityEditor
 
             var element = modifiersProperty.GetArrayElementAtIndex(modifiersProperty.arraySize - 1);
             var def = (StatDefinition)obj;
-            var propDef = element.FindPropertyRelative(nameof(ModifierGroup.definition));
+            var propDef = element.FindPropertyRelative(nameof(StatAdjustment.definition));
             propDef.objectReferenceValue = def;
         }
 

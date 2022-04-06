@@ -4,7 +4,8 @@
 namespace SlimeRPG.Framework.StatsSystem
 {
     [Serializable]
-    public class ModifierGroup
+    public class StatAdjustment
+
     {
         public StatDefinition definition;
         public StatValueSelector value = new StatValueSelector();

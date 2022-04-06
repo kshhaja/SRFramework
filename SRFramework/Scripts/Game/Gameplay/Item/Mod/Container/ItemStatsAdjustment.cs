@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemStatsAdjustment", menuName = "Gameplay/Stats/ItemStatsAdjustment")]
-public class ItemStatsAdjustment : StatsAdjustment
+public class ItemStatsAdjustment : StatAdjustmentCollection
 {
     // mode 로 대체될 예정
     private bool HasDefiniiton(StatDefinition definition)
@@ -20,7 +20,7 @@ public class ItemStatsAdjustment : StatsAdjustment
 
         foreach (var def in collection.GetDefinitions())
         {
-            var mod = new ModifierGroup();
+            var mod = new StatAdjustment();
             mod.definition = def;
             mod.value = def.Value;
             adjustment.Add(mod);

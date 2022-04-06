@@ -53,9 +53,9 @@ namespace SlimeRPG.Framework.StatsSystem
             }
         }
 
-        public List<ModifierGroup> ModsToStatList()
+        public List<StatAdjustment> ModsToStatList()
         {
-            List<ModifierGroup> stats = new List<ModifierGroup>();
+            List<StatAdjustment> stats = new List<StatAdjustment>();
             foreach (var mod in mods)
             {
                 stats.AddRange(mod.modifiers);

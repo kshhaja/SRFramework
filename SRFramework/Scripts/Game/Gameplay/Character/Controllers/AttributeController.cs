@@ -52,13 +52,13 @@ namespace SlimeRPG.Gameplay.Character.Controller
             if (ge == null)
                 return true;
 
-            switch (ge.gameplayEffect.duration.policy)
+            switch (ge.duration.policy)
             {
-                case EDurationPolicy.HasDuration:
-                case EDurationPolicy.Infinite:
+                case Duration.duration:
+                case Duration.infinite:
                     // appliedGameplayEffects.Add(new GameplayEffectContainer() { });
                     break;
-                case EDurationPolicy.Instant:
+                case Duration.instant:
                     ApplyGameplayEffectInternal(ge);
                     break;
             }
@@ -68,7 +68,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         void ApplyGameplayEffectInternal(GameplayEffectScriptableObject ge)
         {
-            if (ge.gameplayEffect.modContainer == null)
+            if (ge.modifiers == null)
                 return;
 
             List<DamageAmount> ParseDamage(GameplayModContainer modContainer)
@@ -84,7 +84,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
                 return damages;
             }
            
-            ge.gameplayEffect.modContainer.ApplyMods(statsContainer);
+            ge.modifiers.ApplyAdjustment(statsContainer);
         }
     }
 }

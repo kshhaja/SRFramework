@@ -27,7 +27,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         {
             yield return base.PreCast();
 
-            owner.movementController.isVaulting = true;
+            Instigator.movementController.isVaulting = true;
             // owner.animationController.SubscribeOnAnimatorIK(OnAnimatorIK);
             yield return null;
         }
