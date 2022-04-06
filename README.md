@@ -75,12 +75,12 @@ TODO
 * Event Registerable Tags
 
    * Invokes an event when a tag is gained or lost.
-   ![Tag_Collection_01](https://user-images.githubusercontent.com/10418598/162029294-bdd6a51f-0683-4739-95ff-9654ca613aab.gif)
+   * ![Tag_Collection_01](https://user-images.githubusercontent.com/10418598/162029294-bdd6a51f-0683-4739-95ff-9654ca613aab.gif)
 
 * GameplayMod
 
    * A bundle of stats that can be applied to skills or items.
-   ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
+   * ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
    
    * The difference from the previous system is the point that forms a set of maximum and minimum values.
    * When performing actual damage execution, only a single literal of float or int is applied. At this time, if you evaluate the min max value that exists in the corresponding index, a random value within the range is obtained.
@@ -92,14 +92,14 @@ TODO
    
    * You can express all kinds of abilities like projectiles, melee attacks, buffs, and even locomotion.
    * For detailed specifications, please check UE4 GAS.
-   ![Ability_Sample_01](https://user-images.githubusercontent.com/10418598/162028814-7dff463d-efb7-4d6a-9931-2eee38cb38bf.gif)
+   * ![Ability_Sample_01](https://user-images.githubusercontent.com/10418598/162028814-7dff463d-efb7-4d6a-9931-2eee38cb38bf.gif)
 
 
 * Equipment
 
    * You can easily edit the information of the equipment.
    * Easily attach and detach VFX or SFX playback, animation playback and other effects.
-   ![Equipment_Entire_Sample01](https://user-images.githubusercontent.com/10418598/162028859-0f27764e-2820-4259-a05c-02341e790cc9.gif)
+   * ![Equipment_Entire_Sample01](https://user-images.githubusercontent.com/10418598/162028859-0f27764e-2820-4259-a05c-02341e790cc9.gif)
 
 
 ## Help
