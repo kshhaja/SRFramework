@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1094924243278488806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9250dcdb463d954fb4be02960bd8465, type: 3}
-  m_Name: Calculation Class
-  m_EditorClassIdentifier: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74c521c9b75dbb489dc7648d48b08c1, type: 3}
   m_Name: FireballExecution
   m_EditorClassIdentifier: 
-  calculationClass: {fileID: -1094924243278488806}
+  calculationClass: {fileID: 0}
   calculationModifiers:
   - definition: {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
     value:
@@ -68,3 +56,15 @@ MonoBehaviour:
         m_ConstantMin: 0
         m_ConstantMax: 1
     operatorType: 0
+--- !u!114 &2043478255251988709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9250dcdb463d954fb4be02960bd8465, type: 3}
+  m_Name: Calculation Class
+  m_EditorClassIdentifier: 

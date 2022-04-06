@@ -66,9 +66,7 @@ namespace SlimeRPG.Framework.Ability
 
         protected virtual void ApplyInstantGameplayEffect(GameplayEffectSpec ge)
         {
-            // ge spec으로 변경
-            ge.effect.modifiers.ApplyAdjustment(container);
-            ge.effect.execution.Execute(this);
+            ge.ApplyEffectTo(this);
         }
 
         protected virtual void ApplyDurationalGameplayEffect(GameplayEffectSpec ge)

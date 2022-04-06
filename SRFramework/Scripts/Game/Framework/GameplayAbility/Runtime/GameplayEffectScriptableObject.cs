@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SlimeRPG.Framework.StatsSystem;
-
+using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 namespace SlimeRPG.Framework.Ability
 {
@@ -102,14 +102,16 @@ namespace SlimeRPG.Framework.Ability
             return this;
         }
 
-        public void Execute(AbilitySystemCharacter target)
+        public void ApplyEffectTo(AbilitySystemCharacter target)
         {
-            // calculation class의 역할에 따라 계산방법이 달라진다.
-            // ex> 데미지 공식을 계산한 후, 타겟의 현재체력을 줄인다.
+            if (target == null)
+                return;
+
+            if (effect.modifiers)
+                effect.modifiers.ApplyAdjustment(target.container);
+
             if (effect.execution)
-            {
-                effect.execution.Execute(target);
-            }
+                effect.execution.TryExecute(target);
         }
     }
 }
