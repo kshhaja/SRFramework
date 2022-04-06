@@ -82,7 +82,6 @@ TODO
 
    * A bundle of stats that can be applied to skills or items.
    * ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
-   
    * The difference from the previous system is the point that forms a set of maximum and minimum values.
    * When performing actual damage execution, only a single literal of float or int is applied. At this time, if you evaluate the min max value that exists in the corresponding index, a random value within the range is obtained.
    
@@ -126,14 +125,9 @@ TODO
 * Contact
     * [Sanghyuk Kim](mailto:kshhaja@gmail.com)
 
-## Version History
-
-* 0.1
-    * Initial Commit
-
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+* This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
