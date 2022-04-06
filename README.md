@@ -1,7 +1,8 @@
 # SRFramework
 
-Inspired by UE4 Gameplay Ability System.
-Data-driven framework. All abilities (even character movement) can be created as abilities and managed as data.
+* Inspired by UE4 Gameplay Ability System.
+* This is Data-driven framework. 
+* All behaviours (even character movement) can be created as abilities and managed as data.
 
 The development intention is as follows.
 * Programmers : Function-oriented Development
@@ -81,12 +82,19 @@ TODO
 
    * A bundle of stats that can be applied to skills or items.
    * ![Item_option_sample](https://user-images.githubusercontent.com/10418598/161435006-26ff52d0-275c-4ea1-9b3d-2bebfc038303.gif)
-   
    * The difference from the previous system is the point that forms a set of maximum and minimum values.
    * When performing actual damage execution, only a single literal of float or int is applied. At this time, if you evaluate the min max value that exists in the corresponding index, a random value within the range is obtained.
    
-* Execution
-   * working..
+* Modifier & Execution
+   
+   * Modifier is a function that simply modifies the stat value of the target.
+   * Execution can be customized with the formula defined in CalculationClass with the stats of Source and Target.
+
+* ExecutionCalculation
+
+   * Base CalculationClass does nothing.
+   * If you want to create a custom damage formula, inherit ExecutionCalculationBase and implement Execute.
+   * ![Execution_Setup_01](https://user-images.githubusercontent.com/10418598/162058403-b4970893-d879-41aa-adaf-eabb188e1043.gif)
 
 * Ability
    
@@ -94,13 +102,19 @@ TODO
    * For detailed specifications, please check UE4 GAS.
    * ![Ability_Sample_01](https://user-images.githubusercontent.com/10418598/162028814-7dff463d-efb7-4d6a-9931-2eee38cb38bf.gif)
 
-
 * Equipment
 
    * You can easily edit the information of the equipment.
    * Easily attach and detach VFX or SFX playback, animation playback and other effects.
    * ![Equipment_Entire_Sample01](https://user-images.githubusercontent.com/10418598/162028859-0f27764e-2820-4259-a05c-02341e790cc9.gif)
 
+* Test
+
+   1. Set "current_health" stat by default.
+   2. Subscribe onStatChanged for "current_health" stats.
+   3. Register "Fireball" to Player's Primary Ability through SampleAbility Script.
+   4. let's see what happens.
+   * ![Play_Test_01](https://user-images.githubusercontent.com/10418598/162051456-aa982e39-93e0-4134-b291-fdfe3182eb14.gif)
 
 ## Help
 
@@ -111,14 +125,9 @@ TODO
 * Contact
     * [Sanghyuk Kim](mailto:kshhaja@gmail.com)
 
-## Version History
-
-* 0.1
-    * Initial Commit
-
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+* This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
