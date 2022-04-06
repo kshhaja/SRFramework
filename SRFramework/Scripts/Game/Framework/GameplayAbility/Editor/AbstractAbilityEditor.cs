@@ -72,6 +72,8 @@ namespace UnityEditor
                     newInstance.name = property.displayName;
 
                     AssetDatabase.AddObjectToAsset(newInstance, target);
+                    AssetDatabase.SaveAssets();
+
                     property.objectReferenceValue = newInstance;
                 }
             }
@@ -89,6 +91,8 @@ namespace UnityEditor
                 if (GUILayout.Button("Remove " + property.displayName))
                 {
                     Object.DestroyImmediate(property.objectReferenceValue, true);
+                    AssetDatabase.SaveAssets();
+                    
                     property.objectReferenceValue = null;
                 }
                 EditorGUI.indentLevel--;

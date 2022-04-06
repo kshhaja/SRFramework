@@ -15,6 +15,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   children:
   - {fileID: -7084762132671323285}
+  - {fileID: 682605536561848491}
 --- !u!114 &-7084762132671323285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +95,21 @@ MonoBehaviour:
   - {fileID: -7084762132671323285}
   - {fileID: 7658154493193419055}
   - {fileID: 6930217736292554937}
+  - {fileID: 682605536561848491}
+--- !u!114 &682605536561848491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec97873dde70c04b9d2334e3e58444f, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  parent: {fileID: -7439155549329567982}
+  children: []
 --- !u!114 &6930217736292554937
 MonoBehaviour:
   m_ObjectHideFlags: 0

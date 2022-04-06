@@ -52,7 +52,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             // 메시 / 히트 이펙트등 여기서 설정. 
             var projectileInstance = go.GetComponent<Projectile>();
             projectileInstance.particle = particle;
-            projectileInstance.effect = effect;
+            projectileInstance.effect = Source.MakeOutgoingSpec(effect, level);
             projectileInstance.secondaryAbility = secondaryAbility as AbilityBase;
             projectileInstance.source = Source;
 

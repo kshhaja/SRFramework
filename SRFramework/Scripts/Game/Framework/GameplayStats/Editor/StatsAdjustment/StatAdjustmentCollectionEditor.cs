@@ -102,7 +102,9 @@ namespace UnityEditor
 			var propRect = rect;
 			propRect.y += HEADER_SPACING; // 헤더 스페이싱
 			propRect.height = EditorGUIUtility.singleLineHeight;
+			EditorGUI.BeginDisabledGroup(true);
 			EditorGUI.PropertyField(propRect, propDef);
+			EditorGUI.EndDisabledGroup();
 
 			var propValue = element.FindPropertyRelative("value.value");
 			propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;

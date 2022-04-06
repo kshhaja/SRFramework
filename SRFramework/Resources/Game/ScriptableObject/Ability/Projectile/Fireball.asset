@@ -16,11 +16,8 @@ MonoBehaviour:
     policy: 0
     modifier: 0
     multiplier: 0
-    period:
-      interval: 0
-      executeOnApplication: 0
-  modifiers: {fileID: 0}
-  execution: {fileID: 0}
+  modifiers: {fileID: 11400000, guid: fac37bc616077c748a730f349e2dd689, type: 2}
+  execution: {fileID: 11400000, guid: e23ed72c6fa43e14197c740073583be8, type: 2}
   conditionalGameplayEffects: []
   gameplayEffectTags:
     AssetTag: {fileID: 0}
@@ -43,6 +40,9 @@ MonoBehaviour:
         list: []
     RemoveGameplayEffectsWithTag:
       list: []
+  period:
+    interval: 0
+    executeOnApplication: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,54 +82,12 @@ MonoBehaviour:
         list: []
   effect: {fileID: -8600172477493398631}
   cost: {fileID: 0}
-  coolDown: {fileID: 3307077592412794172}
+  coolDown: {fileID: 0}
   secondaryAbility: {fileID: 0}
   level: 1
   quality: 0
   icon: {fileID: 0}
-  clip: {fileID: -6401416218748139501, guid: 22bd395f98f774f47896dfe5dd8c8837, type: 3}
+  clip: {fileID: 0}
   projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a,
     type: 3}
---- !u!114 &3307077592412794172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36fd283322353ff42b30cd679073251e, type: 3}
-  m_Name: Cool Down
-  m_EditorClassIdentifier: 
-  duration:
-    policy: 0
-    modifier: 0
-    multiplier: 0
-    period:
-      interval: 0
-      executeOnApplication: 0
-  modifiers: {fileID: 0}
-  execution: {fileID: 0}
-  conditionalGameplayEffects: []
-  gameplayEffectTags:
-    AssetTag: {fileID: 0}
-    GrantedTags:
-      list: []
-    OngoingTagRequirements:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-    ApplicationTagRequirements:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-    RemovalTagRequirements:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-    RemoveGameplayEffectsWithTag:
-      list: []
+  particle: {fileID: 198706150799401992, guid: a990e3ac1318b834488c784d851f42a9, type: 3}

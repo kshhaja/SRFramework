@@ -1,7 +1,8 @@
 {
     "name": "GameplayAbilityEditor",
     "references": [
-        "GUID:388bf928eb0a86c47b620eef239a25a3"
+        "GUID:388bf928eb0a86c47b620eef239a25a3",
+        "GUID:b94e4e32312c67342b15dbca454bafc1"
     ],
     "includePlatforms": [
         "Editor"

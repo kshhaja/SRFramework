@@ -11,7 +11,7 @@ namespace SlimeRPG.Framework.Ability
         public GameplayEffectDuration duration;
 
         public StatAdjustmentCollection modifiers;
-        public ExecutionContainer execution;
+        public GameplayExecutionCollection execution;
         public List<ConditionalGameplayEffectContainer> conditionalGameplayEffects;
 
         public GameplayEffectTags gameplayEffectTags;

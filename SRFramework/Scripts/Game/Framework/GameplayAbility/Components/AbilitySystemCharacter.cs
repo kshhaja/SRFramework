@@ -10,10 +10,24 @@ namespace SlimeRPG.Framework.Ability
     {
         private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
         private List<AbstractAbilityScriptableObject> grantedAbilities = new List<AbstractAbilityScriptableObject>();
-        public StatsContainer container { get; private set; }
+        public StatsContainer container;
 
         public List<GameplayEffectSpec> AppliedSpecs => appliedSpecs;
-        
+
+
+        private void Awake()
+        {
+            container = container.CreateRuntimeCopy();
+
+            container.SetStat("current_health", 20);
+            container.OnStatChangeSubscribe("current_health", (record) =>
+            {
+                var v = record.GetValue();
+                Debug.Log("Current Health = " + v.ToString());
+                if (v <= 0)
+                    Debug.LogError("Dead");
+            });
+        }
 
         public void GrantAbility(AbstractAbilityScriptableObject ability)
         {
@@ -40,23 +54,24 @@ namespace SlimeRPG.Framework.Ability
             {
                 case Duration.duration:
                 case Duration.infinite:
-                    ApplyDurationalGameplayEffect(ge.effect);
+                    ApplyDurationalGameplayEffect(ge);
                     break;
                 case Duration.instant:
-                    ApplyInstantGameplayEffect(ge.effect);
+                    ApplyInstantGameplayEffect(ge);
                     return true;
             }
 
             return true;
         }
 
-        protected virtual void ApplyInstantGameplayEffect(GameplayEffectScriptableObject ge)
+        protected virtual void ApplyInstantGameplayEffect(GameplayEffectSpec ge)
         {
             // ge spec으로 변경
-            ge.modifiers.ApplyAdjustment(container);
+            ge.effect.modifiers.ApplyAdjustment(container);
+            ge.effect.execution.Execute(this);
         }
 
-        protected virtual void ApplyDurationalGameplayEffect(GameplayEffectScriptableObject ge)
+        protected virtual void ApplyDurationalGameplayEffect(GameplayEffectSpec ge)
         {
             Debug.Log("apply durational GE");
         }

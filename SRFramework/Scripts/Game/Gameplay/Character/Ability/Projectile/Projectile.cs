@@ -16,16 +16,15 @@ namespace SlimeRPG.Gameplay.Character.Ability
         [SerializeField]
         public List<AbilitySystemCharacter> targets = new List<AbilitySystemCharacter>();
 
-        public GameplayEffectScriptableObject effect;
+        public GameplayEffectSpec effect;
         // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
         public AbilityBase secondaryAbility;
 
-        private bool useRigidbody = true;
         [SerializeField]
         private float speed = 10.0f;
 
-        [SerializeField]
-        private float acceleration = 3.0f;
+        //[SerializeField]
+        //private float acceleration = 3.0f;
 
         [HideInInspector]
         public float lifeTime = 5f;
@@ -35,7 +34,9 @@ namespace SlimeRPG.Gameplay.Character.Ability
         // custom datas
         private int pierceCount = 0;
         private float explosionRange = 0;
-        public bool useGravity = true;
+        private bool useGravity = true;
+
+        private int internalPierceCount = 0;
 
 
         private void Start()
@@ -43,6 +44,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             if (TryGetComponent<Rigidbody>(out var rigidbody))
             {
                 rigidbody.AddForce(gameObject.transform.forward * speed);
+                rigidbody.useGravity = useGravity;
             }
 
             if (particle)
@@ -80,6 +82,8 @@ namespace SlimeRPG.Gameplay.Character.Ability
             {
                 if (targets.Contains(target) == false)
                     targets.Add(target);
+
+                target.ApplyGameplayEffect(effect);
             }
 
             if (secondaryAbility)
@@ -92,8 +96,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 }
             }
 
-            StopAllCoroutines();
-            Destroy(gameObject);
+            internalPierceCount++;
+            if (internalPierceCount > pierceCount)
+            {
+                StopAllCoroutines();
+                Destroy(gameObject);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

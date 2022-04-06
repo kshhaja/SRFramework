@@ -94,6 +94,17 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             records.Set(new StatRecord(definition, value));
         }
 
+        //test
+        public void SetStat(string definitionID, float value = 100)
+        {
+            var d = CreateInstance<StatDefinition>();
+            d.SetID(definitionID);
+            var v = new StatValueSelector();
+            v.value.mode = ParticleSystemCurveMode.Constant;
+            v.value.constant = value;
+            records.Set(new StatRecord(d, v));
+        }
+
         public int GetStatInt(StatRecord record, float index = 0)
         {
             if (record == null) 

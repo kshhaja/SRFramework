@@ -62,5 +62,10 @@ namespace SlimeRPG.Framework.StatsSystem
 
 			return new List<StatDefinition> { this };
 		}
+
+		public void SetID(string id)
+        {
+			this.id = id;
+        }
 	}
 }
