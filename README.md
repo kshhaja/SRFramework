@@ -1,7 +1,8 @@
 # SRFramework
 
-Inspired by UE4 Gameplay Ability System.
-Data-driven framework. All abilities (even character movement) can be created as abilities and managed as data.
+* Inspired by UE4 Gameplay Ability System.
+* This is Data-driven framework. 
+* All behaviours (even character movement) can be created as abilities and managed as data.
 
 The development intention is as follows.
 * Programmers : Function-oriented Development
