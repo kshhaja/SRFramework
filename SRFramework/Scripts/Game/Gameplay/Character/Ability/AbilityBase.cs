@@ -21,19 +21,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
             public float totalDuration;
         }
 
-        public float durationRemaining { get; private set; }
-        public float totalDuration { get; private set; }
-        public GameplayEffectPeriod periodDefinition { get; private set; }
-        public float timeUntilPeriodTick { get; private set; }
-
-
         protected WeakReference<CharacterBase> weakInstigator;
-        protected WeakReference<CharacterBase> weakSource;
-        protected List<WeakReference<CharacterBase>> weakTargets = new List<WeakReference<CharacterBase>>();
+        protected WeakReference<AbilitySystemCharacter> weakSource;
+        protected List<WeakReference<AbilitySystemCharacter>> weakTargets = new List<WeakReference<AbilitySystemCharacter>>();
         protected Animator animator;
 
         protected bool isSetup = false;
-        protected bool isActive = false;
 
         protected CharacterBase Instigator 
         {
@@ -46,7 +39,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             }
         }
 
-        protected CharacterBase Source
+        protected AbilitySystemCharacter Source
         {
             get
             {
@@ -57,7 +50,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             }
         }
 
-        protected List<CharacterBase> Targets
+        protected List<AbilitySystemCharacter> Targets
         {
             get
             {
@@ -71,48 +64,32 @@ namespace SlimeRPG.Gameplay.Character.Ability
             }
         }
 
-
         public virtual void Setup(CharacterBase instigator)
         {
             weakInstigator = new WeakReference<CharacterBase>(instigator);
+            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.GetComponent<AbilitySystemCharacter>());
             animator = instigator.animationController.animator;
             isSetup = true;
-            isActive = false;
-
-            if (effect)
-            {
-                if (effect.duration.modifier != 0f)
-                {
-                    durationRemaining = effect.duration.modifier;
-                    totalDuration = durationRemaining;
-                }
-
-                timeUntilPeriodTick = effect.duration.period.interval;
-                if (effect.duration.period.executeOnApplication)
-                    timeUntilPeriodTick = 0;
-            }
         }
 
-        public virtual IEnumerator TryCastAbility()
+        public virtual IEnumerator TryActivateAbility()
         {
-                // Todo: create montage event.
+            // Todo: create montage event.
 
             if (!CanActivateAbility())
                 yield break;
 
-            isActive = true;
-            yield return PreCast();
-            yield return CastAbility();
-            // yield return PostCast();
+            yield return PreActivateAbility();
+            yield return ActivateAbility();
             EndAbility();
         }
 
-        protected virtual IEnumerator PreCast()
+        protected virtual IEnumerator PreActivateAbility()
         {
             yield return null;
         }
 
-        protected virtual IEnumerator CastAbility()
+        protected virtual IEnumerator ActivateAbility()
         {
             ApplyCost();
             ApplyCooldown();
@@ -123,12 +100,11 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual void EndAbility()
         {
-            isActive = false;
         }
 
         public virtual bool CanActivateAbility()
         {
-            return isSetup && !isActive
+            return isSetup
                 && CheckGameplayTags()
                 && CheckCost()
                 && CheckCooldown().timeRemaining <= 0;
@@ -138,14 +114,20 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual void ApplyCost()
         {
-            if (cost)
-                Instigator?.attributeController.ApplyGameplayEffect(cost);
+            if (cost == null)
+                return;
+            
+            var spec = Source.MakeOutgoingSpec(cost, 1);
+            Source.ApplyGameplayEffect(spec);
         }
 
         public virtual void ApplyCooldown()
         {
-            if (coolDown)
-                Instigator?.attributeController.ApplyGameplayEffect(coolDown);
+            if (coolDown == null)
+                return;
+
+            var spec = Source.MakeOutgoingSpec(coolDown, 1);
+            Source.ApplyGameplayEffect(spec);
         }
 
         public virtual bool CheckCost()
@@ -178,21 +160,21 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual AbilityCooldownTime CheckCooldown()
         {
-            float maxDuration = 0;
             if (coolDown == null) 
                 return new AbilityCooldownTime();
             
-            var cooldownTags = coolDown.gameplayEffectTags.GrantedTags;
-
+            float maxDuration = 0;
             float longestCooldown = 0f;
 
-            var appliedFx = Instigator?.abilityController.appliedGameplayEffects;
-            for (var i = 0; i < appliedFx.Count; i++)
+            var appliedSpecs = Source.AppliedSpecs;
+            var cooldownTags = coolDown.gameplayEffectTags.GrantedTags;
+
+            for (var i = 0; i < appliedSpecs.Count; i++)
             {
-                var grantedTags = appliedFx[i].ability.effect.gameplayEffectTags.GrantedTags;
+                var grantedTags = appliedSpecs[i].effect.gameplayEffectTags.GrantedTags;
                 if (grantedTags.HasAnyTags(cooldownTags))
                 {
-                    if (appliedFx[i].ability.effect.duration.policy == Duration.infinite)
+                    if (appliedSpecs[i].effect.duration.policy == Duration.infinite)
                         return new AbilityCooldownTime()
                         {
                             timeRemaining = float.MaxValue,
@@ -200,12 +182,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
                         };
 
 
-                    var durationRemaining = appliedFx[i].ability.durationRemaining;
+                    var durationRemaining = appliedSpecs[i].durationRemaining;
 
                     if (durationRemaining > longestCooldown)
                     {
                         longestCooldown = durationRemaining;
-                        maxDuration = appliedFx[i].ability.totalDuration;
+                        maxDuration = appliedSpecs[i].totalDuration;
                     }
                 }
             }
@@ -219,9 +201,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public void AddTarget(CharacterBase target)
         {
-            weakTargets.Add(new WeakReference<CharacterBase>(target));
+            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.GetComponent<AbilitySystemCharacter>()));
         }
 
+        // functions below are for locomotion or something variables...
         public virtual bool Update()
         {
             return true;
@@ -238,25 +221,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public virtual void OnAnimatorIK(int layerIndex)
         {
-        }
-
-        public virtual void UpdateRemainingDuration(float deltaTime)
-        {
-            durationRemaining -= deltaTime;
-        }
-
-        public virtual void TickPeriodic(float deltaTime, out bool executePeriodicTick)
-        {
-            timeUntilPeriodTick -= deltaTime;
-            executePeriodicTick = false;
-
-            if (timeUntilPeriodTick <= 0)
-            {
-                timeUntilPeriodTick = effect.duration.period.interval;
-
-                if (effect.duration.period.interval > 0)
-                    executePeriodicTick = true;
-            }
         }
     }
 }

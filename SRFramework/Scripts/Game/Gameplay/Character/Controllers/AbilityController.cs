@@ -3,7 +3,7 @@ using SlimeRPG.Framework.StatsSystem;
 using SlimeRPG.Framework.Ability;
 using SlimeRPG.Framework.Tag;
 using SlimeRPG.Gameplay.Character.Ability;
-
+using UnityEngine;
 
 namespace SlimeRPG.Gameplay.Character.Controller
 {
@@ -20,6 +20,8 @@ namespace SlimeRPG.Gameplay.Character.Controller
         public GameplayTagContainer grantedTags;
         public List<GameplayEffectContainer> appliedGameplayEffects = new List<GameplayEffectContainer>();
         public List<AbilityBase> grantedAbilities = new List<AbilityBase>();
+        // private List<AbilityBase> activatedAbilities = new List<AbilityBase>();
+
 
         public int GrantAbility(AbilityBase ability)
         {
@@ -27,9 +29,17 @@ namespace SlimeRPG.Gameplay.Character.Controller
             return grantedAbilities.LastIndexOf(ability);
         }
 
-        public void CastAbility(int index)
+        public void ActivateAbility(int index)
         {
-            StartCoroutine(grantedAbilities[index].TryCastAbility());
+            if (grantedAbilities.Count <= index)
+                return;
+
+            StartCoroutine(grantedAbilities[index].TryActivateAbility());
+        }
+
+        public void MakeOutgoingSpec()
+        {
+
         }
 
         public void RemoveAbilitiesWithTag(GameplayTag tag)
@@ -57,8 +67,8 @@ namespace SlimeRPG.Gameplay.Character.Controller
             if (CheckTagRequirementsMet(ge))
                 return false;
 
-            attribute.ApplyGameplayEffect(ge);
-
+            ge.modifiers.ApplyAdjustment(attribute.StatsContainer);
+            
             return true;
         }
 
@@ -86,7 +96,14 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         void Update()
         {
-
+            //foreach (var ability in activatedAbilities)
+            //{
+            //    ability.TickPeriodic(Time.deltaTime, out var execute);
+            //    if (execute)
+            //    {
+            //        // ability.ApplyGameplayEffect();
+            //    }
+            //}
         }
     }
 }

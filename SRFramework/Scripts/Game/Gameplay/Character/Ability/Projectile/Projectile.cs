@@ -9,14 +9,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
     // 이것도 ScriptableObject로부터 만들어지도록 수정할 예정.
     public class Projectile : MonoBehaviour
     {
+        public CharacterBase instigator;
         [SerializeField]
-        public CharacterBase source;
+        public AbilitySystemCharacter source;
 
-        // targets 로 pierce 대응할수있도록 기능 추가 필요.
         [SerializeField]
-        // trigger enter 쪽에서 부딪히는 타겟을 계속저장해서 중복으로 이펙트가 적용되지 않게 막는다.
-        public List<CharacterBase> targets = new List<CharacterBase>();
-        //public AbilitySystemCharacter Target;
+        public List<AbilitySystemCharacter> targets = new List<AbilitySystemCharacter>();
 
         public GameplayEffectScriptableObject effect;
         // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
@@ -32,9 +30,11 @@ namespace SlimeRPG.Gameplay.Character.Ability
         [HideInInspector]
         public float lifeTime = 5f;
 
+        public ParticleSystem particle;
+
+        // custom datas
         private int pierceCount = 0;
         private float explosionRange = 0;
-
         public bool useGravity = true;
 
 
@@ -44,6 +44,9 @@ namespace SlimeRPG.Gameplay.Character.Ability
             {
                 rigidbody.AddForce(gameObject.transform.forward * speed);
             }
+
+            if (particle)
+                Instantiate(particle.gameObject, transform);
 
             StartCoroutine(LifeCycle());
         }
@@ -67,37 +70,25 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         private void ProcessGameplayEffect(GameObject go)
         {
-            if (secondaryAbility)
-            {
-                secondaryAbility.Setup(source);
-                StartCoroutine(secondaryAbility.TryCastAbility());
-            }
-            gameObject.SetActive(false);
-            //StopAllCoroutines();
-            //Destroy(gameObject);
-
             if (go.tag != "Enemy" && go.tag != "Player")
                 return;
 
             if (source.gameObject == go)
                 return;
 
-            if (go.TryGetComponent<CharacterBase>(out var target))
+            if (go.TryGetComponent<AbilitySystemCharacter>(out var target))
             {
                 if (targets.Contains(target) == false)
-                {
                     targets.Add(target);
-
-                    target.attributeController.ApplyGameplayEffect(effect);
-                }
             }
 
-            if (this.secondaryAbility)
+            if (secondaryAbility)
             {
                 var ac = source.GetComponent<CharacterBase>();
                 if (ac)
                 {
-                    // ac.CastAbility(this.secondaryAbility.secondaryAbility);
+                    secondaryAbility.Setup(instigator);
+                    StartCoroutine(secondaryAbility.TryActivateAbility());
                 }
             }
 

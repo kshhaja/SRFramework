@@ -40,51 +40,12 @@ namespace SlimeRPG.Gameplay.Character.Controller
         private StatsContainer statsContainer;
 
         public StatsContainer StatsContainer => statsContainer;
+        private List<GameplayEffectScriptableObject> durationalGEList = new List<GameplayEffectScriptableObject>();
 
         protected virtual void Awake()
         {
             // attribute값을 변경하면 리소스에 영향이 가기때문에 복사하여 사용.
             statsContainer = statsContainer?.CreateRuntimeCopy();
-        }
-
-        public bool ApplyGameplayEffect(GameplayEffectScriptableObject ge)
-        {
-            if (ge == null)
-                return true;
-
-            switch (ge.duration.policy)
-            {
-                case Duration.duration:
-                case Duration.infinite:
-                    // appliedGameplayEffects.Add(new GameplayEffectContainer() { });
-                    break;
-                case Duration.instant:
-                    ApplyGameplayEffectInternal(ge);
-                    break;
-            }
-
-            return true;
-        }
-
-        void ApplyGameplayEffectInternal(GameplayEffectScriptableObject ge)
-        {
-            if (ge.modifiers == null)
-                return;
-
-            List<DamageAmount> ParseDamage(GameplayModContainer modContainer)
-            {
-                List<DamageAmount> damages = new List<DamageAmount>();
-                foreach (var mod in modContainer.ModsToStatList())
-                {
-                    // if (mod.IsValid && mod.definition is DamageStatDefinition)
-                    //      switch (mod.damageType)
-                    //      ...
-                }
-
-                return damages;
-            }
-           
-            ge.modifiers.ApplyAdjustment(statsContainer);
         }
     }
 }

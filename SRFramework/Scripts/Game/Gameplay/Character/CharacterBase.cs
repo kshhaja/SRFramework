@@ -69,7 +69,7 @@ namespace SlimeRPG.Gameplay.Character
 
         public virtual void CastAbility(int index)
         {
-            abilityController.CastAbility(index);
+            abilityController.ActivateAbility(index);
         }
 
         public void FootstepFrame()

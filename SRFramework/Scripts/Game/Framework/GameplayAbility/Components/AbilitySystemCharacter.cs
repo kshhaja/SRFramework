@@ -8,10 +8,13 @@ namespace SlimeRPG.Framework.Ability
 {
     public class AbilitySystemCharacter : MonoBehaviour
     {
+        private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
         private List<AbstractAbilityScriptableObject> grantedAbilities = new List<AbstractAbilityScriptableObject>();
         public StatsContainer container { get; private set; }
 
+        public List<GameplayEffectSpec> AppliedSpecs => appliedSpecs;
         
+
         public void GrantAbility(AbstractAbilityScriptableObject ability)
         {
             grantedAbilities.Add(ability);
@@ -28,19 +31,19 @@ namespace SlimeRPG.Framework.Ability
             }
         }
 
-        public virtual bool ApplyGameplayEffect(GameplayEffectScriptableObject ge)
+        public virtual bool ApplyGameplayEffect(GameplayEffectSpec ge)
         {
             if (ge == null)
                 return true;
 
-            switch (ge.duration.policy)
+            switch (ge.effect.duration.policy)
             {
                 case Duration.duration:
                 case Duration.infinite:
-                    ApplyDurationalGameplayEffect(ge);
+                    ApplyDurationalGameplayEffect(ge.effect);
                     break;
                 case Duration.instant:
-                    ApplyInstantGameplayEffect(ge);
+                    ApplyInstantGameplayEffect(ge.effect);
                     return true;
             }
 
@@ -49,12 +52,18 @@ namespace SlimeRPG.Framework.Ability
 
         protected virtual void ApplyInstantGameplayEffect(GameplayEffectScriptableObject ge)
         {
+            // ge spec으로 변경
             ge.modifiers.ApplyAdjustment(container);
         }
 
         protected virtual void ApplyDurationalGameplayEffect(GameplayEffectScriptableObject ge)
         {
             Debug.Log("apply durational GE");
+        }
+
+        public GameplayEffectSpec MakeOutgoingSpec(GameplayEffectScriptableObject effect, float level)
+        {
+            return GameplayEffectSpec.CreateNew(effect, this, level);
         }
     }
 }

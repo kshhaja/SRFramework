@@ -23,9 +23,9 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public string tag;
 
-        protected override IEnumerator PreCast()
+        protected override IEnumerator PreActivateAbility()
         {
-            yield return base.PreCast();
+            yield return base.PreActivateAbility();
 
             Instigator.movementController.isVaulting = true;
             // owner.animationController.SubscribeOnAnimatorIK(OnAnimatorIK);

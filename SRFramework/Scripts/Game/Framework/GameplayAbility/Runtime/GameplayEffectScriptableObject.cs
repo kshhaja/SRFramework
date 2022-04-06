@@ -15,5 +15,101 @@ namespace SlimeRPG.Framework.Ability
         public List<ConditionalGameplayEffectContainer> conditionalGameplayEffects;
 
         public GameplayEffectTags gameplayEffectTags;
+        public GameplayEffectPeriod period;        
+    }
+
+    public class GameplayEffectSpec
+    {
+        public AbilitySystemCharacter source;
+        public List<AbilitySystemCharacter> targets = new List<AbilitySystemCharacter>();
+        public GameplayEffectScriptableObject effect;
+
+        public float level;
+        public float durationRemaining;
+        public float totalDuration;
+        public GameplayEffectPeriod periodDefinition;
+        public float timeUntilPeriodTick;
+
+
+        GameplayEffectSpec(GameplayEffectScriptableObject effect, AbilitySystemCharacter source, float level)
+        {
+            this.effect = effect;
+            this.source = source;
+            this.level = level;
+
+            if (effect.duration.modifier != 0f)
+            {
+                durationRemaining = effect.duration.modifier * effect.duration.multiplier;
+                totalDuration = durationRemaining;
+            }
+
+            timeUntilPeriodTick = effect.period.interval;
+            if (effect.period.executeOnApplication)
+            {
+                timeUntilPeriodTick = 0;
+            }
+        }
+
+        public static GameplayEffectSpec CreateNew(GameplayEffectScriptableObject effect, AbilitySystemCharacter source, float level = 1)
+        {
+            return new GameplayEffectSpec(effect, source, level);
+        }
+
+        public GameplayEffectSpec AddTarget(AbilitySystemCharacter target)
+        {
+            targets.Add(target);
+            return this;
+        }
+
+        public void SetTotalDuration(float totalDuration)
+        {
+            this.totalDuration = totalDuration;
+        }
+
+        public GameplayEffectSpec SetDuration(float duration)
+        {
+            durationRemaining = duration;
+            return this;
+        }
+
+        public GameplayEffectSpec UpdateRemainingDuration(float deltaTime)
+        {
+            durationRemaining -= deltaTime;
+            return this;
+        }
+
+        public GameplayEffectSpec UpdatePeriod(float deltaTime, out bool execute)
+        {
+            timeUntilPeriodTick -= deltaTime;
+            execute = false;
+            if (timeUntilPeriodTick <= 0)
+            {
+                timeUntilPeriodTick = effect.period.interval;
+
+                if (effect.period.interval > 0)
+                {
+                    execute = true;
+                }
+            }
+
+            return this;
+        }
+
+        public GameplayEffectSpec SetLevel(float level)
+        {
+            this.level = level;
+            // try evaluate all modifiers
+            return this;
+        }
+
+        public void Execute(AbilitySystemCharacter target)
+        {
+            // calculation class의 역할에 따라 계산방법이 달라진다.
+            // ex> 데미지 공식을 계산한 후, 타겟의 현재체력을 줄인다.
+            if (effect.execution)
+            {
+                effect.execution.Execute(target);
+            }
+        }
     }
 }

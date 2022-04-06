@@ -68,9 +68,9 @@ namespace SlimeRPG.Gameplay.Character.Ability
             return false;
         }
 
-        protected override IEnumerator PreCast()
+        protected override IEnumerator PreActivateAbility()
         {
-            yield return base.PreCast();
+            yield return base.PreActivateAbility();
 
             if (height <= 1)
                 animator.CrossFade("Reach", 0.1f);
@@ -91,9 +91,9 @@ namespace SlimeRPG.Gameplay.Character.Ability
             leftHandPosition.y = hits[1].point.y;
         }
 
-        protected override IEnumerator CastAbility()
+        protected override IEnumerator ActivateAbility()
         {
-            yield return base.CastAbility();
+            yield return base.ActivateAbility();
 
             while (Update())
                 yield return null;

@@ -10,6 +10,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
     public class ProjectileAbilityBase : AbilityBase
     {
         public Projectile projectile;
+        public ParticleSystem particle;
 
         private Transform castPoint;
         
@@ -27,22 +28,22 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 && Instigator.abilityController.grantedTags.HasNoneTags(abilityTags.sourceTags.ignoreTags);
         }
 
-        protected override IEnumerator PreCast()
+        protected override IEnumerator PreActivateAbility()
         {
             // optional behavior ex> set targets homing missile
-            yield return base.PreCast();
+            yield return base.PreActivateAbility();
         }
 
-        protected override IEnumerator CastAbility()
+        protected override IEnumerator ActivateAbility()
         {
-            yield return base.CastAbility();
+            yield return base.ActivateAbility();
 
             // 애니메이션 특정 시점에 이벤트가 발생할때까지 대기를 하려면 메카님은 제약이 많다...
             // Playable로 변경예정... 작업량이 너무 많아서 기약없음.
             // yield return owner.animationController.PlayAnimationClip(clip);
             yield return Instigator.animationController.PlayAttackAnimation();
 
-            GameObject go = null;
+            GameObject go;
             if (castPoint)
                 go = Instantiate(projectile.gameObject, castPoint.transform.position, castPoint.transform.rotation);
             else
@@ -50,9 +51,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
             // 메시 / 히트 이펙트등 여기서 설정. 
             var projectileInstance = go.GetComponent<Projectile>();
+            projectileInstance.particle = particle;
             projectileInstance.effect = effect;
             projectileInstance.secondaryAbility = secondaryAbility as AbilityBase;
-            projectileInstance.source = Instigator;
+            projectileInstance.source = Source;
 
             EndAbility();
             yield break;
