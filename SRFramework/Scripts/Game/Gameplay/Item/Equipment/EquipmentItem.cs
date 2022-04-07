@@ -45,8 +45,7 @@ namespace SlimeRPG.Gameplay.Item
             foreach (var effect in equippedEffects)
                 effect.OnEquipped(character);
 
-            // 임시
-            stat.ApplyModContainer(character.attributeController.StatsContainer, 1);
+            stat.ApplyModContainer(character.abilitySystem.container, 1);
         }
 
         public void UnequippedBy(CharacterBase character)
@@ -54,7 +53,7 @@ namespace SlimeRPG.Gameplay.Item
             foreach (var effect in equippedEffects)
                 effect.OnUnequipped(character);
 
-            stat.RemoveModContainer(character.attributeController.StatsContainer);
+            stat.RemoveModContainer(character.abilitySystem.container);
         }
     }
 }

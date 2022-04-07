@@ -21,7 +21,7 @@ namespace SlimeRPG.UI.Runtime
         public void Init()
         {
             var p = GameManager.Instance.GetPlayerCharacter(0);
-            var c = p.attributeController.StatsContainer;
+            var c = p.abilitySystem.container;
             foreach (var def in c.collection.GetDefinitions())
             {
                 var r = c.GetRecord(def);

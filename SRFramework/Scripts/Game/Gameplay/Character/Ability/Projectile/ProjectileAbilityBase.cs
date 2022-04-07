@@ -22,19 +22,19 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public override bool CheckGameplayTags()
         {
-            return Instigator.abilityController.grantedTags.HasAllTags(abilityTags.ownerTags.requireTags)
-                && Instigator.abilityController.grantedTags.HasNoneTags(abilityTags.ownerTags.ignoreTags)
-                && Instigator.abilityController.grantedTags.HasAllTags(abilityTags.sourceTags.requireTags)
-                && Instigator.abilityController.grantedTags.HasNoneTags(abilityTags.sourceTags.ignoreTags);
+            return Instigator.grantedTags.HasAllTags(abilityTags.ownerTags.requireTags)
+                && Instigator.grantedTags.HasNoneTags(abilityTags.ownerTags.ignoreTags)
+                && Instigator.grantedTags.HasAllTags(abilityTags.sourceTags.requireTags)
+                && Instigator.grantedTags.HasNoneTags(abilityTags.sourceTags.ignoreTags);
         }
 
-        protected override IEnumerator PreActivateAbility()
+        public override IEnumerator PreActivateAbility()
         {
             // optional behavior ex> set targets homing missile
             yield return base.PreActivateAbility();
         }
 
-        protected override IEnumerator ActivateAbility()
+        public override IEnumerator ActivateAbility()
         {
             yield return base.ActivateAbility();
 

@@ -23,7 +23,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public string tag;
 
-        protected override IEnumerator PreActivateAbility()
+        public override IEnumerator PreActivateAbility()
         {
             yield return base.PreActivateAbility();
 

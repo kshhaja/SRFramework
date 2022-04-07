@@ -68,7 +68,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             return false;
         }
 
-        protected override IEnumerator PreActivateAbility()
+        public override IEnumerator PreActivateAbility()
         {
             yield return base.PreActivateAbility();
 
@@ -91,7 +91,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             leftHandPosition.y = hits[1].point.y;
         }
 
-        protected override IEnumerator ActivateAbility()
+        public override IEnumerator ActivateAbility()
         {
             yield return base.ActivateAbility();
 

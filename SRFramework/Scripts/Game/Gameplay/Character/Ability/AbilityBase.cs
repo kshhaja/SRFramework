@@ -67,12 +67,12 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public virtual void Setup(CharacterBase instigator)
         {
             weakInstigator = new WeakReference<CharacterBase>(instigator);
-            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.GetComponent<AbilitySystemCharacter>());
+            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.abilitySystem);
             animator = instigator.animationController.animator;
             isSetup = true;
         }
 
-        public virtual IEnumerator TryActivateAbility()
+        public override IEnumerator TryActivateAbility()
         {
             // Todo: create montage event.
 
@@ -84,25 +84,27 @@ namespace SlimeRPG.Gameplay.Character.Ability
             EndAbility();
         }
 
-        protected virtual IEnumerator PreActivateAbility()
+        public override IEnumerator PreActivateAbility()
         {
             yield return null;
         }
 
-        protected virtual IEnumerator ActivateAbility()
+        public override IEnumerator ActivateAbility()
         {
             ApplyCost();
             ApplyCooldown();
             yield return null;
         }
 
-        public abstract void CancelAbility();
-
-        public virtual void EndAbility()
+        public override void CancelAbility()
         {
         }
 
-        public virtual bool CanActivateAbility()
+        public override void EndAbility()
+        {
+        }
+
+        public override bool CanActivateAbility()
         {
             return isSetup
                 && CheckGameplayTags()
@@ -145,7 +147,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
                     if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add) 
                         continue;
 
-                    var container = Instigator?.attributeController.StatsContainer;
+                    var container = Instigator?.abilitySystem.container;
                     if (container.HasRecord(modifier.definition))
                     {
                         var costValue = modifier.GetValue(0);
@@ -201,7 +203,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public void AddTarget(CharacterBase target)
         {
-            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.GetComponent<AbilitySystemCharacter>()));
+            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.abilitySystem));
         }
 
         // functions below are for locomotion or something variables...

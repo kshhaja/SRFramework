@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using SlimeRPG.Gameplay.Character.Ability;
 using SlimeRPG.Gameplay.Character.Controller;
+using SlimeRPG.Framework.Ability;
+using SlimeRPG.Framework.Tag;
 
 namespace SlimeRPG.Gameplay.Character
 {
@@ -26,8 +28,8 @@ namespace SlimeRPG.Gameplay.Character
         public MovementController movementController;
         public AnimationController animationController;
         public DetectionController detectionController;
-        public AttributeController attributeController;
-        public AbilityController abilityController;
+        public AbilitySystemCharacter abilitySystem;
+        public GameplayTagContainer grantedTags;
 
         public bool isRolling,
                     isJumping,
@@ -64,12 +66,12 @@ namespace SlimeRPG.Gameplay.Character
         public virtual int GrantAbility(AbilityBase ability)
         {
             ability.Setup(this);
-            return abilityController.GrantAbility(ability);
+            return abilitySystem.GrantAbility(ability);
         }
 
         public virtual void CastAbility(int index)
         {
-            abilityController.ActivateAbility(index);
+            abilitySystem.ActivateAbility(index);
         }
 
         public void FootstepFrame()

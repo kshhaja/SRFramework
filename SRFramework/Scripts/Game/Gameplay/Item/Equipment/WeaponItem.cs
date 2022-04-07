@@ -1,4 +1,5 @@
-﻿using SlimeRPG.Gameplay.Character;
+﻿using SlimeRPG.Framework.Ability;
+using SlimeRPG.Gameplay.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,15 +44,23 @@ namespace SlimeRPG.Gameplay.Item
         }
 
         public List<WeaponAttackEffect> attackEffects;
+        private GameplayEffectSpec spec;
 
+
+        public void RegisterGameplayEffectToSelf(GameplayEffectSpec spec)
+        {
+            this.spec = spec;
+        }
 
         public void Attack(CharacterBase source, CharacterBase target)
         {
+            // wait for trigger by animation
+
             foreach (var effect in attackEffects)
                 effect.OnAttack(source, target);
 
-            // applyGameplayEffect 내부에서 데미지 공식을 호출해줄테니 따로 계산할 필요는 없을듯.
-            stat.ApplyModContainer(target.attributeController.StatsContainer, 1);
+            target.abilitySystem.ApplyGameplayEffect(spec);
+            // stat.ApplyModContainer(target.abilitySystem.container, 1);
 
             foreach (var effect in attackEffects)
                 effect.OnPostAttack(source, target);

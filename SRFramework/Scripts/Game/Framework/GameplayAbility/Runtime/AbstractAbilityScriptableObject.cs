@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -19,5 +20,13 @@ namespace SlimeRPG.Framework.Ability
         public GameplayEffectScriptableObject cost;
         public GameplayEffectScriptableObject coolDown;
         public AbstractAbilityScriptableObject secondaryAbility;
+
+
+        public abstract bool CanActivateAbility();
+        public abstract IEnumerator TryActivateAbility();
+        public abstract IEnumerator PreActivateAbility();
+        public abstract IEnumerator ActivateAbility();
+        public abstract void CancelAbility();
+        public abstract void EndAbility();
     }
 }

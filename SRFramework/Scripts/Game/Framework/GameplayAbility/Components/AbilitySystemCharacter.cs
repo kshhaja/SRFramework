@@ -29,9 +29,15 @@ namespace SlimeRPG.Framework.Ability
             });
         }
 
-        public void GrantAbility(AbstractAbilityScriptableObject ability)
+        public int GrantAbility(AbstractAbilityScriptableObject ability)
         {
             grantedAbilities.Add(ability);
+            return grantedAbilities.LastIndexOf(ability);
+        }
+
+        public void ActivateAbility(int index)
+        {
+            StartCoroutine(grantedAbilities[index].TryActivateAbility());
         }
 
         public void RemoveAbilitiesWithTag(GameplayTag tag)
