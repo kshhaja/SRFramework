@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b07f63defb4fd380b0d19663f92619, type: 3}
-  m_Name: DefaultStatsCollection
+  m_Name: EnergyShieldCollection
   m_EditorClassIdentifier: 
   definitions:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: b6efc7ecedcc48241855bdb2b4a10e9d, type: 2}
+  - {fileID: 11400000, guid: d5570de776a533b4aa4c0a99a6043eb0, type: 2}

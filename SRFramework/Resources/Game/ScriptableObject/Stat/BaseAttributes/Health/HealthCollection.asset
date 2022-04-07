@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b07f63defb4fd380b0d19663f92619, type: 3}
-  m_Name: BaseCharacterStats
+  m_Name: HealthCollection
   m_EditorClassIdentifier: 
   definitions:
-  - {fileID: 11400000, guid: ec18af6c506aa0b4babee2a4048adb39, type: 2}
-  - {fileID: 11400000, guid: acaa46911b7a2eb478117637490891c9, type: 2}
-  - {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
+  - {fileID: 11400000, guid: 5fea1ff3bda1ae04083cf967bc2b083a, type: 2}
+  - {fileID: 11400000, guid: 63e28a1ef4456354ba2a81b4389b27d7, type: 2}

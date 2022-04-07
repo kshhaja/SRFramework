@@ -190,18 +190,11 @@ namespace UnityEditor
 
 		void DrawInputField(StatDefinition stat)
 		{
-			if (Target.collection.definitions.Contains(stat) == false)
-				return;
-
-			var index = Target.collection.definitions.IndexOf(stat);
-			if (index >= Target.collection.definitions.Count)
-				return;
-
 			// https://blog.unity.com/technology/serialization-in-unity
 			// 유니티 공식블로그에 따르면 직렬화 가능한 오브젝트는 비 추상클래스여야한다.
 			// StatDefinitionBase는 추상클래스이므로 직렬화가 불가능하기에 강제로 만들어서 사용해주도록 한다.
-			var definition = Target.collection.definitions[index];
-			var selectorProperty = new SerializedObject(definition).FindProperty("value");
+			
+			var selectorProperty = new SerializedObject(stat).FindProperty("value");
 			var minmaxProperty = selectorProperty.FindPropertyRelative("value");
 			var roundToIntProperty = selectorProperty.FindPropertyRelative("roundToInt");
 			

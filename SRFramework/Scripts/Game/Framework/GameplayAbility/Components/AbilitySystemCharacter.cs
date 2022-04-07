@@ -24,8 +24,7 @@ namespace SlimeRPG.Framework.Ability
             container = container.CreateRuntimeCopy();
 
             // test
-            container.SetStat("current_health", 20);
-            container.OnStatChangeSubscribe("current_health", (record) =>
+            container.OnStatChangeSubscribe("currentHealth", (record) =>
             {
                 var v = record.GetValue();
                 Debug.Log("Current Health = " + v.ToString());

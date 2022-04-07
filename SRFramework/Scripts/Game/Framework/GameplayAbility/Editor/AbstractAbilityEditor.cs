@@ -20,6 +20,9 @@ namespace UnityEditor
         SerializedProperty secondaryAbilityProperty;
 
         protected List<string> availableGameplayEffectType;
+        
+        // for independent foldout states
+        protected Dictionary<SerializedProperty, Editor> cachedEditor = new Dictionary<SerializedProperty, Editor>();
 
 
         public void Init(AbstractAbilityScriptableObject target, SerializedObject targetObject)
@@ -83,8 +86,13 @@ namespace UnityEditor
                 GUILayout.Label(property.displayName);
                 GUILayout.BeginVertical("HelpBox");
                 EditorGUI.indentLevel++;
-                Editor ed = null;
-                Editor.CreateCachedEditor(property.objectReferenceValue, null, ref ed);
+
+                Editor ed;
+                if (cachedEditor.TryGetValue(property, out var editor))
+                    ed = editor;
+                else
+                    cachedEditor[property] = ed = Editor.CreateEditor(property.objectReferenceValue);
+
                 ed.OnInspectorGUI();
 
                 EditorGUILayout.Space();

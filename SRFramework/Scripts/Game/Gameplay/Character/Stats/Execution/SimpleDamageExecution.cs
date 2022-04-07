@@ -9,7 +9,7 @@ namespace SlimeRPG.Gameplay.Character.Stats.Calculation
 {
     public class SimpleDamageExecution : ExecutionCalculationBase
     {
-        public override StatAdjustmentCollection Execute(List<StatAdjustment> executionModifiers, AbilitySystemCharacter target, float index)
+        public override void Execute(List<StatAdjustment> executionModifiers, AbilitySystemCharacter target, float index, out StatAdjustmentCollection executionCallbackData)
         {
             StatAdjustmentCollection newCollection = new StatAdjustmentCollection();
             // Adds all stat types whether it is damage or not. 
@@ -21,10 +21,11 @@ namespace SlimeRPG.Gameplay.Character.Stats.Calculation
             testDamage += target.StatsContainer.GetModifier(OperatorType.Subtract, "current_health", "damage");
 
             newCollection.adjustment.Add(StatAdjustment.CreateConstant(
-                target.StatsContainer.GetDefinition("current_health"), 
+                target.StatsContainer.GetDefinition("currentHealth"), 
                 OperatorType.Subtract, 
                 testDamage));
-            return newCollection;
+
+            executionCallbackData = newCollection;
         }
     }
 }

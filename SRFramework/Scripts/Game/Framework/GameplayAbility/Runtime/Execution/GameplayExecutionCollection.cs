@@ -16,8 +16,8 @@ namespace SlimeRPG.Framework.Ability
             if (calculationClass == null)
                 return;
 
-            var stats = calculationClass.Execute(calculationModifiers, target, index);
-            stats.ApplyAdjustment(target.StatsContainer);
+            calculationClass.Execute(calculationModifiers, target, index, out var callbackData);
+            callbackData.ApplyAdjustment(target.StatsContainer);
         }
     }
 }

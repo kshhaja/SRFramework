@@ -48,7 +48,16 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
                 records.Set(new StatRecord(statDefinition, val));
             }
 
+            foreach (var definition in definitions)
+                SetupDefinition(definition);
+
             IsSetup = true;
+        }
+
+        public void SetupDefinition(StatDefinition definition)
+        {
+            // for DerivedStatDefinition and RuntimeStatDefinition
+            definition.Setup(this);
         }
 
         public StatRecord GetRecord(string definitionId)

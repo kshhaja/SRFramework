@@ -145,7 +145,8 @@ namespace SlimeRPG.Gameplay.Character.Ability
             {
                 foreach (var modifier in cost.modifiers.adjustment)
                 {
-                    if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add) 
+                    if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add 
+                        && modifier.operatorType != Framework.StatsSystem.OperatorType.Subtract) 
                         continue;
 
                     var container = Instigator?.StatsContainer;
@@ -153,8 +154,16 @@ namespace SlimeRPG.Gameplay.Character.Ability
                     {
                         var costValue = modifier.GetValue(0);
                         var attributeValue = container.GetStat(modifier.definition);
-                        if (attributeValue + costValue < 0)
-                            return false;
+                        if (modifier.operatorType == Framework.StatsSystem.OperatorType.Add)
+                        {
+                            if (attributeValue + costValue < 0)
+                                return false;
+                        }
+                        else if(modifier.operatorType == Framework.StatsSystem.OperatorType.Subtract)
+                        {
+                            if (attributeValue - costValue < 0)
+                                return false;
+                        }
                     }
                 }
             }

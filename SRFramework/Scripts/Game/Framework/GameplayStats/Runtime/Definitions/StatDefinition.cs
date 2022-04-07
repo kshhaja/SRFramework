@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 namespace SlimeRPG.Framework.StatsSystem
 {
@@ -45,6 +45,10 @@ namespace SlimeRPG.Framework.StatsSystem
 
 		public bool IsPercentile => value.RoundToInt == false && percentile;
 
+
+		public virtual void Setup(StatsContainer container)
+        {
+        }
 
 		public override List<StatDefinition> GetDefinitions(HashSet<StatDefinitionBase> visited)
 		{
