@@ -7,12 +7,15 @@ using UnityEngine;
 
 namespace SlimeRPG.Framework.StatsSystem
 {
-    [CreateAssetMenu(fileName = "DerivedStatDefinition", menuName = "Gameplay/Stats/Definitions/Default")]
+    [CreateAssetMenu(fileName = "DerivedStatDefinition", menuName = "Gameplay/Stats/Definitions/Derived")]
     public class DerivedStatDefinition : StatDefinition
     {
         // DerivedStatDefinition will automatically update according to stat changes.
+        [SerializeField]
         protected StatAdjustmentCollection stats;
+        
         private WeakReference<StatsContainer> containerWeakRef;
+        private float internalValue;
         private StatRecord record;
 
 
@@ -20,7 +23,7 @@ namespace SlimeRPG.Framework.StatsSystem
         {
             containerWeakRef = new WeakReference<StatsContainer>(container);
             record = new StatRecord(this, value);
-
+            internalValue = value.value.Evaluate(1);
             // subscribe callback for automatically update
             foreach (var stat in stats.adjustment)
             {
@@ -50,9 +53,10 @@ namespace SlimeRPG.Framework.StatsSystem
                     SetModifier(adj.operatorType, adj.definition.Id, value);
                 }
                 
-                value.value.mode = ParticleSystemCurveMode.Constant;
-                value.value.constant = record.GetValue(1);
+                // value.value.mode = ParticleSystemCurveMode.Constant;
+                internalValue = record.GetValue(1);
 
+                Debug.Log(this.DisplayName + " is " + internalValue.ToString());
                 // calculated result == DerivedStat's base value
                 // container.SetBaseStat(this, Value);
             }

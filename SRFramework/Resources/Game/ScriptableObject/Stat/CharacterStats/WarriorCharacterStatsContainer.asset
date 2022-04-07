@@ -55,3 +55,23 @@ MonoBehaviour:
             m_RotationOrder: 4
           m_ConstantMin: 0
           m_ConstantMax: 40
+    - definition: {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
+      value:
+        roundToInt: 0
+        value:
+          m_Mode: 0
+          m_CurveMultiplier: 0
+          m_CurveMin:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          m_CurveMax:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          m_ConstantMin: 0
+          m_ConstantMax: 80
