@@ -60,7 +60,7 @@ namespace UnityEditor
                 if (choice != -1)
                 {
                     var newInstance = CreateInstance(availableClasses[choice]);
-                    newInstance.name = classProperty.displayName;
+                    newInstance.name = availableClasses[choice];
 
                     AssetDatabase.AddObjectToAsset(newInstance, target);
                     AssetDatabase.SaveAssets();

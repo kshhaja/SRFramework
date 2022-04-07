@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e16c6d96830b4d61833903225118adb, type: 3}
   m_Name: Strength
   m_EditorClassIdentifier: 
-  id: 
+  id: strength
   value:
     roundToInt: 0
     value:

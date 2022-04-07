@@ -33,8 +33,8 @@ MonoBehaviour:
           m_PostInfinity: 0
           m_RotationOrder: 0
         m_ConstantMin: 0
-        m_ConstantMax: 0
-    operatorType: 0
+        m_ConstantMax: 1
+    operatorType: 4
   - definition: {fileID: 11400000, guid: ec18af6c506aa0b4babee2a4048adb39, type: 2}
     value:
       roundToInt: 0

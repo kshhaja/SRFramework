@@ -1,5 +1,5 @@
 ﻿using System;
-
+using UnityEngine;
 
 namespace SlimeRPG.Framework.StatsSystem
 {
@@ -33,6 +33,17 @@ namespace SlimeRPG.Framework.StatsSystem
                 return value.MinMaxInt(index);
 
             return value.MinMax(index);
+        }
+
+        public static StatAdjustment CreateConstant(StatDefinition definition, OperatorType type, float value)
+        {
+            var stat = new StatAdjustment();
+            stat.definition = definition;
+            stat.operatorType = type;
+            stat.value.value.mode = ParticleSystemCurveMode.Constant;
+            stat.value.value.constant = value;
+
+            return stat;
         }
     }
 }

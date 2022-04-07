@@ -111,7 +111,7 @@ namespace SlimeRPG.Framework.Ability
                 effect.modifiers.ApplyAdjustment(target.StatsContainer);
 
             if (effect.execution)
-                effect.execution.TryExecute(target);
+                effect.execution.TryExecute(target, 1);
         }
     }
 }

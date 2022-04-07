@@ -19,6 +19,7 @@ namespace SlimeRPG.Framework.StatsSystem
 		public StatModifierCollection modifierSubtract = new StatModifierCollection(OperatorType.Subtract);
 		public StatModifierCollection modifierMultiply = new StatModifierCollection(OperatorType.Multiply);
 		public StatModifierCollection modifierDivide = new StatModifierCollection(OperatorType.Divide);
+		public StatModifierCollection modifierOverride = new StatModifierCollection(OperatorType.Override);
 
 		public StatDefinition Definition { get; private set; }
 
@@ -110,6 +111,8 @@ namespace SlimeRPG.Framework.StatsSystem
 					return modifierMultiply;
 				case OperatorType.Divide:
 					return modifierDivide;
+				case OperatorType.Override:
+					return modifierOverride;
 				default:
 					throw new ArgumentOutOfRangeException("operator", @operator, null);
 			}

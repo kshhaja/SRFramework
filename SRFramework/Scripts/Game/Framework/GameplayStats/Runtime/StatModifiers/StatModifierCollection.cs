@@ -73,6 +73,12 @@ namespace SlimeRPG.Framework.StatsSystem
 
         public float ModifyValue(float original)
         {
+            if (type == OperatorType.Override)
+            {
+                // ensure policy.
+                return original;
+            }
+
             if (type == OperatorType.Multiply)
             {
                 var multiplier = 0f;

@@ -11,10 +11,13 @@ namespace SlimeRPG.Framework.Ability
         public ExecutionCalculationBase calculationClass;
         public List<StatAdjustment> calculationModifiers = new List<StatAdjustment>();
 
-        public void TryExecute(AbilitySystemCharacter target)
+        public void TryExecute(AbilitySystemCharacter target, float index)
         {
-            if (calculationClass)
-                calculationClass.Execute(calculationModifiers, target);
+            if (calculationClass == null)
+                return;
+
+            var stats = calculationClass.Execute(calculationModifiers, target, index);
+            stats.ApplyAdjustment(target.StatsContainer);
         }
     }
 }

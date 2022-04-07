@@ -17,6 +17,9 @@ namespace SlimeRPG.Framework.StatsSystem
         private StatDefinitionCollection defaultStats;
 
         [SerializeField]
+        private StatDefinitionCollection staticStats;
+
+        [SerializeField]
         private OrderOfOperations orderOfOperations;
 
         public static StatsSettings Current
@@ -60,6 +63,17 @@ namespace SlimeRPG.Framework.StatsSystem
                 }
 
                 return defaultStats;
+            }
+        }
+
+        public StatDefinitionCollection StaticStats
+        {
+            get
+            {
+                if (staticStats == null)
+                    staticStats = CreateInstance<StatDefinitionCollection>();
+
+                return staticStats;
             }
         }
 

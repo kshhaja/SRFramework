@@ -89,6 +89,11 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             return GetStat(GetRecord(definitionId), index);
         }
 
+        public StatDefinition GetDefinition(string definitionID)
+        {
+            return GetRecord(definitionID).Definition;
+        }
+
         public void SetStat(StatDefinition definition, StatValueSelector value = null)
         {
             records.Set(new StatRecord(definition, value));

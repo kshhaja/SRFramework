@@ -32,6 +32,12 @@ namespace SlimeRPG.Framework.Ability
                 if (v <= 0)
                     Debug.LogError("Dead");
             });
+
+            container.OnStatChangeSubscribe("dexterity", (record) =>
+            {
+                var v = record.GetValue();
+                Debug.Log("Dexterity = " + v.ToString());
+            });
         }
 
         private void Update()
