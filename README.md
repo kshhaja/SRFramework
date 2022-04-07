@@ -78,6 +78,21 @@ TODO
    * Invokes an event when a tag is gained or lost.
    * ![Tag_Collection_01](https://user-images.githubusercontent.com/10418598/162029294-bdd6a51f-0683-4739-95ff-9654ca613aab.gif)
 
+* Stat
+
+   * StatDefinition
+      * The most basic stat form with id and value.
+   * DerivedStatDefinition
+      * Stats affected by changes in other stats.
+         * TestCase
+            1. set DerivedStatDefition base value as 100
+            2. set dexterity.operatorType to Add
+            3. setup modify dexterity on fire projectile.
+            4. expected result = 100 + currentDexterity
+               * ![derived_stat_01](https://user-images.githubusercontent.com/10418598/162324944-42444ad2-7613-47b0-b092-108c2db4d937.gif)
+            5. and this is the result.
+               * ![derived_result_01](https://user-images.githubusercontent.com/10418598/162325471-37c5ada9-6c44-48c2-a858-7cb0e6a807bc.gif)
+
 * GameplayMod
 
    * A bundle of stats that can be applied to skills or items.
