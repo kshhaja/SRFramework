@@ -10,7 +10,11 @@ namespace SlimeRPG.Framework.Ability
     {
         private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
         private List<AbstractAbilityScriptableObject> grantedAbilities = new List<AbstractAbilityScriptableObject>();
-        public StatsContainer container;
+        
+        [SerializeField]
+        protected StatsContainer container;
+
+        public StatsContainer StatsContainer => container;
 
         public List<GameplayEffectSpec> AppliedSpecs => appliedSpecs;
 
@@ -19,6 +23,7 @@ namespace SlimeRPG.Framework.Ability
         {
             container = container.CreateRuntimeCopy();
 
+            // test
             container.SetStat("current_health", 20);
             container.OnStatChangeSubscribe("current_health", (record) =>
             {
@@ -27,6 +32,21 @@ namespace SlimeRPG.Framework.Ability
                 if (v <= 0)
                     Debug.LogError("Dead");
             });
+        }
+
+        private void Update()
+        {
+            foreach (var spec in appliedSpecs)
+            {
+                if (spec.effect.duration.policy == Duration.instant)
+                    continue;
+
+                spec.UpdateRemainingDuration(Time.deltaTime);
+                spec.UpdatePeriod(Time.deltaTime, out var execute);
+
+                if (execute)
+                    ApplyInstantGameplayEffect(spec);
+            }
         }
 
         public int GrantAbility(AbstractAbilityScriptableObject ability)
@@ -77,7 +97,7 @@ namespace SlimeRPG.Framework.Ability
 
         protected virtual void ApplyDurationalGameplayEffect(GameplayEffectSpec ge)
         {
-            Debug.Log("apply durational GE");
+            appliedSpecs.Add(ge);
         }
 
         public GameplayEffectSpec MakeOutgoingSpec(GameplayEffectScriptableObject effect, float level)

@@ -553,7 +553,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
 				direction.Normalize();
 			}
 
-			Vector3 targetPosition = (useRootMotion ? character.animationController.animator.rootPosition : rb.position) + direction * (stopMove ? 0 : moveSpeed) * (useRootMotion ? TimeExtensions.deltaTime : TimeExtensions.fixedDeltaTime);
+			Vector3 targetPosition = (useRootMotion ? character.Animation.animator.rootPosition : rb.position) + direction * (stopMove ? 0 : moveSpeed) * (useRootMotion ? TimeExtensions.deltaTime : TimeExtensions.fixedDeltaTime);
 			Vector3 targetVelocity = (targetPosition - transform.position) / (useRootMotion ? TimeExtensions.deltaTime : TimeExtensions.fixedDeltaTime);
 
 			bool useVerticalVelocity = true;

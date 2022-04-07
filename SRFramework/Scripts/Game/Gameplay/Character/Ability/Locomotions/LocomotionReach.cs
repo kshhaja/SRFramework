@@ -25,7 +25,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public override void Setup(CharacterBase owner)
         {
             base.Setup(owner);
-            detection = owner.detectionController;
+            detection = owner.Detection;
             rb = owner.GetComponent<Rigidbody>();
         }
 
@@ -36,7 +36,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         bool CheckAction()
         {
-            if (Instigator.movementController.isVaulting == false)
+            if (Instigator.Movement.isVaulting == false)
             {
                 Vector3 origin = Instigator.transform.position + kneeRaycastOrigin;
 
@@ -105,7 +105,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public override bool Update()
         {
             bool ret = false;
-            if (Instigator.movementController.isVaulting)
+            if (Instigator.Movement.isVaulting)
             {
                 // owner.cc.disableCheckGround = true;
 
@@ -171,7 +171,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public override void OnAnimatorIK(int layerIndex)
         {
-            if (height <= 1 || Instigator.movementController.isVaulting == false)
+            if (height <= 1 || Instigator.Movement.isVaulting == false)
                 return;
 
             float curve = animator.GetFloat(handAnimVariableName);

@@ -59,7 +59,7 @@ namespace SlimeRPG.Gameplay.Item
             foreach (var effect in attackEffects)
                 effect.OnAttack(source, target);
 
-            target.abilitySystem.ApplyGameplayEffect(spec);
+            target.AbilitySystem.ApplyGameplayEffect(spec);
             // stat.ApplyModContainer(target.abilitySystem.container, 1);
 
             foreach (var effect in attackEffects)

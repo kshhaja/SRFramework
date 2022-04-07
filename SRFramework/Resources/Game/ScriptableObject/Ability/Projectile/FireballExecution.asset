@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74c521c9b75dbb489dc7648d48b08c1, type: 3}
   m_Name: FireballExecution
   m_EditorClassIdentifier: 
-  calculationClass: {fileID: 0}
+  calculationClass: {fileID: 2043478255251988709}
   calculationModifiers:
   - definition: {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
     value:

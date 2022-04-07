@@ -108,7 +108,7 @@ namespace SlimeRPG.Framework.Ability
                 return;
 
             if (effect.modifiers)
-                effect.modifiers.ApplyAdjustment(target.container);
+                effect.modifiers.ApplyAdjustment(target.StatsContainer);
 
             if (effect.execution)
                 effect.execution.TryExecute(target);

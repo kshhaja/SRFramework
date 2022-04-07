@@ -3,6 +3,7 @@ using SlimeRPG.Gameplay.Character.Ability;
 using SlimeRPG.Gameplay.Character.Controller;
 using SlimeRPG.Framework.Ability;
 using SlimeRPG.Framework.Tag;
+using SlimeRPG.Framework.StatsSystem.StatsContainers;
 
 namespace SlimeRPG.Gameplay.Character
 {
@@ -25,11 +26,19 @@ namespace SlimeRPG.Gameplay.Character
     public class CharacterBase : MonoBehaviour
     {
         [Header("Controllers")]
-        public MovementController movementController;
-        public AnimationController animationController;
-        public DetectionController detectionController;
-        public AbilitySystemCharacter abilitySystem;
-        public GameplayTagContainer grantedTags;
+        protected MovementController movementController;
+        protected AnimationController animationController;
+        protected DetectionController detectionController;
+        protected AbilitySystemCharacter abilitySystem;
+        protected GameplayTagContainer grantedTags = new GameplayTagContainer();
+
+        public MovementController Movement => movementController;
+        public AnimationController Animation => animationController;
+        public DetectionController Detection => detectionController;
+        public AbilitySystemCharacter AbilitySystem => abilitySystem;
+        public GameplayTagContainer GrantedTags => grantedTags;
+        public StatsContainer StatsContainer => AbilitySystem.StatsContainer;
+
 
         public bool isRolling,
                     isJumping,
@@ -39,12 +48,13 @@ namespace SlimeRPG.Gameplay.Character
 
         public Transform rotateTarget;
 
-        protected virtual void Start()
-        {
-        }
 
-        protected virtual void Update()
+        protected virtual void Awake()
         {
+            movementController = GetComponent<MovementController>();
+            animationController = GetComponent<AnimationController>();
+            detectionController = GetComponent<DetectionController>();
+            abilitySystem = GetComponent<AbilitySystemCharacter>();
         }
 
         public void SetAimPoint(Vector3 point)

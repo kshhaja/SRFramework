@@ -34,8 +34,10 @@ namespace SlimeRPG.Gameplay.Character
         private Dictionary<ActionHandler, int?> inputActions = new Dictionary<ActionHandler, int?>();
 
 
-        protected void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             // init empty actions
             foreach (ActionHandler handler in System.Enum.GetValues(typeof(ActionHandler)))
                 inputActions.Add(handler, null);

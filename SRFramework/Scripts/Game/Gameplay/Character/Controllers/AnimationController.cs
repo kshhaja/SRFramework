@@ -171,7 +171,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
             // 이런 상태를 원하는 것들은 전부 action쪽과 연동될듯.
             // 혹은 stateMachine을 도입할수도
 
-            var movement = character.movementController as PlayerMovementController;
+            var movement = character.Movement as PlayerMovementController;
             animator.SetBool(AnimatorParameters.IsStrafing, character.isStrafing);
             animator.SetBool(AnimatorParameters.IsSprinting, character.isSprinting);
             animator.SetBool(AnimatorParameters.IsSliding, character.isSliding);
@@ -218,7 +218,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
             }
 
             var leanEuler = transform.eulerAngles - lastCharacterAngle;
-            var movement = character.movementController as PlayerMovementController;
+            var movement = character.Movement as PlayerMovementController;
             float angleY = leanEuler.NormalizeAngle().y / (character.isStrafing ? movement.strafeSpeed.rotationSpeed : movement.freeSpeed.rotationSpeed);
 
             return angleY;
@@ -226,7 +226,7 @@ namespace SlimeRPG.Gameplay.Character.Controller
 
         public virtual void SetAnimatorMoveSpeed(MovementSpeed speed)
         {
-            var movement = character.movementController as PlayerMovementController;
+            var movement = character.Movement as PlayerMovementController;
             Vector3 relativeInput = transform.InverseTransformDirection(movement.moveDirection);
             movement.verticalSpeed = relativeInput.z;
             movement.horizontalSpeed = relativeInput.x;

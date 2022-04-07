@@ -22,10 +22,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public override bool CheckGameplayTags()
         {
-            return Instigator.grantedTags.HasAllTags(abilityTags.ownerTags.requireTags)
-                && Instigator.grantedTags.HasNoneTags(abilityTags.ownerTags.ignoreTags)
-                && Instigator.grantedTags.HasAllTags(abilityTags.sourceTags.requireTags)
-                && Instigator.grantedTags.HasNoneTags(abilityTags.sourceTags.ignoreTags);
+            return Instigator.GrantedTags.HasAllTags(abilityTags.ownerTags.requireTags)
+                && Instigator.GrantedTags.HasNoneTags(abilityTags.ownerTags.ignoreTags)
+                && Instigator.GrantedTags.HasAllTags(abilityTags.sourceTags.requireTags)
+                && Instigator.GrantedTags.HasNoneTags(abilityTags.sourceTags.ignoreTags);
         }
 
         public override IEnumerator PreActivateAbility()
@@ -41,7 +41,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             // 애니메이션 특정 시점에 이벤트가 발생할때까지 대기를 하려면 메카님은 제약이 많다...
             // Playable로 변경예정... 작업량이 너무 많아서 기약없음.
             // yield return owner.animationController.PlayAnimationClip(clip);
-            yield return Instigator.animationController.PlayAttackAnimation();
+            yield return Instigator.Animation.PlayAttackAnimation();
 
             GameObject go;
             if (castPoint)

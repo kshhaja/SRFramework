@@ -28,6 +28,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         protected bool isSetup = false;
 
+
         protected CharacterBase Instigator 
         {
             get
@@ -67,8 +68,8 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public virtual void Setup(CharacterBase instigator)
         {
             weakInstigator = new WeakReference<CharacterBase>(instigator);
-            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.abilitySystem);
-            animator = instigator.animationController.animator;
+            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.AbilitySystem);
+            animator = instigator.Animation.animator;
             isSetup = true;
         }
 
@@ -147,7 +148,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
                     if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add) 
                         continue;
 
-                    var container = Instigator?.abilitySystem.container;
+                    var container = Instigator?.StatsContainer;
                     if (container.HasRecord(modifier.definition))
                     {
                         var costValue = modifier.GetValue(0);
@@ -203,7 +204,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public void AddTarget(CharacterBase target)
         {
-            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.abilitySystem));
+            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.AbilitySystem));
         }
 
         // functions below are for locomotion or something variables...

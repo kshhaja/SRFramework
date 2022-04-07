@@ -25,10 +25,10 @@ namespace SlimeRPG.Framework.Ability
 
             float testDamage = 0f;
             executionModifiers.ForEach(x => testDamage += x.GetValue(1));
-            testDamage += target.container.GetModifier(OperatorType.Subtract, "current_health", "damage");
+            testDamage += target.StatsContainer.GetModifier(OperatorType.Subtract, "current_health", "damage");
             // convert damage to target's currentHealth stat (subtract)
             
-            target.container.SetModifier(OperatorType.Subtract, "current_health", "damage", testDamage);
+            target.StatsContainer.SetModifier(OperatorType.Subtract, "current_health", "damage", testDamage);
         }
     }
 }
