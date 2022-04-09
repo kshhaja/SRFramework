@@ -8,6 +8,6 @@ namespace SlimeRPG.Framework.Ability
 {
     public abstract class ExecutionCalculationBase : ScriptableObject
     {
-        public abstract void Execute(List<StatAdjustment> executionModifiers, AbilitySystemCharacter target, float index, out StatAdjustmentCollection executionCallbackData);
+        public abstract void Execute(List<StatAdjustment> executionModifiers, AbilitySystemComponent target, float index, out StatAdjustmentCollection executionCallbackData);
     }
 }

@@ -29,13 +29,13 @@ namespace SlimeRPG.Gameplay.Character
         protected MovementController movementController;
         protected AnimationController animationController;
         protected DetectionController detectionController;
-        protected AbilitySystemCharacter abilitySystem;
+        protected AbilitySystemComponent abilitySystem;
         protected GameplayTagContainer grantedTags = new GameplayTagContainer();
 
         public MovementController Movement => movementController;
         public AnimationController Animation => animationController;
         public DetectionController Detection => detectionController;
-        public AbilitySystemCharacter AbilitySystem => abilitySystem;
+        public AbilitySystemComponent AbilitySystem => abilitySystem;
         public GameplayTagContainer GrantedTags => grantedTags;
         public StatsContainer StatsContainer => AbilitySystem.StatsContainer;
 
@@ -54,7 +54,7 @@ namespace SlimeRPG.Gameplay.Character
             movementController = GetComponent<MovementController>();
             animationController = GetComponent<AnimationController>();
             detectionController = GetComponent<DetectionController>();
-            abilitySystem = GetComponent<AbilitySystemCharacter>();
+            abilitySystem = GetComponent<AbilitySystemComponent>();
         }
 
         public void SetAimPoint(Vector3 point)

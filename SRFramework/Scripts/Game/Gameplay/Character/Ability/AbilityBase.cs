@@ -22,8 +22,8 @@ namespace SlimeRPG.Gameplay.Character.Ability
         }
 
         protected WeakReference<CharacterBase> weakInstigator;
-        protected WeakReference<AbilitySystemCharacter> weakSource;
-        protected List<WeakReference<AbilitySystemCharacter>> weakTargets = new List<WeakReference<AbilitySystemCharacter>>();
+        protected WeakReference<AbilitySystemComponent> weakSource;
+        protected List<WeakReference<AbilitySystemComponent>> weakTargets = new List<WeakReference<AbilitySystemComponent>>();
         protected Animator animator;
 
         protected bool isSetup = false;
@@ -40,7 +40,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             }
         }
 
-        protected AbilitySystemCharacter Source
+        protected AbilitySystemComponent Source
         {
             get
             {
@@ -51,7 +51,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             }
         }
 
-        protected List<AbilitySystemCharacter> Targets
+        protected List<AbilitySystemComponent> Targets
         {
             get
             {
@@ -68,7 +68,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public virtual void Setup(CharacterBase instigator)
         {
             weakInstigator = new WeakReference<CharacterBase>(instigator);
-            weakSource = new WeakReference<AbilitySystemCharacter>(instigator.AbilitySystem);
+            weakSource = new WeakReference<AbilitySystemComponent>(instigator.AbilitySystem);
             animator = instigator.Animation.animator;
             isSetup = true;
         }
@@ -213,7 +213,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public void AddTarget(CharacterBase target)
         {
-            weakTargets.Add(new WeakReference<AbilitySystemCharacter>(target.AbilitySystem));
+            weakTargets.Add(new WeakReference<AbilitySystemComponent>(target.AbilitySystem));
         }
 
         // functions below are for locomotion or something variables...

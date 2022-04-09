@@ -11,10 +11,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
     {
         public CharacterBase instigator;
         [SerializeField]
-        public AbilitySystemCharacter source;
+        public AbilitySystemComponent source;
 
         [SerializeField]
-        public List<AbilitySystemCharacter> targets = new List<AbilitySystemCharacter>();
+        public List<AbilitySystemComponent> targets = new List<AbilitySystemComponent>();
 
         public GameplayEffectSpec effect;
         // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
@@ -78,7 +78,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             if (source.gameObject == go)
                 return;
 
-            if (go.TryGetComponent<AbilitySystemCharacter>(out var target))
+            if (go.TryGetComponent<AbilitySystemComponent>(out var target))
             {
                 if (targets.Contains(target) == false)
                     targets.Add(target);

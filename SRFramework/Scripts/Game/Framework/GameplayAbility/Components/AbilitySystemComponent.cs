@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SlimeRPG.Framework.Ability
 {
-    public class AbilitySystemCharacter : MonoBehaviour
+    public class AbilitySystemComponent : MonoBehaviour
     {
         private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
         private List<AbstractAbilityScriptableObject> grantedAbilities = new List<AbstractAbilityScriptableObject>();

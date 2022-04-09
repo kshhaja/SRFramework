@@ -11,7 +11,7 @@ namespace SlimeRPG.Framework.Ability
         public ExecutionCalculationBase calculationClass;
         public List<StatAdjustment> calculationModifiers = new List<StatAdjustment>();
 
-        public void TryExecute(AbilitySystemCharacter target, float index)
+        public void TryExecute(AbilitySystemComponent target, float index)
         {
             if (calculationClass == null)
                 return;

@@ -20,8 +20,8 @@ namespace SlimeRPG.Framework.Ability
 
     public class GameplayEffectSpec
     {
-        public AbilitySystemCharacter source;
-        public List<AbilitySystemCharacter> targets = new List<AbilitySystemCharacter>();
+        public AbilitySystemComponent source;
+        public List<AbilitySystemComponent> targets = new List<AbilitySystemComponent>();
         public GameplayEffectScriptableObject effect;
 
         public float level;
@@ -31,7 +31,7 @@ namespace SlimeRPG.Framework.Ability
         public float timeUntilPeriodTick;
 
 
-        GameplayEffectSpec(GameplayEffectScriptableObject effect, AbilitySystemCharacter source, float level)
+        GameplayEffectSpec(GameplayEffectScriptableObject effect, AbilitySystemComponent source, float level)
         {
             this.effect = effect;
             this.source = source;
@@ -50,12 +50,12 @@ namespace SlimeRPG.Framework.Ability
             }
         }
 
-        public static GameplayEffectSpec CreateNew(GameplayEffectScriptableObject effect, AbilitySystemCharacter source, float level = 1)
+        public static GameplayEffectSpec CreateNew(GameplayEffectScriptableObject effect, AbilitySystemComponent source, float level = 1)
         {
             return new GameplayEffectSpec(effect, source, level);
         }
 
-        public GameplayEffectSpec AddTarget(AbilitySystemCharacter target)
+        public GameplayEffectSpec AddTarget(AbilitySystemComponent target)
         {
             targets.Add(target);
             return this;
@@ -102,7 +102,7 @@ namespace SlimeRPG.Framework.Ability
             return this;
         }
 
-        public void ApplyEffectTo(AbilitySystemCharacter target)
+        public void ApplyEffectTo(AbilitySystemComponent target)
         {
             if (target == null)
                 return;
