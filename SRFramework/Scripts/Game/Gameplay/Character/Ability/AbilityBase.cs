@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SlimeRPG.Gameplay.Character.Ability
 {
-    public abstract class AbilityBase : AbstractAbilityScriptableObject
+    public abstract class AbilityBase : GameplayAbility
     {
         public int level = 1;
         public int quality = 0;
@@ -73,48 +73,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
             isSetup = true;
         }
 
-        public override IEnumerator TryActivateAbility()
-        {
-            // Todo: create montage event.
-
-            if (!CanActivateAbility())
-                yield break;
-
-            yield return PreActivateAbility();
-            yield return ActivateAbility();
-            EndAbility();
-        }
-
-        public override IEnumerator PreActivateAbility()
-        {
-            yield return null;
-        }
-
-        public override IEnumerator ActivateAbility()
-        {
-            ApplyCost();
-            ApplyCooldown();
-            yield return null;
-        }
-
-        public override void CancelAbility()
-        {
-        }
-
-        public override void EndAbility()
-        {
-        }
-
-        public override bool CanActivateAbility()
-        {
-            return isSetup
-                && CheckGameplayTags()
-                && CheckCost()
-                && CheckCooldown().timeRemaining <= 0;
-        }
-
-        public abstract bool CheckGameplayTags();
-
         public virtual void ApplyCost()
         {
             if (cost == null)
@@ -140,33 +98,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
             if (cost.duration.policy != Duration.instant)
                 return true;
-
-            if (cost.modifiers)
-            {
-                foreach (var modifier in cost.modifiers.adjustment)
-                {
-                    if (modifier.operatorType != Framework.StatsSystem.OperatorType.Add 
-                        && modifier.operatorType != Framework.StatsSystem.OperatorType.Subtract) 
-                        continue;
-
-                    var container = Instigator?.StatsContainer;
-                    if (container.HasRecord(modifier.definition))
-                    {
-                        var costValue = modifier.GetValue(0);
-                        var attributeValue = container.GetStat(modifier.definition);
-                        if (modifier.operatorType == Framework.StatsSystem.OperatorType.Add)
-                        {
-                            if (attributeValue + costValue < 0)
-                                return false;
-                        }
-                        else if(modifier.operatorType == Framework.StatsSystem.OperatorType.Subtract)
-                        {
-                            if (attributeValue - costValue < 0)
-                                return false;
-                        }
-                    }
-                }
-            }
             return true;
         }
 
@@ -179,11 +110,11 @@ namespace SlimeRPG.Gameplay.Character.Ability
             float longestCooldown = 0f;
 
             var appliedSpecs = Source.AppliedSpecs;
-            var cooldownTags = coolDown.gameplayEffectTags.GrantedTags;
+            var cooldownTags = coolDown.tags.grantedTags;
 
             for (var i = 0; i < appliedSpecs.Count; i++)
             {
-                var grantedTags = appliedSpecs[i].effect.gameplayEffectTags.GrantedTags;
+                var grantedTags = appliedSpecs[i].effect.tags.grantedTags;
                 if (grantedTags.HasAnyTags(cooldownTags))
                 {
                     if (appliedSpecs[i].effect.duration.policy == Duration.infinite)

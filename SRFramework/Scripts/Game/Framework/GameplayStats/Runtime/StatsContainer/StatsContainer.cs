@@ -103,20 +103,9 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             return GetRecord(definitionID).Definition;
         }
 
-        public void SetStat(StatDefinition definition, StatValueSelector value = null)
+        public void SetStat(StatDefinition definition, GameplayEffectModifierMagnitude value = null)
         {
             records.Set(new StatRecord(definition, value));
-        }
-
-        //test
-        public void SetStat(string definitionID, float value = 100)
-        {
-            var d = CreateInstance<StatDefinition>();
-            d.SetID(definitionID);
-            var v = new StatValueSelector();
-            v.value.mode = ParticleSystemCurveMode.Constant;
-            v.value.constant = value;
-            records.Set(new StatRecord(d, v));
         }
 
         public int GetStatInt(StatRecord record, float index = 0)
@@ -137,7 +126,7 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             return GetStatInt(GetRecord(definitionId), index);
         }
 
-        public void SetModifier(OperatorType operation, StatRecord record, string modifierId, float value)
+        public void SetModifier(GameplayModifierOperator operation, StatRecord record, string modifierId, float value)
         {
             if (record == null) 
                 return;
@@ -146,17 +135,17 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             TriggerEvent(record);
         }
 
-        public void SetModifier(OperatorType operation, StatDefinition definition, string modifierId, float value)
+        public void SetModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId, float value)
         {
             SetModifier(operation, GetRecord(definition), modifierId, value);
         }
 
-        public void SetModifier(OperatorType operation, string definitionId, string modifierId, float value)
+        public void SetModifier(GameplayModifierOperator operation, string definitionId, string modifierId, float value)
         {
             SetModifier(operation, GetRecord(definitionId), modifierId, value);
         }
 
-        public float GetModifier(OperatorType operation, StatRecord record, string modifierId)
+        public float GetModifier(GameplayModifierOperator operation, StatRecord record, string modifierId)
         {
             if (record == null) 
                 return 0;
@@ -168,17 +157,17 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             return modifier.value;
         }
 
-        public float GetModifier(OperatorType operation, StatDefinition definition, string modifierId)
+        public float GetModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId)
         {
             return GetModifier(operation, GetRecord(definition), modifierId);
         }
 
-        public float GetModifier(OperatorType operation, string definitionId, string modifierId)
+        public float GetModifier(GameplayModifierOperator operation, string definitionId, string modifierId)
         {
             return GetModifier(operation, GetRecord(definitionId), modifierId);
         }
 
-        public bool RemoveModifier(OperatorType operation, StatRecord record, string modifierId)
+        public bool RemoveModifier(GameplayModifierOperator operation, StatRecord record, string modifierId)
         {
             if (record == null) 
                 return false;
@@ -189,22 +178,22 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
             return result;
         }
 
-        public bool RemoveModifier(OperatorType operation, StatDefinition definition, string modifierId)
+        public bool RemoveModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId)
         {
             return RemoveModifier(operation, GetRecord(definition), modifierId);
         }
 
-        public bool RemoveModifier(OperatorType operation, string definitionId, string modifierId)
+        public bool RemoveModifier(GameplayModifierOperator operation, string definitionId, string modifierId)
         {
             return RemoveModifier(operation, GetRecord(definitionId), modifierId);
         }
 
         public void ClearAllModifiers(StatRecord record, string modifierId)
         {
-            RemoveModifier(OperatorType.Add, record, modifierId);
-            RemoveModifier(OperatorType.Subtract, record, modifierId);
-            RemoveModifier(OperatorType.Multiply, record, modifierId);
-            RemoveModifier(OperatorType.Divide, record, modifierId);
+            RemoveModifier(GameplayModifierOperator.Add, record, modifierId);
+            RemoveModifier(GameplayModifierOperator.Subtract, record, modifierId);
+            RemoveModifier(GameplayModifierOperator.Multiply, record, modifierId);
+            RemoveModifier(GameplayModifierOperator.Divide, record, modifierId);
 
             TriggerEvent(record);
         }

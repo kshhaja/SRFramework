@@ -130,7 +130,7 @@ namespace UnityEditor
 			if (result == false)
 				Target.overrides.Remove(definition);
 			else if (oldResult == false)
-				Target.overrides.Add(new StatDefinitionOverride{definition = definition, value = new StatValueSelector()});
+				Target.overrides.Add(new StatDefinitionOverride{definition = definition, value = new GameplayEffectModifierMagnitude()});
 
 			EditorUtility.SetDirty(target);
 		}

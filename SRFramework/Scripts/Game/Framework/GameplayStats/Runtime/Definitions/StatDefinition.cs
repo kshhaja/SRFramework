@@ -16,7 +16,7 @@ namespace SlimeRPG.Framework.StatsSystem
 		public string Id => id;
 
 		[Header("Value")]
-		[SerializeField] protected StatValueSelector value = new StatValueSelector();
+		[SerializeField] protected GameplayEffectModifierMagnitude value = new GameplayEffectModifierMagnitude();
 		[SerializeField] protected bool roundModifiers = true;
 		[SerializeField] protected bool roundResult;
 
@@ -37,7 +37,7 @@ namespace SlimeRPG.Framework.StatsSystem
 
 		public string Description => description;
 
-		public StatValueSelector Value => value;
+		public GameplayEffectModifierMagnitude Value => value;
 
 		public bool RoundModifiers => roundModifiers;
 

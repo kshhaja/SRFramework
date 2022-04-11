@@ -13,7 +13,7 @@ namespace SlimeRPG.Framework.StatsSystem
 
         [Tooltip("Value of the override")]
         [SerializeField]
-        public StatValueSelector value = new StatValueSelector();
+        public GameplayEffectModifierMagnitude value = new GameplayEffectModifierMagnitude();
 
         public bool IsValid => definition != null && value != null;
     }

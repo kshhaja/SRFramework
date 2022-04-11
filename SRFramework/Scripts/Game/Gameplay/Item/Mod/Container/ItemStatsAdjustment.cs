@@ -20,9 +20,9 @@ public class ItemStatsAdjustment : StatAdjustmentCollection
 
         foreach (var def in collection.GetDefinitions())
         {
-            var mod = new StatAdjustment();
+            var mod = new GameplayModifierInfo();
             mod.definition = def;
-            mod.value = def.Value;
+            mod.modifierMagnitude = def.Value;
             adjustment.Add(mod);
         }
     }

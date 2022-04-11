@@ -10,10 +10,10 @@ namespace SlimeRPG.Framework.StatsSystem
         [Tooltip("The order of operations")]
         [SerializeField]
         public List<Operator> operators = new List<Operator> {
-            new Operator(OperatorType.Add, true),
-            new Operator(OperatorType.Subtract, true),
-            new Operator(OperatorType.Multiply, false),
-            new Operator(OperatorType.Divide, false)
+            new Operator(GameplayModifierOperator.Add, true),
+            new Operator(GameplayModifierOperator.Subtract, true),
+            new Operator(GameplayModifierOperator.Multiply, false),
+            new Operator(GameplayModifierOperator.Divide, false)
         };
     }
 }

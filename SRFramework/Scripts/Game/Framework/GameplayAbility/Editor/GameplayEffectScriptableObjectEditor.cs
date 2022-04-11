@@ -6,7 +6,7 @@ using SlimeRPG.Framework.StatsSystem;
 
 namespace UnityEditor
 {
-    [CustomEditor(typeof(GameplayEffectScriptableObject))]
+    [CustomEditor(typeof(GameplayEffect))]
     public class GameplayEffectScriptableObjectEditor : Editor
     {
         protected SerializedProperty durationProperty;
@@ -23,12 +23,12 @@ namespace UnityEditor
 
         private void OnEnable()
         {
-            durationProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.duration));
-            modifiersProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.modifiers));
-            executionProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.execution));
-            conditionalEffectsProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.conditionalEffects));
-            gameplayTagProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.gameplayEffectTags));
-            periodProperty = serializedObject.FindProperty(nameof(GameplayEffectScriptableObject.period));
+            durationProperty = serializedObject.FindProperty(nameof(GameplayEffect.duration));
+            modifiersProperty = serializedObject.FindProperty(nameof(GameplayEffect.modifiers));
+            executionProperty = serializedObject.FindProperty(nameof(GameplayEffect.executions));
+            conditionalEffectsProperty = serializedObject.FindProperty(nameof(GameplayEffect.conditionalGameplayEffects));
+            gameplayTagProperty = serializedObject.FindProperty(nameof(GameplayEffect.tags));
+            periodProperty = serializedObject.FindProperty(nameof(GameplayEffect.period));
         }
 
         public override void OnInspectorGUI()

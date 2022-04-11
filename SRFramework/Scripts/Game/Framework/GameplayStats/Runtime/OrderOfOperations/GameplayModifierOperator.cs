@@ -1,6 +1,6 @@
 ﻿namespace SlimeRPG.Framework.StatsSystem
 {
-    public enum OperatorType
+    public enum GameplayModifierOperator
     {
         Add,
         Subtract,

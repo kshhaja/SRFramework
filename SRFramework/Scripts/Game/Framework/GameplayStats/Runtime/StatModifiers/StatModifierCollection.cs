@@ -7,7 +7,7 @@ namespace SlimeRPG.Framework.StatsSystem
 {
     public class StatModifierCollection
     {
-        private OperatorType type;
+        private GameplayModifierOperator type;
 
         private Dictionary<string, StatModifier> dicValues = new Dictionary<string, StatModifier>();
         private List<StatModifier> listValues = new List<StatModifier>();
@@ -20,7 +20,7 @@ namespace SlimeRPG.Framework.StatsSystem
         // listValues를 직접 수정하면 StatModifierGroup 데이터 오염으로 인한 크래시가 발생할 것.
         public List<StatModifier> ListValues => listValues;
 
-        public StatModifierCollection(OperatorType type)
+        public StatModifierCollection(GameplayModifierOperator type)
         {
             this.type = type;
         }
@@ -73,13 +73,13 @@ namespace SlimeRPG.Framework.StatsSystem
 
         public float ModifyValue(float original)
         {
-            if (type == OperatorType.Override)
+            if (type == GameplayModifierOperator.Override)
             {
                 // ensure policy.
                 return original;
             }
 
-            if (type == OperatorType.Multiply)
+            if (type == GameplayModifierOperator.Multiply)
             {
                 var multiplier = 0f;
                 foreach (var statModifier in listValues)
@@ -93,13 +93,13 @@ namespace SlimeRPG.Framework.StatsSystem
             {
                 switch (type)
                 {
-                    case OperatorType.Add:
+                    case GameplayModifierOperator.Add:
                         newVal += statModifier.value;
                         break;
-                    case OperatorType.Subtract:
+                    case GameplayModifierOperator.Subtract:
                         newVal -= statModifier.value;
                         break;
-                    case OperatorType.Divide:
+                    case GameplayModifierOperator.Divide:
                         newVal /= statModifier.value;
                         break;
                     default:

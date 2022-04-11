@@ -1,6 +1,8 @@
 {
     "name": "GameplayStats",
-    "references": [],
+    "references": [
+        "GUID:6f39e6ad5dedea7438af31537a9ef065"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

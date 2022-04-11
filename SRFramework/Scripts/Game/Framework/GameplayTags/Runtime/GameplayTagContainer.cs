@@ -19,6 +19,13 @@ namespace SlimeRPG.Framework.Tag
         private TagContainerEvent onTagRemoved;
 
 
+        public List<GameplayTag> Tags => list;
+
+        public int Num()
+        {
+            return list.Count;
+        }
+
         public bool HasTag(GameplayTag tag)
         {
             return list.Contains(tag);

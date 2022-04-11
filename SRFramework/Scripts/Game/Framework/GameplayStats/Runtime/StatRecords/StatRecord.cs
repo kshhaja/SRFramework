@@ -15,19 +15,19 @@ namespace SlimeRPG.Framework.StatsSystem
 		private bool isDirty = true;
 		private Dictionary<float, float> valueCache = new Dictionary<float, float>();
 
-		public StatModifierCollection modifierAdd = new StatModifierCollection(OperatorType.Add);
-		public StatModifierCollection modifierSubtract = new StatModifierCollection(OperatorType.Subtract);
-		public StatModifierCollection modifierMultiply = new StatModifierCollection(OperatorType.Multiply);
-		public StatModifierCollection modifierDivide = new StatModifierCollection(OperatorType.Divide);
-		public StatModifierCollection modifierOverride = new StatModifierCollection(OperatorType.Override);
+		public StatModifierCollection modifierAdd = new StatModifierCollection(GameplayModifierOperator.Add);
+		public StatModifierCollection modifierSubtract = new StatModifierCollection(GameplayModifierOperator.Subtract);
+		public StatModifierCollection modifierMultiply = new StatModifierCollection(GameplayModifierOperator.Multiply);
+		public StatModifierCollection modifierDivide = new StatModifierCollection(GameplayModifierOperator.Divide);
+		public StatModifierCollection modifierOverride = new StatModifierCollection(GameplayModifierOperator.Override);
 
 		public StatDefinition Definition { get; private set; }
 
 		public float LastRetrievedValue { get; private set; }
 
-		public StatValueSelector Value { get; private set; }
+		public GameplayEffectModifierMagnitude Value { get; private set; }
 
-		public StatRecord(StatDefinition definition, StatValueSelector definitionOverride = null)
+		public StatRecord(StatDefinition definition, GameplayEffectModifierMagnitude definitionOverride = null)
 		{
 			if (definition == null)
 			{
@@ -99,19 +99,19 @@ namespace SlimeRPG.Framework.StatsSystem
 			return val;
 		}
 
-		public StatModifierCollection GetModifier(OperatorType @operator)
+		public StatModifierCollection GetModifier(GameplayModifierOperator @operator)
 		{
 			switch (@operator)
 			{
-				case OperatorType.Add:
+				case GameplayModifierOperator.Add:
 					return modifierAdd;
-				case OperatorType.Subtract:
+				case GameplayModifierOperator.Subtract:
 					return modifierSubtract;
-				case OperatorType.Multiply:
+				case GameplayModifierOperator.Multiply:
 					return modifierMultiply;
-				case OperatorType.Divide:
+				case GameplayModifierOperator.Divide:
 					return modifierDivide;
-				case OperatorType.Override:
+				case GameplayModifierOperator.Override:
 					return modifierOverride;
 				default:
 					throw new ArgumentOutOfRangeException("operator", @operator, null);

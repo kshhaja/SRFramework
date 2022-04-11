@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SlimeRPG.Framework.StatsSystem;
+using System;
 
 
 namespace SlimeRPG.Framework.Ability
@@ -7,8 +8,7 @@ namespace SlimeRPG.Framework.Ability
     public struct GameplayEffectDuration
     {
         public Duration policy;
-        // modifier도 Evaluate가능하게 변경해야함.
-        public float modifier;
+        public GameplayEffectModifierMagnitude magnitude;
         public float multiplier;
     }
 }

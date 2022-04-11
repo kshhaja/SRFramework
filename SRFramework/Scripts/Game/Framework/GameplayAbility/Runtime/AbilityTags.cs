@@ -8,12 +8,18 @@ namespace SlimeRPG.Framework.Ability
     [Serializable]
     public struct AbilityTags
     {
-        public GameplayTag assetTag;
-        public GameplayTagContainer cancelAbilitiesWithTags;
-        public GameplayTagContainer blockAbilitiesWithTags;
+        public GameplayTagContainer abilityTags;
+        public GameplayTagContainer cancelAbilitiesWithTag;
+        public GameplayTagContainer blockAbilitiesWithTag;
+        
         public GameplayTagContainer activationOwnedTags;
-        public GameplayTagRequireIgnoreContainer ownerTags;
-        public GameplayTagRequireIgnoreContainer sourceTags;
-        public GameplayTagRequireIgnoreContainer targetTags;
+        public GameplayTagContainer activationRequiredTags;
+        public GameplayTagContainer activationBlockedTags;
+
+        public GameplayTagContainer sourceRequiredTags;
+        public GameplayTagContainer sourceBlockedTags;
+
+        public GameplayTagContainer targetRequiredTags;
+        public GameplayTagContainer targetBlockedTags;
     }
 }

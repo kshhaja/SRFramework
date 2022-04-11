@@ -9,7 +9,7 @@ namespace SlimeRPG.Gameplay.Character.Stats.Calculation
 {
     public class SimpleDamageExecution : ExecutionCalculationBase
     {
-        public override void Execute(List<StatAdjustment> executionModifiers, AbilitySystemComponent target, float index, out StatAdjustmentCollection executionCallbackData)
+        public override void Execute(List<GameplayModifierInfo> executionModifiers, AbilitySystemComponent target, float index, out StatAdjustmentCollection executionCallbackData)
         {
             StatAdjustmentCollection newCollection = new StatAdjustmentCollection();
             // Adds all stat types whether it is damage or not. 
@@ -18,12 +18,12 @@ namespace SlimeRPG.Gameplay.Character.Stats.Calculation
             executionModifiers.ForEach(x => testDamage += x.GetValue(index));
             
             // last registered modifier
-            testDamage += target.StatsContainer.GetModifier(OperatorType.Subtract, "current_health", "damage");
+            testDamage += target.StatsContainer.GetModifier(GameplayModifierOperator.Subtract, "current_health", "damage");
 
-            newCollection.adjustment.Add(StatAdjustment.CreateConstant(
-                target.StatsContainer.GetDefinition("currentHealth"), 
-                OperatorType.Subtract, 
-                testDamage));
+            //newCollection.adjustment.Add(GameplayModifierInfo.CreateConstant(
+            //    target.StatsContainer.GetDefinition("currentHealth"), 
+            //    GameplayModifierOperator.Subtract, 
+            //    testDamage));
 
             executionCallbackData = newCollection;
         }

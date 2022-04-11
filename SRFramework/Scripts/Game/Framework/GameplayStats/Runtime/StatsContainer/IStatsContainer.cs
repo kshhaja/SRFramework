@@ -22,16 +22,16 @@ namespace SlimeRPG.Framework.StatsSystem.StatsContainers
         int GetStatInt(StatDefinition definition, float index = 0);
         int GetStatInt(string definitionId, float index = 0);
 
-        void SetModifier(OperatorType operation, StatRecord record, string modifierId, float value);
-        void SetModifier(OperatorType operation, StatDefinition definition, string modifierId, float value);
-        void SetModifier(OperatorType operation, string definitionId, string modifierId, float value);
+        void SetModifier(GameplayModifierOperator operation, StatRecord record, string modifierId, float value);
+        void SetModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId, float value);
+        void SetModifier(GameplayModifierOperator operation, string definitionId, string modifierId, float value);
 
-        float GetModifier(OperatorType operation, string definitionId, string modifierId);
-        float GetModifier(OperatorType operation, StatDefinition definition, string modifierId);
+        float GetModifier(GameplayModifierOperator operation, string definitionId, string modifierId);
+        float GetModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId);
 
-        bool RemoveModifier(OperatorType operation, StatRecord record, string modifierId);
-        bool RemoveModifier(OperatorType operation, StatDefinition definition, string modifierId);
-        bool RemoveModifier(OperatorType operation, string definitionId, string modifierId);
+        bool RemoveModifier(GameplayModifierOperator operation, StatRecord record, string modifierId);
+        bool RemoveModifier(GameplayModifierOperator operation, StatDefinition definition, string modifierId);
+        bool RemoveModifier(GameplayModifierOperator operation, string definitionId, string modifierId);
 
         void ClearAllModifiers(StatRecord record, string modifierId);
         void ClearAllModifiers(string modifierId);

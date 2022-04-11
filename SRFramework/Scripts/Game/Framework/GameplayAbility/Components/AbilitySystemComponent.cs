@@ -9,11 +9,34 @@ namespace SlimeRPG.Framework.Ability
     public class AbilitySystemComponent : MonoBehaviour
     {
         private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
-        private List<AbstractAbilityScriptableObject> grantedAbilities = new List<AbstractAbilityScriptableObject>();
+        private List<GameplayAbilitySpec> grantedAbilities = new List<GameplayAbilitySpec>();
         
         [SerializeField]
         protected StatsContainer container;
 
+        public struct GameplayTagCountContainer
+        {
+            public Dictionary<GameplayTag, int> gameplayTagCountMap;
+
+            public bool HasAnyMatchingGameplayTags(GameplayTagContainer container)
+            {
+                if (container.Num() == 0)
+                    return false;
+
+                bool anyMatch = false;
+                foreach (var tag in container.Tags)
+                {
+                    if (gameplayTagCountMap.ContainsKey(tag))
+                    {
+                        anyMatch = true;
+                        break;
+                    }
+                }
+                return anyMatch;
+            }
+        }
+
+        public GameplayTagCountContainer gameplayTagCountContainer;
         public StatsContainer StatsContainer => container;
 
         public List<GameplayEffectSpec> AppliedSpecs => appliedSpecs;
@@ -53,8 +76,14 @@ namespace SlimeRPG.Framework.Ability
                     ApplyInstantGameplayEffect(spec);
             }
         }
+        
+        public int GrantAbility(GameplayAbility ability)
+        {
+            var v = MakeOutgoingAbilitySpec(ability, 1);
+            return GrantAbility(v);
+        }
 
-        public int GrantAbility(AbstractAbilityScriptableObject ability)
+        public int GrantAbility(GameplayAbilitySpec ability)
         {
             grantedAbilities.Add(ability);
             return grantedAbilities.LastIndexOf(ability);
@@ -67,28 +96,36 @@ namespace SlimeRPG.Framework.Ability
 
         public void RemoveAbilitiesWithTag(GameplayTag tag)
         {
-            foreach (var ability in grantedAbilities)
+            foreach (var spec in grantedAbilities)
             {
-                if (ability.abilityTags.assetTag == tag)
+                if (spec.ability.tags.abilityTags.HasTag(tag))
                 {
-                    grantedAbilities.Remove(ability);
+                    grantedAbilities.Remove(spec);
                 }
             }
         }
 
-        public virtual bool ApplyGameplayEffect(GameplayEffectSpec ge)
+        public virtual bool ApplyGameplayEffect(GameplayEffectSpec spec)
         {
-            if (ge == null)
+            if (spec == null)
                 return true;
 
-            switch (ge.effect.duration.policy)
+            // check immunity
+
+            // check chance to apply
+
+            // check requirements
+
+            // check 
+
+            switch (spec.effect.duration.policy)
             {
                 case Duration.duration:
                 case Duration.infinite:
-                    ApplyDurationalGameplayEffect(ge);
+                    ApplyDurationalGameplayEffect(spec);
                     break;
                 case Duration.instant:
-                    ApplyInstantGameplayEffect(ge);
+                    ApplyInstantGameplayEffect(spec);
                     return true;
             }
 
@@ -105,7 +142,12 @@ namespace SlimeRPG.Framework.Ability
             appliedSpecs.Add(ge);
         }
 
-        public GameplayEffectSpec MakeOutgoingSpec(GameplayEffectScriptableObject effect, float level)
+        public GameplayAbilitySpec MakeOutgoingAbilitySpec(GameplayAbility ability, float level)
+        {
+            return GameplayAbilitySpec.CreateNew(ability, null, null, level);
+        }
+
+        public GameplayEffectSpec MakeOutgoingSpec(GameplayEffect effect, float level)
         {
             return GameplayEffectSpec.CreateNew(effect, this, level);
         }

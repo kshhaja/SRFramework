@@ -14,13 +14,13 @@ namespace SlimeRPG.Framework.StatsSystem
 
     public static class OperatorTypeNoneMethods
     {
-        public static OperatorType ToOperatorType(this OperatorTypeNone type)
+        public static GameplayModifierOperator ToOperatorType(this OperatorTypeNone type)
         {
             var i = (int)type;
             i -= 1;
             i = Mathf.Max(0, i);
 
-            return (OperatorType)i;
+            return (GameplayModifierOperator)i;
         }
     }
 }

@@ -69,7 +69,7 @@ namespace UnityEditor
 
 			var element = adjustmentProperty.GetArrayElementAtIndex(adjustmentProperty.arraySize - 1);
 			var def = (StatDefinition)obj;
-			var propDef = element.FindPropertyRelative(nameof(StatAdjustment.definition));
+			var propDef = element.FindPropertyRelative(nameof(GameplayModifierInfo.definition));
 			propDef.objectReferenceValue = def;
 		}
 

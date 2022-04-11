@@ -9,7 +9,7 @@ namespace SlimeRPG.Framework.Ability
     public class GameplayExecutionCollection : ScriptableObject
     {
         public ExecutionCalculationBase calculationClass;
-        public List<StatAdjustment> calculationModifiers = new List<StatAdjustment>();
+        public List<GameplayModifierInfo> calculationModifiers = new List<GameplayModifierInfo>();
 
         public void TryExecute(AbilitySystemComponent target, float index)
         {

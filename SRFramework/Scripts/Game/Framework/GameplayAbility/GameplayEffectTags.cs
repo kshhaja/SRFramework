@@ -11,32 +11,32 @@ namespace SlimeRPG.Framework.Ability
         /// <summary>
         /// The tag that defines this gameplay effect
         /// </summary>
-        [SerializeField] public GameplayTag AssetTag;
+        [SerializeField] public GameplayTagContainer assetTag;
 
         /// <summary>
         /// The tags this GE grants to the ability system character
         /// </summary>
-        [SerializeField] public GameplayTagContainer GrantedTags;
+        [SerializeField] public GameplayTagContainer grantedTags;
 
         /// <summary>
         /// These tags determine if the GE is considered 'on' or 'off'
         /// </summary>
-        [SerializeField] public GameplayTagRequireIgnoreContainer OngoingTagRequirements;
+        [SerializeField] public GameplayTagRequirements ongoingTagRequirements;
 
         /// <summary>
         /// These tags must be present for this GE to be applied
         /// </summary>
-        [SerializeField] public GameplayTagRequireIgnoreContainer ApplicationTagRequirements;
+        [SerializeField] public GameplayTagRequirements applicationTagRequirements;
 
         /// <summary>
         /// Tag requirements that will remove this GE
         /// </summary>
-        [SerializeField] public GameplayTagRequireIgnoreContainer RemovalTagRequirements;
+        [SerializeField] public GameplayTagRequirements removalTagRequirements;
 
         /// <summary>
         /// Remove GE that match these tags
         /// </summary>
-        [SerializeField] public GameplayTagContainer RemoveGameplayEffectsWithTag;
+        [SerializeField] public GameplayTagContainer removeGameplayEffectsWithTags;
     }
 
 }

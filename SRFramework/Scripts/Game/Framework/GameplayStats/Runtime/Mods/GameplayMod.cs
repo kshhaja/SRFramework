@@ -12,7 +12,7 @@ namespace SlimeRPG.Framework.StatsSystem
     {
         protected string internalID;
         public int id;
-        public List<StatAdjustment> modifiers = new List<StatAdjustment>();
+        public List<GameplayModifierInfo> modifiers = new List<GameplayModifierInfo>();
 
         public bool IsValid
         {

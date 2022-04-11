@@ -7,7 +7,7 @@ namespace SlimeRPG.Framework.Ability
     [Serializable]
     public struct ConditionalGameplayEffectContainer
     {
-        public GameplayEffectScriptableObject GameplayEffect;
+        public GameplayEffect GameplayEffect;
         public GameplayTagContainer RequiredSourceTags;
     }
 }

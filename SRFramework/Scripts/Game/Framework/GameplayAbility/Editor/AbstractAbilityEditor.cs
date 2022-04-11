@@ -9,7 +9,7 @@ namespace UnityEditor
 {
     public class AbstractAbilityEditor
     {
-        AbstractAbilityScriptableObject target;
+        GameplayAbility target;
 
         SerializedObject targetObject;
         SerializedProperty nameProperty;
@@ -25,20 +25,20 @@ namespace UnityEditor
         protected Dictionary<SerializedProperty, Editor> cachedEditor = new Dictionary<SerializedProperty, Editor>();
 
 
-        public void Init(AbstractAbilityScriptableObject target, SerializedObject targetObject)
+        public void Init(GameplayAbility target, SerializedObject targetObject)
         {
             this.target = target;
             this.targetObject = targetObject;
 
-            nameProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.abilityName));
-            tagProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.abilityTags));
-            effectProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.effect));
-            costProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.cost));
-            cooldownProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.coolDown));
-            secondaryAbilityProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.secondaryAbility));
+            nameProperty = this.targetObject.FindProperty(nameof(GameplayAbility.name));
+            tagProperty = this.targetObject.FindProperty(nameof(GameplayAbility.tags));
+            // effectProperty = this.targetObject.FindProperty(nameof(GameplayAbility.));
+            costProperty = this.targetObject.FindProperty(nameof(GameplayAbility.cost));
+            cooldownProperty = this.targetObject.FindProperty(nameof(GameplayAbility.coolDown));
+            secondaryAbilityProperty = this.targetObject.FindProperty(nameof(GameplayAbility.abilityTriggers));
 
 
-            var lookup = typeof(GameplayEffectScriptableObject);
+            var lookup = typeof(GameplayEffect);
             availableGameplayEffectType = System.AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .Where(x => x.IsClass && !x.IsAbstract && (x.IsSubclassOf(lookup) || x == lookup))

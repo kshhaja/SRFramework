@@ -23,7 +23,7 @@ namespace SlimeRPG.Framework.StatsSystem
         {
             containerWeakRef = new WeakReference<StatsContainer>(container);
             record = new StatRecord(this, value);
-            internalValue = value.value.Evaluate(1);
+            // internalValue = value.value.Evaluate(1);
             
             // subscribe callback for automatically update
             foreach (var stat in stats.adjustment)
@@ -38,7 +38,7 @@ namespace SlimeRPG.Framework.StatsSystem
             }
         }
 
-        void SetModifier(OperatorType operation, string modifierId, float value)
+        void SetModifier(GameplayModifierOperator operation, string modifierId, float value)
         {
             record.GetModifier(operation).Set(modifierId, value);
         }

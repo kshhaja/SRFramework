@@ -17,7 +17,7 @@ namespace SlimeRPG.Framework.StatsSystem
 
         [Tooltip("Available adjustments")]
         [SerializeField]
-        public List<StatAdjustment> adjustment = new List<StatAdjustment>();
+        public List<GameplayModifierInfo> adjustment = new List<GameplayModifierInfo>();
 
         public virtual string Id
         {
