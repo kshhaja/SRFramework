@@ -29,10 +29,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
             rb = owner.GetComponent<Rigidbody>();
         }
 
-        public override bool CanActivateAbility()
-        {
-            return base.CanActivateAbility() & CheckAction();
-        }
+        //public override bool CanActivateAbility()
+        //{
+        //    return base.CanActivateAbility() & CheckAction();
+        //}
 
         bool CheckAction()
         {
@@ -68,39 +68,39 @@ namespace SlimeRPG.Gameplay.Character.Ability
             return false;
         }
 
-        public override IEnumerator PreActivateAbility()
-        {
-            yield return base.PreActivateAbility();
+        //public override IEnumerator PreActivateAbility()
+        //{
+        //    yield return base.PreActivateAbility();
 
-            if (height <= 1)
-                animator.CrossFade("Reach", 0.1f);
-            else
-                animator.CrossFade("Reach High", 0.1f);
+        //    if (height <= 1)
+        //        animator.CrossFade("Reach", 0.1f);
+        //    else
+        //        animator.CrossFade("Reach High", 0.1f);
 
-            startPos = Instigator.transform.position;
-            targetPos = hits[1].point;
-            targetRot = Quaternion.LookRotation(-hits[0].normal);
-            locomoTime = 0f;
-            animLength = clip.length + startDelay;
-            //owner.LockInput(true);
+        //    startPos = Instigator.transform.position;
+        //    targetPos = hits[1].point;
+        //    targetRot = Quaternion.LookRotation(-hits[0].normal);
+        //    locomoTime = 0f;
+        //    animLength = clip.length + startDelay;
+        //    //owner.LockInput(true);
 
-            rb.isKinematic = true;
+        //    rb.isKinematic = true;
 
-            Vector3 right = Vector3.Cross(hits[0].normal, Vector3.up);
-            leftHandPosition = hits[0].point + (right * -0.5f);
-            leftHandPosition.y = hits[1].point.y;
-        }
+        //    Vector3 right = Vector3.Cross(hits[0].normal, Vector3.up);
+        //    leftHandPosition = hits[0].point + (right * -0.5f);
+        //    leftHandPosition.y = hits[1].point.y;
+        //}
 
-        public override IEnumerator ActivateAbility()
-        {
-            yield return base.ActivateAbility();
+        //public override IEnumerator ActivateAbility()
+        //{
+        //    yield return base.ActivateAbility();
 
-            while (Update())
-                yield return null;
+        //    while (Update())
+        //        yield return null;
 
-            EndAbility();
-            yield return null;
-        }
+        //    EndAbility();
+        //    yield return null;
+        //}
 
         public override bool Update()
         {

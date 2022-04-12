@@ -18,7 +18,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         public GameplayEffectSpec effect;
         // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
-        public AbilityBase secondaryAbility;
+        public GameplayAbilitySpec secondaryAbilitySpec;
 
         [SerializeField]
         private float speed = 10.0f;
@@ -86,13 +86,13 @@ namespace SlimeRPG.Gameplay.Character.Ability
                 target.ApplyGameplayEffect(effect);
             }
 
-            if (secondaryAbility)
+            if (secondaryAbilitySpec != null)
             {
                 var ac = source.GetComponent<CharacterBase>();
                 if (ac)
                 {
-                    secondaryAbility.Setup(instigator);
-                    StartCoroutine(secondaryAbility.TryActivateAbility());
+                    // instigator.AbilitySystem.MakeOutgoingAbilitySpec(secondaryAbility, 1);
+                    // StartCoroutine(secondaryAbility.TryActivateAbility());
                 }
             }
 

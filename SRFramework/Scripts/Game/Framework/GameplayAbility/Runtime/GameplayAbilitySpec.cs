@@ -1,6 +1,8 @@
 ﻿using SlimeRPG.Framework.Tag;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -8,10 +10,12 @@ namespace SlimeRPG.Framework.Ability
 {
     public class GameplayAbilitySpec
     {
-        public AbilitySystemComponent instigator;
-        public AbilitySystemComponent source;
+        protected WeakReference<AbilitySystemComponent> weakInstigator;
+        protected WeakReference<AbilitySystemComponent> weakSource;
+        protected List<WeakReference<AbilitySystemComponent>> weakTargets = new List<WeakReference<AbilitySystemComponent>>();
 
         public GameplayAbility ability;
+        public float level = 1f;
 
         #region Internal Variables
         protected bool isActive = false;
@@ -19,12 +23,57 @@ namespace SlimeRPG.Framework.Ability
         protected bool isCancelable = true;
         #endregion
 
+        public struct AbilityCooldownTime
+        {
+            public float timeRemaining;
+            public float totalDuration;
+        }
+
+
+        protected AbilitySystemComponent Instigator
+        {
+            get
+            {
+                if (weakInstigator.TryGetTarget(out var instigator))
+                    return instigator;
+
+                return null;
+            }
+        }
+
+        protected AbilitySystemComponent Source
+        {
+            get
+            {
+                if (weakSource.TryGetTarget(out var source))
+                    return source;
+
+                return null;
+            }
+        }
+
+        protected List<AbilitySystemComponent> Targets
+        {
+            get
+            {
+                return weakTargets.Select(x =>
+                {
+                    if (x.TryGetTarget(out var target))
+                        return target;
+                    return null;
+                }).Where(x => x != null).ToList();
+            }
+        }
 
         public GameplayAbilitySpec(GameplayAbility ability, AbilitySystemComponent instigator, AbilitySystemComponent source, float level)
         {
             this.ability = ability;
-            this.instigator = instigator;
-            this.source = source;
+            weakInstigator = new WeakReference<AbilitySystemComponent>(instigator);
+            if (source == null)
+                weakSource = weakInstigator;
+            else
+                weakSource = new WeakReference<AbilitySystemComponent>(source);
+            this.level = level;
         }
 
         public static GameplayAbilitySpec CreateNew(GameplayAbility ability, AbilitySystemComponent instigator, AbilitySystemComponent source, float level = 1)
@@ -101,7 +150,7 @@ namespace SlimeRPG.Framework.Ability
             GameplayTagContainer cooldownTags = ability.coolDown.tags.assetTag;
 
             if (cooldownTags.Num() > 0)
-                if (source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(cooldownTags))
+                if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(cooldownTags))
                     return false;
 
             return true;
@@ -109,17 +158,85 @@ namespace SlimeRPG.Framework.Ability
 
         protected virtual bool CheckCost()
         {
-            // check can apply modifiers
             if (ability.cost == null)
                 return true;
 
+            GameplayTagContainer costTags = ability.cost.tags.assetTag;
+
+            if (costTags.Num() > 0)
+                if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(costTags))
+                    return false;
+
             return true;
+        }
+
+        public virtual void ApplyCost()
+        {
+            if (ability.cost == null)
+                return;
+
+            var spec = Source.MakeOutgoingSpec(ability.cost, level);
+            Source.ApplyGameplayEffect(spec);
+        }
+
+        public virtual void ApplyCooldown()
+        {
+            if (ability.coolDown == null)
+                return;
+
+            var spec = Source.MakeOutgoingSpec(ability.coolDown, level);
+            Source.ApplyGameplayEffect(spec);
+        }
+
+        public AbilityCooldownTime RemainingCooldownTime()
+        {
+            if (ability.coolDown == null)
+                return new AbilityCooldownTime();
+
+            float maxDuration = 0;
+            float longestCooldown = 0f;
+
+            var appliedSpecs = Source.AppliedSpecs;
+            var cooldownTags = ability.coolDown.tags.grantedTags;
+
+            for (var i = 0; i < appliedSpecs.Count; i++)
+            {
+                var grantedTags = appliedSpecs[i].effect.tags.grantedTags;
+                if (grantedTags.HasAnyTags(cooldownTags))
+                {
+                    if (appliedSpecs[i].effect.duration.policy == Duration.infinite)
+                        return new AbilityCooldownTime()
+                        {
+                            timeRemaining = float.MaxValue,
+                            totalDuration = 0
+                        };
+
+                    var durationRemaining = appliedSpecs[i].durationRemaining;
+
+                    if (durationRemaining > longestCooldown)
+                    {
+                        longestCooldown = durationRemaining;
+                        maxDuration = appliedSpecs[i].totalDuration;
+                    }
+                }
+            }
+
+            return new AbilityCooldownTime()
+            {
+                timeRemaining = longestCooldown,
+                totalDuration = maxDuration
+            };
         }
 
         protected virtual bool DoesAbilitySatisfyTagRequirements()
         {
             // check block, missing ...
             return true;
+        }
+
+        public void AddTarget(AbilitySystemComponent target)
+        {
+            weakTargets.Add(new WeakReference<AbilitySystemComponent>(target));
         }
     }
 }

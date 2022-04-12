@@ -22,23 +22,5 @@ namespace SlimeRPG.Gameplay.Character.Ability
         protected float animLength = 0.0f;
 
         public string tag;
-
-        public override IEnumerator PreActivateAbility()
-        {
-            yield return base.PreActivateAbility();
-
-            Instigator.Movement.isVaulting = true;
-            // owner.animationController.SubscribeOnAnimatorIK(OnAnimatorIK);
-            yield return null;
-        }
-
-        public override void CancelAbility()
-        {
-        }
-
-        public override bool CheckGameplayTags()
-        {
-            return true;
-        }
     }
 }
