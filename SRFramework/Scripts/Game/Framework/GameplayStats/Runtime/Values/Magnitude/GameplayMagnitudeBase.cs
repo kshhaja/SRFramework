@@ -7,7 +7,7 @@ using UnityEngine;
 namespace SlimeRPG.Framework.StatsSystem
 {
     [Serializable]
-    public abstract class GameplayMagnitudeBase
+    public abstract class GameplayMagnitudeBase : ScriptableObject
     {
         public abstract float GetValue(float index);
 

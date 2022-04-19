@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SlimeRPG.Framework.StatsSystem
 {
+    [CreateAssetMenu(fileName = "ScalableMagnitude", menuName = "Gameplay/Ability/Magnitude")]
     public class ScalableMagnitude : GameplayMagnitudeBase
     {
         public ParticleSystem.MinMaxCurve value;

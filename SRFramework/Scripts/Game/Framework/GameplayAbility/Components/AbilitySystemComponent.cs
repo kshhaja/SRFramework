@@ -77,10 +77,10 @@ namespace SlimeRPG.Framework.Ability
             }
         }
         
-        public int GrantAbility(GameplayAbility ability)
+        public int GrantAbility(GameplayAbility ability, float level)
         {
-            var v = MakeOutgoingAbilitySpec(ability, 1);
-            return GrantAbility(v);
+            var spec = MakeOutgoingAbilitySpec(ability, level);
+            return GrantAbility(spec);
         }
 
         public int GrantAbility(GameplayAbilitySpec ability)
@@ -147,7 +147,7 @@ namespace SlimeRPG.Framework.Ability
             return GameplayAbilitySpec.CreateNew(ability, null, null, level);
         }
 
-        public GameplayEffectSpec MakeOutgoingSpec(GameplayEffect effect, float level)
+        public GameplayEffectSpec MakeOutgointEffectSpec(GameplayEffect effect, float level)
         {
             return GameplayEffectSpec.CreateNew(effect, this, level);
         }

@@ -106,22 +106,29 @@ namespace UnityEditor
 			EditorGUI.PropertyField(propRect, propDef);
 			EditorGUI.EndDisabledGroup();
 
-			var propValue = element.FindPropertyRelative("value.value");
-			propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-			EditorGUI.PropertyField(propRect, propValue);
-
-			var propBool = element.FindPropertyRelative("value.roundToInt");
-			propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-			EditorGUI.PropertyField(propRect, propBool);
+			var lineHeight = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
 			var propOperator = element.FindPropertyRelative("operatorType");
-			propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+			propRect.y += lineHeight;
 			EditorGUI.PropertyField(propRect, propOperator);
+
+			var propMagnitude = element.FindPropertyRelative("modifierMagnitude");
+			propRect.y += lineHeight;
+			EditorGUI.PropertyField(propRect, propMagnitude);
+
+			// foldout에 따라 사이즈가 변할수 있어야한다.
+			var propSourceTags = element.FindPropertyRelative("sourceTags");
+			propRect.y += lineHeight * 4;
+			EditorGUI.PropertyField(propRect, propSourceTags);
+
+			var propTargetTags = element.FindPropertyRelative("targetTags");
+			propRect.y += lineHeight;
+			EditorGUI.PropertyField(propRect, propTargetTags);
 		}
 
 		protected float ElementHeightCallback(int index)
 		{
-			var elementCount = 4;
+			var elementCount = 8;
 			return (EditorGUIUtility.singleLineHeight * elementCount) + (EditorGUIUtility.standardVerticalSpacing * elementCount) + VERTICAL_SPACING;
 		}
 	}

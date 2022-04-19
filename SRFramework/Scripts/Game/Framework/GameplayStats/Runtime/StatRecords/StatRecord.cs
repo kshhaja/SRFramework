@@ -44,24 +44,24 @@ namespace SlimeRPG.Framework.StatsSystem
 			{
 				var m = GetModifier(@operator.type);
 				m.onDirty += () => { isDirty = true; };
-				m.forceRound = @operator.modifierAutoRound && definition.RoundModifiers;
+				m.forceRound = @operator.modifierAutoRound;
 			}
 		}
 
 		// definition 혹은 override때 설정된 기본 value
 		public float GetBaseValue(float index = 0)
 		{
-			return Value.Evaluate(index);
+			return Value.GetValue(index);
 		}
 
 		private int GetBaseValueInt(float index)
 		{
-			return Value.EvaluateInt(index);
+			return Mathf.RoundToInt(Value.GetValue(index));
 		}
 
 		private float GetBaseValueFloat(float index)
 		{
-			return Value.Evaluate(index);
+			return Value.GetValue(index);
 		}
 
 		// modifier가 적용된 값
@@ -89,9 +89,6 @@ namespace SlimeRPG.Framework.StatsSystem
 				var o = GetModifier(@operator.type);
 				val = o.ModifyValue(val);
 			}
-
-			if (Definition.RoundResult)
-				val = Mathf.Round(val);
 
 			valueCache[indexRound] = val;
 			LastRetrievedValue = val;

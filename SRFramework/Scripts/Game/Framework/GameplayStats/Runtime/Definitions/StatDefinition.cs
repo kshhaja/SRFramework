@@ -7,9 +7,6 @@ namespace SlimeRPG.Framework.StatsSystem
 	[CreateAssetMenu(fileName = "StatDefinition", menuName = "Gameplay/Stats/Definitions/Default")]
 	public class StatDefinition : StatDefinitionBase
 	{
-		protected const int MIN_SORT_INDEX = 0;
-		protected const int MAX_SORT_INDEX = 1000;
-
 		[SerializeField]
 		protected string id;
 
@@ -17,15 +14,14 @@ namespace SlimeRPG.Framework.StatsSystem
 
 		[Header("Value")]
 		[SerializeField] protected GameplayEffectModifierMagnitude value = new GameplayEffectModifierMagnitude();
-		[SerializeField] protected bool roundModifiers = true;
-		[SerializeField] protected bool roundResult;
 
 		[Header("Display")]
 		[SerializeField] string displayName = "Untitled";
 		[SerializeField] bool hidden;
 		[SerializeField] bool percentile;
-		[Range(MIN_SORT_INDEX, MAX_SORT_INDEX)]
+
 		[SerializeField] int sortIndex = 500;
+		
 		[TextArea]
 		[SerializeField] string description;
 		
@@ -38,10 +34,6 @@ namespace SlimeRPG.Framework.StatsSystem
 		public string Description => description;
 
 		public GameplayEffectModifierMagnitude Value => value;
-
-		public bool RoundModifiers => roundModifiers;
-
-		public bool RoundResult => roundResult;
 
 		public bool IsPercentile => value.RoundToInt == false && percentile;
 
@@ -66,10 +58,5 @@ namespace SlimeRPG.Framework.StatsSystem
 
 			return new List<StatDefinition> { this };
 		}
-
-		public void SetID(string id)
-        {
-			this.id = id;
-        }
-	}
+    }
 }

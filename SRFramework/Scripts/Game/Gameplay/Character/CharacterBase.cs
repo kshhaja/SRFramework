@@ -25,6 +25,10 @@ namespace SlimeRPG.Gameplay.Character
 
     public class CharacterBase : MonoBehaviour
     {
+        [Header("Data")]
+        public uint level = 1;
+        public string characterName = "";
+
         [Header("Controllers")]
         protected MovementController movementController;
         protected AnimationController animationController;
@@ -76,7 +80,7 @@ namespace SlimeRPG.Gameplay.Character
         public virtual int GrantAbility(AbilityBase ability)
         {
             ability.Setup(this);
-            return abilitySystem.GrantAbility(ability);
+            return abilitySystem.GrantAbility(ability, level);
         }
 
         public virtual void CastAbility(int index)

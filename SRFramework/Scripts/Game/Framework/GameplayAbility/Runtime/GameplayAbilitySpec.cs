@@ -87,14 +87,19 @@ namespace SlimeRPG.Framework.Ability
                 && CheckCost()
                 && DoesAbilitySatisfyTagRequirements();
         }
+
         public virtual bool CommitAbility()
         {
-            // applyCooldown;
-            // applyCost;
+            // When committing, the situation may have changed, 
+            // so check it again
+            if (CheckCooldown() && CheckCost())
+            {
+                ApplyCooldown();
+                ApplyCost();
+                return true;
+            }
 
-            // return false when failed to apply attributes
-
-            return true;
+            return false;
         }
 
         public virtual IEnumerator PreActivateAbility()
@@ -138,7 +143,10 @@ namespace SlimeRPG.Framework.Ability
                 yield break;
 
             yield return PreActivateAbility();
-            yield return ActivateAbility();
+            
+            if (CommitAbility())
+                yield return ActivateAbility();
+
             yield return EndAbility();
         }
 
@@ -152,6 +160,9 @@ namespace SlimeRPG.Framework.Ability
             if (cooldownTags.Num() > 0)
                 if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(cooldownTags))
                     return false;
+
+            if (RemainingCooldownTime().timeRemaining > 0)
+                return false;
 
             return true;
         }
@@ -175,7 +186,7 @@ namespace SlimeRPG.Framework.Ability
             if (ability.cost == null)
                 return;
 
-            var spec = Source.MakeOutgoingSpec(ability.cost, level);
+            var spec = Source.MakeOutgointEffectSpec(ability.cost, level);
             Source.ApplyGameplayEffect(spec);
         }
 
@@ -184,7 +195,7 @@ namespace SlimeRPG.Framework.Ability
             if (ability.coolDown == null)
                 return;
 
-            var spec = Source.MakeOutgoingSpec(ability.coolDown, level);
+            var spec = Source.MakeOutgointEffectSpec(ability.coolDown, level);
             Source.ApplyGameplayEffect(spec);
         }
 

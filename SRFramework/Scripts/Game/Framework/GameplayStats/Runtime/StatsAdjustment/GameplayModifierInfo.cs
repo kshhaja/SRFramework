@@ -23,25 +23,20 @@ namespace SlimeRPG.Framework.StatsSystem
             if (IsValid == false) 
                 return 0;
 
-            if (modifierMagnitude.RoundToInt)
-                return modifierMagnitude.EvaluateInt(index);
-            
-            return modifierMagnitude.Evaluate(index);
+            return modifierMagnitude.GetValue(index);
         }
 
         public (float, float)? MinMax(float index)
         {
             if (IsValid == false)
                 return null;
-
-            if (modifierMagnitude.RoundToInt)
-                return modifierMagnitude.MinMaxInt(index);
-
+            
             return modifierMagnitude.MinMax(index);
         }
     }
 
     // temp
+    [Serializable]
     public struct GameplayTagRequirements
     {
         public GameplayTagContainer requireTags;

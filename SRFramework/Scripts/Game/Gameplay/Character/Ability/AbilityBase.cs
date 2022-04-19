@@ -78,7 +78,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             if (cost == null)
                 return;
             
-            var spec = Source.MakeOutgoingSpec(cost, 1);
+            var spec = Source.MakeOutgointEffectSpec(cost, 1);
             Source.ApplyGameplayEffect(spec);
         }
 
@@ -87,7 +87,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
             if (coolDown == null)
                 return;
 
-            var spec = Source.MakeOutgoingSpec(coolDown, 1);
+            var spec = Source.MakeOutgointEffectSpec(coolDown, 1);
             Source.ApplyGameplayEffect(spec);
         }
 
