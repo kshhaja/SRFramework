@@ -12,7 +12,7 @@ namespace SlimeRPG.Framework.StatsSystem
         public GameplayModifierOperator operatorType;
         public GameplayEffectModifierMagnitude modifierMagnitude;
 
-        public GameplayTagRequirements sourceTags;
+        [SerializeField] public GameplayTagRequirements sourceTags;
         public GameplayTagRequirements targetTags;
 
         public bool IsValid => definition != null && modifierMagnitude != null;
@@ -35,7 +35,6 @@ namespace SlimeRPG.Framework.StatsSystem
         }
     }
 
-    // temp
     [Serializable]
     public struct GameplayTagRequirements
     {

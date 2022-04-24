@@ -20,6 +20,7 @@ namespace SlimeRPG.Framework.Ability
         ownedTagAdded,
         ownedTagPresent,
     }
+
     public struct AbilityTriggerData
     {
         public GameplayTagContainer triggerTag;

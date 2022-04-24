@@ -26,7 +26,7 @@ namespace SlimeRPG.Framework.Ability
 
             if (effect.duration.magnitude.GetValue(level) != 0f)
             {
-                durationRemaining = effect.duration.magnitude.GetValue(level) * effect.duration.multiplier;
+                durationRemaining = effect.duration.magnitude.GetValue(level)/* * effect.duration.multiplier*/;
                 totalDuration = durationRemaining;
             }
 

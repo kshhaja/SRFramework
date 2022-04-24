@@ -128,7 +128,21 @@ namespace UnityEditor
 				return;
 
 			if (result == false)
+            {
+				var o = Target.overrides.Get(definition);
+				var overridesList = serializedObject.FindProperty("overrides").FindPropertyRelative("overrides");
+				var index = Target.overrides.overrides.IndexOf(o);
+				var overrideProperty = overridesList.GetArrayElementAtIndex(index);
+				var magnitude = overrideProperty.FindPropertyRelative("value.magnitude");
+				if (magnitude != null)
+                {
+					DestroyImmediate(magnitude.objectReferenceValue, true);
+					AssetDatabase.SaveAssets();
+					magnitude.objectReferenceValue = null;
+					overridesList.DeleteArrayElementAtIndex(index);
+				}
 				Target.overrides.Remove(definition);
+			}
 			else if (oldResult == false)
 				Target.overrides.Add(new StatDefinitionOverride{definition = definition, value = new GameplayEffectModifierMagnitude()});
 
@@ -176,33 +190,23 @@ namespace UnityEditor
 			// override는 Property로 찾을 수 있으므로 직접 접근해준다.
 			var overrideProperty = overridesList.GetArrayElementAtIndex(index);
 			var selectorProperty = overrideProperty.FindPropertyRelative("value");
-			var minmaxProperty = selectorProperty.FindPropertyRelative("value");
-			var roundToIntProperty = selectorProperty.FindPropertyRelative("roundToInt");
 
 			EditorGUILayout.BeginVertical();
 			GUILayout.Label(new GUIContent(o.definition.DisplayName));
 			EditorGUI.indentLevel++;
-			EditorGUILayout.PropertyField(minmaxProperty, new GUIContent("value"));
-			EditorGUILayout.PropertyField(roundToIntProperty, new GUIContent("roundToInt"));
+			EditorGUILayout.PropertyField(selectorProperty, new GUIContent("Magnitude Value"));
 			EditorGUI.indentLevel--;
 			EditorGUILayout.EndVertical();
 		}
 
 		void DrawInputField(StatDefinition stat)
 		{
-			// https://blog.unity.com/technology/serialization-in-unity
-			// 유니티 공식블로그에 따르면 직렬화 가능한 오브젝트는 비 추상클래스여야한다.
-			// StatDefinitionBase는 추상클래스이므로 직렬화가 불가능하기에 강제로 만들어서 사용해주도록 한다.
-			
 			var selectorProperty = new SerializedObject(stat).FindProperty("value");
-			var minmaxProperty = selectorProperty.FindPropertyRelative("value");
-			var roundToIntProperty = selectorProperty.FindPropertyRelative("roundToInt");
 			
 			EditorGUILayout.BeginVertical();
 			GUILayout.Label(new GUIContent(stat.DisplayName));
 			EditorGUI.indentLevel++;
-			EditorGUILayout.PropertyField(minmaxProperty, new GUIContent("value"));
-			EditorGUILayout.PropertyField(roundToIntProperty, new GUIContent("roundToInt"));
+			EditorGUILayout.PropertyField(selectorProperty, new GUIContent("Magnitude Value"));
 			EditorGUI.indentLevel--;
 			EditorGUILayout.EndVertical();
 		}
@@ -225,7 +229,8 @@ namespace UnityEditor
 				.OrderByDescending(d => d.SortIndex)
 				.ToList();
 
-			Target.overrides.Clean();
+			if (Target.overrides.overrides != null)
+				Target.overrides.Clean();
 
 			serializedObject.ApplyModifiedProperties();
 		}

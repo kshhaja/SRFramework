@@ -9,8 +9,7 @@ namespace SlimeRPG.Framework.Ability
     {
         public ScalableMagnitude magnitude;
         public bool executeOnApplication;
-
-        //public object inhibitionPolicy;
+        public InhibitionPolicy inhibitionPolicy;
     }
 
 }

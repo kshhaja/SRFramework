@@ -131,22 +131,18 @@ namespace UnityEditor
             propRect.height = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(propRect, propDef);
 
-            var propValue = element.FindPropertyRelative("value.value");
-            propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            EditorGUI.PropertyField(propRect, propValue);
-
-            var propBool = element.FindPropertyRelative("value.roundToInt");
-            propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            EditorGUI.PropertyField(propRect, propBool);
-            
             var propOperator = element.FindPropertyRelative("operatorType");
             propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.PropertyField(propRect, propOperator);
+
+            var propValue = element.FindPropertyRelative("modifierMagnitude");
+            propRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+            EditorGUI.PropertyField(propRect, propValue);
         }
 
         protected float ElementHeightCallback(int index)
         {
-            var elementCount = 4;
+            var elementCount = 6;
             var spacing = 8;
             return (EditorGUIUtility.singleLineHeight * elementCount) + (EditorGUIUtility.standardVerticalSpacing * elementCount) + spacing;
         }

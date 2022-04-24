@@ -4,6 +4,8 @@ using UnityEngine;
 using SlimeRPG.Framework.Ability;
 using System;
 using System.Linq;
+using SlimeRPG.Framework.Tag;
+
 
 namespace SlimeRPG.Gameplay.Character.Ability
 {
@@ -14,6 +16,7 @@ namespace SlimeRPG.Gameplay.Character.Ability
         public Sprite icon;
         public AnimationClip clip;
 
+        public List<GameplayEffectContainer> effectContainers = new List<GameplayEffectContainer>();
 
         public struct AbilityCooldownTime
         {

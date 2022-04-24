@@ -6,5 +6,4 @@ namespace SlimeRPG.Framework.Ability
         infinite,
         duration,
     }
-
 }

@@ -14,29 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: derived
   value:
+    magnitudeCalculation: 0
     roundToInt: 0
-    value:
-      m_Mode: 0
-      m_CurveMultiplier: 0
-      m_CurveMin:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_CurveMax:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_ConstantMin: 0
-      m_ConstantMax: 100
-  roundModifiers: 1
-  roundResult: 0
+    multiplier: 1
+    magnitude: {fileID: 8076097011732361179}
   displayName: derived
   hidden: 0
   percentile: 0
   sortIndex: 500
   description: 
   stats: {fileID: 11400000, guid: 8763ce2f6b9916b4ca1e6b4537d3b9fb, type: 2}
+--- !u!114 &8076097011732361179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  value:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0

@@ -128,7 +128,7 @@ namespace UnityEditor
 
 		protected float ElementHeightCallback(int index)
 		{
-			var elementCount = 8;
+			var elementCount = 12;
 			return (EditorGUIUtility.singleLineHeight * elementCount) + (EditorGUIUtility.standardVerticalSpacing * elementCount) + VERTICAL_SPACING;
 		}
 	}

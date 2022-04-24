@@ -15,6 +15,8 @@ namespace UnityEditor
         protected SerializedProperty levelProperty;
         protected SerializedProperty qualityProperty;
         protected SerializedProperty clipProperty;
+        protected SerializedProperty effectProperty;
+
 
         protected virtual void OnEnable()
         {
@@ -23,6 +25,7 @@ namespace UnityEditor
             levelProperty = serializedObject.FindProperty(nameof(AbilityBase.level));
             qualityProperty = serializedObject.FindProperty(nameof(AbilityBase.quality));
             clipProperty = serializedObject.FindProperty(nameof(AbilityBase.clip));
+            effectProperty = serializedObject.FindProperty(nameof(AbilityBase.effectContainers));
 
             editor = new AbstractAbilityEditor();
             editor.Init(targetCache, serializedObject);
@@ -35,7 +38,7 @@ namespace UnityEditor
             EditorGUILayout.PropertyField(levelProperty);
             EditorGUILayout.PropertyField(qualityProperty);
             EditorGUILayout.PropertyField(clipProperty);
-            EditorGUILayout.Space();
+            EditorGUILayout.PropertyField(effectProperty);
 
             editor.OnAbilityGUI();
 

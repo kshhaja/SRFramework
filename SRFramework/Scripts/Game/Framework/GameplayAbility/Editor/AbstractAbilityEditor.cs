@@ -12,12 +12,10 @@ namespace UnityEditor
         GameplayAbility target;
 
         SerializedObject targetObject;
-        SerializedProperty nameProperty;
         SerializedProperty tagProperty;
-        SerializedProperty effectProperty;
         SerializedProperty costProperty;
         SerializedProperty cooldownProperty;
-        SerializedProperty secondaryAbilityProperty;
+        SerializedProperty abilityTriggersProperty;
 
         protected List<string> availableGameplayEffectType;
         
@@ -30,13 +28,10 @@ namespace UnityEditor
             this.target = target;
             this.targetObject = targetObject;
 
-            nameProperty = this.targetObject.FindProperty(nameof(GameplayAbility.name));
             tagProperty = this.targetObject.FindProperty(nameof(GameplayAbility.tags));
-            // effectProperty = this.targetObject.FindProperty(nameof(GameplayAbility.));
             costProperty = this.targetObject.FindProperty(nameof(GameplayAbility.cost));
             cooldownProperty = this.targetObject.FindProperty(nameof(GameplayAbility.coolDown));
-            secondaryAbilityProperty = this.targetObject.FindProperty(nameof(GameplayAbility.abilityTriggers));
-
+            abilityTriggersProperty = this.targetObject.FindProperty(nameof(GameplayAbility.abilityTriggers));
 
             var lookup = typeof(GameplayEffect);
             availableGameplayEffectType = System.AppDomain.CurrentDomain.GetAssemblies()
@@ -49,18 +44,16 @@ namespace UnityEditor
         public void OnBaseGUI()
         {
             // 아이콘, 디스크립션 등 추가될 듯.
-            EditorGUILayout.PropertyField(nameProperty);
         }
 
         public void OnAbilityGUI()
         {
+            EditorGUILayout.PropertyField(costProperty);
+            EditorGUILayout.PropertyField(cooldownProperty);
             EditorGUILayout.PropertyField(tagProperty);
 
-            OnGameplayEffectGUI(effectProperty);
-            OnGameplayEffectGUI(costProperty);
-            OnGameplayEffectGUI(cooldownProperty);
-            
-            EditorGUILayout.PropertyField(secondaryAbilityProperty);
+            // OnGameplayEffectGUI(costProperty);
+            // OnGameplayEffectGUI(cooldownProperty);
         }
 
         private void OnGameplayEffectGUI(SerializedProperty property)

@@ -19,7 +19,8 @@ namespace UnityEditor
                     return null;
 
                 if (valueProperty != null)
-                    return valueProperty;
+                    if (valueProperty.serializedObject.targetObject != null)
+                        return valueProperty;
 
                 valueProperty = new SerializedObject(serializedProperty.FindPropertyRelative("magnitude").objectReferenceValue)
                     .FindProperty("value");
@@ -54,7 +55,7 @@ namespace UnityEditor
             EditorGUI.PropertyField(position, multiplier);
 
             var calculationType = (GameplayEffectModifierMagnitude.MagnitudeCalculation)Enum.ToObject(typeof(GameplayEffectModifierMagnitude.MagnitudeCalculation), magnitudeCalculation.enumValueIndex);
-            if (calculationChanged)
+            if (calculationChanged || magnitude.objectReferenceValue == null)
                 ChangeMagnitude(magnitude, calculationType);
 
             switch (calculationType)

@@ -15,59 +15,101 @@ MonoBehaviour:
   id: 5
   modifiers:
   - definition: {fileID: 11400000, guid: 3b42abdf5d83a3a41a0cea4a91fc65ef, type: 2}
-    value:
-      roundToInt: 1
-      value:
-        m_Mode: 1
-        m_CurveMultiplier: 1
-        m_CurveMin:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 6.3250856
-            value: 18.786114
-            inSlope: 15.978145
-            outSlope: 0.9177068
-            tangentMode: 69
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 20.170929
-            value: 31.492538
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        m_CurveMax:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 1
-            outSlope: 1
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 20
-            value: 20
-            inSlope: 1
-            outSlope: 1
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        m_ConstantMin: 0
-        m_ConstantMax: 0
     operatorType: 0
+    modifierMagnitude:
+      magnitudeCalculation: 0
+      roundToInt: 0
+      multiplier: 1
+      magnitude: {fileID: 4540677428675992922}
+    sourceTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    targetTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+  - definition: {fileID: 11400000, guid: b6efc7ecedcc48241855bdb2b4a10e9d, type: 2}
+    operatorType: 0
+    modifierMagnitude:
+      magnitudeCalculation: 0
+      roundToInt: 0
+      multiplier: 1
+      magnitude: {fileID: 4540677428675992922}
+    sourceTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    targetTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+--- !u!114 &4540677428675992922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  value:
+    m_Mode: 2
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 20
+        value: 50
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 20
+        value: -10
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0

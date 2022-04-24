@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: intelligence
   value:
-    magnitudeCalculation: 1
+    magnitudeCalculation: 0
     roundToInt: 0
-    magnitude: {fileID: 0}
+    multiplier: 1
+    magnitude: {fileID: 1820502235608234574}
   displayName: Intelligence
   hidden: 0
   percentile: 0

@@ -9,6 +9,5 @@ namespace SlimeRPG.Framework.Ability
     {
         public Duration policy;
         public GameplayEffectModifierMagnitude magnitude;
-        public float multiplier;
     }
 }
