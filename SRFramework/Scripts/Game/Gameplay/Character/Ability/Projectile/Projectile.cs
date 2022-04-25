@@ -2,23 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using SlimeRPG.Framework.Ability;
-
+using System;
+using System.Linq;
 
 namespace SlimeRPG.Gameplay.Character.Ability
 {
     // 이것도 ScriptableObject로부터 만들어지도록 수정할 예정.
     public class Projectile : MonoBehaviour
     {
-        public CharacterBase instigator;
-        [SerializeField]
-        public AbilitySystemComponent source;
+        public WeakReference<AbilitySystemComponent> weakInstigator;
+        public WeakReference<AbilitySystemComponent> weakSource;
+        public List<WeakReference<AbilitySystemComponent>> weakTargets = new List<WeakReference<AbilitySystemComponent>>();
 
-        [SerializeField]
-        public List<AbilitySystemComponent> targets = new List<AbilitySystemComponent>();
-
-        public GameplayEffectSpec effect;
-        // 발사 -> 폭발 -> ... 등 여러 단계를 표현하고 싶다면 아래 기능을 사용할것
-        public GameplayAbilitySpec secondaryAbilitySpec;
+        public List<GameplayEffectSpec> effects;
 
         [SerializeField]
         private float speed = 10.0f;
@@ -37,6 +33,41 @@ namespace SlimeRPG.Gameplay.Character.Ability
         private bool useGravity = true;
 
         private int internalPierceCount = 0;
+
+        protected AbilitySystemComponent Instigator
+        {
+            get
+            {
+                if (weakInstigator.TryGetTarget(out var instigator))
+                    return instigator;
+
+                return null;
+            }
+        }
+
+        protected AbilitySystemComponent Source
+        {
+            get
+            {
+                if (weakSource.TryGetTarget(out var source))
+                    return source;
+
+                return null;
+            }
+        }
+
+        protected List<AbilitySystemComponent> Targets
+        {
+            get
+            {
+                return weakTargets.Select(x =>
+                {
+                    if (x.TryGetTarget(out var target))
+                        return target;
+                    return null;
+                }).Where(x => x != null).ToList();
+            }
+        }
 
 
         private void Start()
@@ -75,26 +106,27 @@ namespace SlimeRPG.Gameplay.Character.Ability
             if (go.tag != "Enemy" && go.tag != "Player")
                 return;
 
-            if (source.gameObject == go)
+            if (Source == null || Source.gameObject == go)
                 return;
 
             if (go.TryGetComponent<AbilitySystemComponent>(out var target))
             {
-                if (targets.Contains(target) == false)
-                    targets.Add(target);
+                if (Targets.Contains(target) == false)
+                    weakTargets.Add(new WeakReference<AbilitySystemComponent>(target));
 
-                target.ApplyGameplayEffect(effect);
+                foreach (var effect in effects)
+                    target.ApplyGameplayEffect(effect);
             }
 
-            if (secondaryAbilitySpec != null)
-            {
-                var ac = source.GetComponent<CharacterBase>();
-                if (ac)
-                {
-                    // instigator.AbilitySystem.MakeOutgoingAbilitySpec(secondaryAbility, 1);
-                    // StartCoroutine(secondaryAbility.TryActivateAbility());
-                }
-            }
+            //if (secondaryAbilitySpec != null)
+            //{
+            //    var ac = source.GetComponent<CharacterBase>();
+            //    if (ac)
+            //    {
+            //        // instigator.AbilitySystem.MakeOutgoingAbilitySpec(secondaryAbility, 1);
+            //        // StartCoroutine(secondaryAbility.TryActivateAbility());
+            //    }
+            //}
 
             internalPierceCount++;
             if (internalPierceCount > pierceCount)

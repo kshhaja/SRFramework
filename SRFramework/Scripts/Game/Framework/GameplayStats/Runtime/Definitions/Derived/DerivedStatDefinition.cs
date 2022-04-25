@@ -32,7 +32,7 @@ namespace SlimeRPG.Framework.StatsSystem
                 // make sure contains
                 if (container.HasRecord(stat.definition) == false)
                     throw new Exception(stat.definition.DisplayName + " not found.");
-                
+
                 SetModifier(stat.operatorType, stat.definition.Id, stat.GetValue(1));
                 container.OnStatChangeSubscribe(stat.definition, DerivesStatChanged);
             }

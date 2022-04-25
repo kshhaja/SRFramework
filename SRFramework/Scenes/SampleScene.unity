@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1425312ee2f5e4da3ab46a2724a3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 11400000, guid: d61b735cbc0c3bb47bb889c55dfed994, type: 2}
+  container: {fileID: 11400000, guid: dfcc25e8db4d1bf49960ae37a3a3ea67, type: 2}
 --- !u!65 &983034455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -813,6 +813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12bddb36fc88ca4cbf6c5cb45652d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  characterName: 
   isRolling: 0
   isJumping: 0
   isInAirborne: 0
@@ -928,4 +930,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1425312ee2f5e4da3ab46a2724a3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 11400000, guid: d61b735cbc0c3bb47bb889c55dfed994, type: 2}
+  container: {fileID: 11400000, guid: dfcc25e8db4d1bf49960ae37a3a3ea67, type: 2}

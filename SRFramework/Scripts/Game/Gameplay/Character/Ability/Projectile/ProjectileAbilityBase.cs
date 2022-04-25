@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SlimeRPG.Framework.Ability;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,5 +11,10 @@ namespace SlimeRPG.Gameplay.Character.Ability
     public class ProjectileAbilityBase : AbilityBase
     {
         public Projectile projectile;
+
+        public override AbstractGameplayAbilitySpec CreateNew(AbilitySystemComponent instigator, AbilitySystemComponent source, float level = 1)
+        {
+            return new ProjectileAbilityBaseSpec(this, instigator, source, level);
+        }
     }
 }

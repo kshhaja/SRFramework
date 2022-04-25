@@ -72,7 +72,6 @@ namespace SlimeRPG.Gameplay.Character
         {
             if (inputActions.TryGetValue(handler, out var index))
             {
-                
                 if (index != null)
                 {
                     CastAbility(index.Value);

@@ -14,4 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: 69f2b8ba06d4f3a4ea7628986ad16b24, type: 2}
   overrides:
-    overrides: []
+    overrides:
+    - definition: {fileID: 11400000, guid: acaa46911b7a2eb478117637490891c9, type: 2}
+      value:
+        magnitudeCalculation: 0
+        roundToInt: 0
+        multiplier: 1
+        magnitude: {fileID: 3250834397806240391}
+--- !u!114 &3250834397806240391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  value:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0

@@ -9,8 +9,10 @@ namespace SlimeRPG.Framework.Ability
     public class AbilitySystemComponent : MonoBehaviour
     {
         private List<GameplayEffectSpec> appliedSpecs = new List<GameplayEffectSpec>();
-        private List<GameplayAbilitySpec> grantedAbilities = new List<GameplayAbilitySpec>();
-        
+        private List<AbstractGameplayAbilitySpec> grantedAbilities = new List<AbstractGameplayAbilitySpec>();
+
+        private Dictionary<GameplayEffect, GameplayEffectSpec> cachedEffectSpecs = new Dictionary<GameplayEffect, GameplayEffectSpec>();
+
         [SerializeField]
         protected StatsContainer container;
 
@@ -83,7 +85,7 @@ namespace SlimeRPG.Framework.Ability
             return GrantAbility(spec);
         }
 
-        public int GrantAbility(GameplayAbilitySpec ability)
+        public int GrantAbility(AbstractGameplayAbilitySpec ability)
         {
             grantedAbilities.Add(ability);
             return grantedAbilities.LastIndexOf(ability);
@@ -92,17 +94,6 @@ namespace SlimeRPG.Framework.Ability
         public void ActivateAbility(int index)
         {
             StartCoroutine(grantedAbilities[index].TryActivateAbility());
-        }
-
-        public void RemoveAbilitiesWithTag(GameplayTag tag)
-        {
-            foreach (var spec in grantedAbilities)
-            {
-                if (spec.ability.tags.abilityTags.HasTag(tag))
-                {
-                    grantedAbilities.Remove(spec);
-                }
-            }
         }
 
         public virtual bool ApplyGameplayEffect(GameplayEffectSpec spec)
@@ -142,14 +133,23 @@ namespace SlimeRPG.Framework.Ability
             appliedSpecs.Add(ge);
         }
 
-        public GameplayAbilitySpec MakeOutgoingAbilitySpec(GameplayAbility ability, float level)
+        public AbstractGameplayAbilitySpec MakeOutgoingAbilitySpec<T>(T ability, float level) where T : GameplayAbility
         {
-            return GameplayAbilitySpec.CreateNew(ability, null, null, level);
+            return ability.CreateNew(this, this, level);
         }
 
         public GameplayEffectSpec MakeOutgointEffectSpec(GameplayEffect effect, float level)
         {
-            return GameplayEffectSpec.CreateNew(effect, this, level);
+            if (effect == null)
+                return null;
+
+            // 동작이 원활히 잘 되면 캐시기능 살리기
+            //if (cachedEffectSpecs.ContainsKey(effect))
+            //    return cachedEffectSpecs[effect];
+
+            var spec = GameplayEffectSpec.CreateNew(effect, this, level);
+            //cachedEffectSpecs[effect] = spec;
+            return spec;
         }
     }
 }

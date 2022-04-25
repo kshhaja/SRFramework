@@ -12,6 +12,11 @@ namespace SlimeRPG.Framework.Ability
         public GameplayEffect cost;
         public GameplayEffect coolDown;
         public List<AbilityTriggerData> abilityTriggers;
+
+        public virtual AbstractGameplayAbilitySpec CreateNew(AbilitySystemComponent instigator, AbilitySystemComponent source, float level = 1)
+        {
+            return new GameplayAbilitySpec<GameplayAbility>(this, instigator, source, level);
+        }
     }
 
     public enum GameplayAbilityTriggerSouce

@@ -79,7 +79,7 @@ namespace SlimeRPG.Gameplay.Character
 
         public virtual int GrantAbility(AbilityBase ability)
         {
-            ability.Setup(this);
+            //ability.Setup(this);
             return abilitySystem.GrantAbility(ability, level);
         }
 

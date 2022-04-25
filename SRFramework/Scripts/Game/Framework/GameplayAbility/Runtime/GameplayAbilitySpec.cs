@@ -8,13 +8,24 @@ using UnityEngine;
 
 namespace SlimeRPG.Framework.Ability
 {
-    public class GameplayAbilitySpec
+    public abstract class AbstractGameplayAbilitySpec
+    {
+        public abstract bool CanActivateAbility();
+        public abstract bool CommitAbility();
+        public abstract IEnumerator PreActivateAbility();
+        public abstract IEnumerator ActivateAbility();
+        public abstract IEnumerator CancelAbility();
+        public abstract IEnumerator EndAbility();
+        public abstract IEnumerator TryActivateAbility();
+    }
+
+    public class GameplayAbilitySpec<T> : AbstractGameplayAbilitySpec where T : GameplayAbility
     {
         protected WeakReference<AbilitySystemComponent> weakInstigator;
         protected WeakReference<AbilitySystemComponent> weakSource;
         protected List<WeakReference<AbilitySystemComponent>> weakTargets = new List<WeakReference<AbilitySystemComponent>>();
 
-        public GameplayAbility ability;
+        public T ability;
         public float level = 1f;
 
         #region Internal Variables
@@ -65,30 +76,22 @@ namespace SlimeRPG.Framework.Ability
             }
         }
 
-        public GameplayAbilitySpec(GameplayAbility ability, AbilitySystemComponent instigator, AbilitySystemComponent source, float level)
+        public GameplayAbilitySpec(T ability, AbilitySystemComponent instigator, AbilitySystemComponent source, float level)
         {
             this.ability = ability;
             weakInstigator = new WeakReference<AbilitySystemComponent>(instigator);
-            if (source == null)
-                weakSource = weakInstigator;
-            else
-                weakSource = new WeakReference<AbilitySystemComponent>(source);
+            weakSource = new WeakReference<AbilitySystemComponent>(source);
             this.level = level;
         }
 
-        public static GameplayAbilitySpec CreateNew(GameplayAbility ability, AbilitySystemComponent instigator, AbilitySystemComponent source, float level = 1)
-        {
-            return new GameplayAbilitySpec(ability, instigator, source, level);
-        }
-
-        public virtual bool CanActivateAbility()
+        public override bool CanActivateAbility()
         {
             return CheckCooldown()
                 && CheckCost()
                 && DoesAbilitySatisfyTagRequirements();
         }
 
-        public virtual bool CommitAbility()
+        public override bool CommitAbility()
         {
             // When committing, the situation may have changed, 
             // so check it again
@@ -102,7 +105,7 @@ namespace SlimeRPG.Framework.Ability
             return false;
         }
 
-        public virtual IEnumerator PreActivateAbility()
+        public override IEnumerator PreActivateAbility()
         {
             isActive = true;
             isBlockingOtherAbilities = true;
@@ -116,27 +119,24 @@ namespace SlimeRPG.Framework.Ability
             yield return null;
         }
 
-        public virtual IEnumerator ActivateAbility()
+        public override IEnumerator ActivateAbility()
         {
-            if (CommitAbility() == false)
-                yield break;
-
             yield return null;
         }
 
-        public virtual IEnumerator CancelAbility()
+        public override IEnumerator CancelAbility()
         {
             // do something...
             yield return EndAbility();
         }
 
-        public virtual IEnumerator EndAbility()
+        public override IEnumerator EndAbility()
         {
             // remove gameplay tags ...
             yield return null;
         }
 
-        public virtual IEnumerator TryActivateAbility()
+        public override IEnumerator TryActivateAbility()
         {
             // Flow of a simple GameplayAbility
             if (CanActivateAbility() == false)
