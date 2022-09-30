@@ -20,8 +20,8 @@ MonoBehaviour:
         magnitudeCalculation: 0
         roundToInt: 0
         multiplier: 1
-        magnitude: {fileID: 3250834397806240391}
---- !u!114 &3250834397806240391
+        magnitude: {fileID: 209933565580603790}
+--- !u!114 &209933565580603790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -32,7 +32,7 @@ public class ItemStatsAdjustment : StatAdjustmentCollection
         foreach (var id in adjustment)
         {
             if (target.HasRecord(id.definition) == false)
-                target.SetStat(id.definition);
+                target.SetStat(id.definition, id.modifierMagnitude);
         }
 
         base.ApplyAdjustment(target, index);

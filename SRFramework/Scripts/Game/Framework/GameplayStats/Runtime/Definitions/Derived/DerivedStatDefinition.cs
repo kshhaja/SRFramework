@@ -14,9 +14,9 @@ namespace SlimeRPG.Framework.StatsSystem
         [SerializeField]
         protected StatAdjustmentCollection stats;
         
-        private WeakReference<StatsContainer> containerWeakRef;
-        private float internalValue;
-        private StatRecord record;
+        protected WeakReference<StatsContainer> containerWeakRef;
+        protected float internalValue;
+        protected StatRecord record;
 
 
         public override void Setup(StatsContainer container)
@@ -43,7 +43,7 @@ namespace SlimeRPG.Framework.StatsSystem
             record.GetModifier(operation).Set(modifierId, value);
         }
 
-        private void DerivesStatChanged(StatRecord rec)
+        protected virtual void DerivesStatChanged(StatRecord rec)
         {
             if (containerWeakRef.TryGetTarget(out var container))
             {

@@ -20,7 +20,24 @@ MonoBehaviour:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: 0}
+      magnitude: {fileID: 7260532677839540361}
+    sourceTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    targetTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+  - definition: {fileID: 11400000, guid: ec18af6c506aa0b4babee2a4048adb39, type: 2}
+    operatorType: 0
+    modifierMagnitude:
+      magnitudeCalculation: 0
+      roundToInt: 0
+      multiplier: 1
+      magnitude: {fileID: 7260532677839540361}
     sourceTags:
       requireTags:
         list: []
