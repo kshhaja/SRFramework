@@ -18,30 +18,33 @@ MonoBehaviour:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: 1532839486894664000}
+      magnitude: {fileID: 2550861908205578254}
   period:
     magnitude: {fileID: 0}
     executeOnApplication: 0
     inhibitionPolicy: 0
-  modifiers:
-  - definition: {fileID: 0}
-    operatorType: 1
-    modifierMagnitude:
-      magnitudeCalculation: 0
-      roundToInt: 0
-      multiplier: 0
-      magnitude: {fileID: 8592050908971990702}
-    sourceTags:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-    targetTags:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-  executions: []
+  modifiers: []
+  executions:
+  - calculationClass: {fileID: 0}
+    calculationModifiers:
+    - definition: {fileID: 0}
+      operatorType: 0
+      modifierMagnitude:
+        magnitudeCalculation: 0
+        roundToInt: 0
+        multiplier: 0
+        magnitude: {fileID: 6658849463689764787}
+      sourceTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+      targetTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+    conditionalGameplayEffects: []
   conditionalGameplayEffects: []
   tags:
     assetTag:
@@ -66,7 +69,7 @@ MonoBehaviour:
     removeGameplayEffectsWithTags:
       list: []
   grantedAbilities: []
---- !u!114 &1532839486894664000
+--- !u!114 &2550861908205578254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +98,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0
---- !u!114 &8592050908971990702
+--- !u!114 &6658849463689764787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,4 +126,16 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 10
+    m_ConstantMax: 0
+--- !u!114 &8587412389196135954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c40c45069774884288f7bec1a23ca1d, type: 3}
+  m_Name: NewExecution
+  m_EditorClassIdentifier: 

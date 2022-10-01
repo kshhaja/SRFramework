@@ -33,7 +33,7 @@ MonoBehaviour:
       list: []
     targetBlockedTags:
       list: []
-  cost: {fileID: 0}
+  cost: {fileID: 11400000, guid: 38e2145586c5ce34c91451f29f59193c, type: 2}
   coolDown: {fileID: 0}
   level: 1
   quality: 0
@@ -44,5 +44,4 @@ MonoBehaviour:
     targetType: {fileID: 0}
     targetGameplayEffects:
     - {fileID: 0}
-  projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a,
-    type: 3}
+  projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a, type: 3}
