@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace SlimeRPG.Framework.Ability
 {
+    [CreateAssetMenu(menuName = "Gameplay/Ability/Base Ability", order = 1)]
     public class GameplayAbility : ScriptableObject
     {
         public AbilityTags tags;

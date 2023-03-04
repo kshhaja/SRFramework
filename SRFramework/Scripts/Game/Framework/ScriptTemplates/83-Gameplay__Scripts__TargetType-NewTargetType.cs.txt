@@ -1,0 +1,21 @@
+/*
+ * @SlimeRPG Allrights reserved.
+ */
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace SlimeRPG.Framework.Ability
+{
+    public class #SCRIPTNAME# : TargetType
+    {
+        public override RaycastHit[] GetTargets(GameObject targetingGameObject)
+        {
+            // fill..
+            return null;
+        }
+    }
+}

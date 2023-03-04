@@ -10,7 +10,7 @@ using SlimeRPG.Framework.StatsSystem;
 
 namespace SlimeRPG.Framework.Ability
 {
-    public class NewExecution : GameplayEffectExecutionCalculation
+    public class #SCRIPTNAME# : GameplayEffectExecutionCalculation
     {
         public override void Execute(AbilitySystemComponent source, AbilitySystemComponent target, out List<GameplayModifierInfo> modifiers)
         {

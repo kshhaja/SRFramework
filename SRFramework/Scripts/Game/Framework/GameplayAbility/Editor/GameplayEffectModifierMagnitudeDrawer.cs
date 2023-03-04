@@ -85,6 +85,7 @@ namespace UnityEditor
                 magnitude.objectReferenceValue = null;
             }
 
+            Debug.Log("Test....");
             switch (calculation)
             {
                 case GameplayEffectModifierMagnitude.MagnitudeCalculation.scalableFloat:

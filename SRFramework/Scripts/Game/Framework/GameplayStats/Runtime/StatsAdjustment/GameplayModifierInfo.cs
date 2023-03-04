@@ -1,7 +1,7 @@
 ﻿using SlimeRPG.Framework.Tag;
 using System;
 using UnityEngine;
-
+using UnityEngine.Assertions;
 
 namespace SlimeRPG.Framework.StatsSystem
 {
@@ -18,19 +18,29 @@ namespace SlimeRPG.Framework.StatsSystem
         public bool IsValid => definition != null && modifierMagnitude != null;
 
 
-        public float GetValue(float index)
+        public float GetValue(float index, float? @default=null)
         {
-            if (IsValid == false) 
-                return 0;
+            if (IsValid == false)
+            {
+                if (@default != null)
+                {
+                    return @default.Value;
+                }
+            }
 
             return modifierMagnitude.GetValue(index);
         }
 
-        public (float, float)? MinMax(float index)
+        public (float, float) MinMax(float index, (float, float)? @default=null)
         {
             if (IsValid == false)
-                return null;
-            
+            {
+                if (@default != null)
+                {
+                    return @default.Value;
+                }
+            }
+
             return modifierMagnitude.MinMax(index);
         }
     }

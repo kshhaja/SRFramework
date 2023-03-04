@@ -6,7 +6,7 @@ using SlimeRPG.Framework.Tag;
 
 namespace SlimeRPG.Framework.Ability
 {
-    [CreateAssetMenu(menuName = "Gameplay/Ability/Effect Definition")]
+    [CreateAssetMenu(menuName = "Gameplay/Effect/Base Definition", order = 1)]
     public class GameplayEffect : ScriptableObject
     {
         public GameplayEffectDuration duration;

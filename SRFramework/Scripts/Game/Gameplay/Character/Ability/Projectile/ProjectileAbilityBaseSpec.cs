@@ -21,6 +21,7 @@ namespace SlimeRPG.Framework.Ability
             projectile.weakInstigator = weakInstigator;
             projectile.weakTargets = weakTargets;
 
+            // spec을 여기서 만드는게 맞는가?
             List<GameplayEffectSpec> specs = new List<GameplayEffectSpec>();
             foreach (var item in ability.effectContainers)
             {

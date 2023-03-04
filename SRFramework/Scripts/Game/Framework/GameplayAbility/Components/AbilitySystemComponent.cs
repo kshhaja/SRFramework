@@ -81,6 +81,7 @@ namespace SlimeRPG.Framework.Ability
         
         public int GrantAbility(GameplayAbility ability, float level)
         {
+            // spec을 만드는 순간 capture가 되겠지?
             var spec = MakeOutgoingAbilitySpec(ability, level);
             return GrantAbility(spec);
         }

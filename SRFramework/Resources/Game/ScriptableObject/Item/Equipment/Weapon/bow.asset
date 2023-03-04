@@ -1,6 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-116582454592061607
+--- !u!114 &-6038573661778835023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74835af30d05ccd4394e8e9df70c0dc9, type: 3}
+  m_Name: Stats
+  m_EditorClassIdentifier: 
+  explicits: {fileID: -3681684772764698517}
+  implicits: {fileID: 0}
+--- !u!114 &-3681684772764698517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,37 +52,9 @@ MonoBehaviour:
     strength: 0
     dexterity: 0
     intelligence: 0
-  stat: {fileID: 4164175830538588288}
+  stat: {fileID: -6038573661778835023}
   equippedEffects: []
   type: 0
   hitSounds: []
   swingSounds: []
   attackEffects: []
---- !u!114 &4164175830538588288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74835af30d05ccd4394e8e9df70c0dc9, type: 3}
-  m_Name: Stats
-  m_EditorClassIdentifier: 
-  explicits: {fileID: -116582454592061607}
-  implicits: {fileID: 5126120937213386648}
---- !u!114 &5126120937213386648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b04b8144bfbdb34ab935a006f47e43c, type: 3}
-  m_Name: implicits
-  m_EditorClassIdentifier: 
-  id: 
-  mods: []

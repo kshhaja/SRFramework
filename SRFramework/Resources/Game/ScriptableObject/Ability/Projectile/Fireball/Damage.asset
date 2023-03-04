@@ -1,35 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6473345155689089100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
-  m_Name: ScalableMagnitude
-  m_EditorClassIdentifier: 
-  value:
-    m_Mode: 0
-    m_CurveMultiplier: 0
-    m_CurveMin:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_CurveMax:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ConstantMin: 0
-    m_ConstantMax: 0
---- !u!114 &-422683114118589643
+--- !u!114 &-7484682041042985244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +39,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36fd283322353ff42b30cd679073251e, type: 3}
-  m_Name: Cost
+  m_Name: Damage
   m_EditorClassIdentifier: 
   duration:
     policy: 0
@@ -76,37 +47,17 @@ MonoBehaviour:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: 2550861908205578254}
+      magnitude: {fileID: -7484682041042985244}
   period:
     magnitude:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: -6473345155689089100}
+      magnitude: {fileID: 2343311925883895058}
     executeOnApplication: 0
     inhibitionPolicy: 0
-  modifiers:
-  - definition: {fileID: 0}
-    operatorType: 0
-    modifierMagnitude:
-      magnitudeCalculation: 0
-      roundToInt: 0
-      multiplier: 0
-      magnitude: {fileID: -422683114118589643}
-    sourceTags:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-    targetTags:
-      requireTags:
-        list: []
-      ignoreTags:
-        list: []
-  executions:
-  - calculationClass: {fileID: 0}
-    calculationModifiers: []
-    conditionalGameplayEffects: []
+  modifiers: []
+  executions: []
   conditionalGameplayEffects: []
   tags:
     assetTag:
@@ -131,7 +82,7 @@ MonoBehaviour:
     removeGameplayEffectsWithTags:
       list: []
   grantedAbilities: []
---- !u!114 &2550861908205578254
+--- !u!114 &591851924861709364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +111,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0
---- !u!114 &6658849463689764787
+--- !u!114 &2343311925883895058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

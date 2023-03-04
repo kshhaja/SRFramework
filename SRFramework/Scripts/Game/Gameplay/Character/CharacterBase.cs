@@ -61,6 +61,16 @@ namespace SlimeRPG.Gameplay.Character
             abilitySystem = GetComponent<AbilitySystemComponent>();
         }
 
+        protected virtual void Start()
+        {
+            CalculateAllAttributes();
+        }
+
+        protected virtual void CalculateAllAttributes()
+        {
+            // abilitySystem.StatsContainer.GetDefinition("")
+        }
+
         public void SetAimPoint(Vector3 point)
         {
             movementController.aimPoint = point;
