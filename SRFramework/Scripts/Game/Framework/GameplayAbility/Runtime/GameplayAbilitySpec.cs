@@ -3,11 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using SlimeRPG.Framework.StatsSystem.StatsContainers;
 using UnityEngine;
-
+using SlimeRPG.Framework.StatsSystem;
 
 namespace SlimeRPG.Framework.Ability
 {
+    // GameplayEffect와 GameplayEffectSpec을 정확히 나눌 필요가 있겠다.
+    // Spec은 struct로 만들어야할듯.
     public abstract class AbstractGameplayAbilitySpec
     {
         public abstract bool CanActivateAbility();
@@ -155,14 +158,21 @@ namespace SlimeRPG.Framework.Ability
             if (ability.coolDown == null)
                 return true;
 
-            GameplayTagContainer cooldownTags = ability.coolDown.tags.assetTag;
+            if (CanApplyGameplayEffect(ability.coolDown, level) == false)
+            {
+                return false;
+            }
 
-            if (cooldownTags.Num() > 0)
-                if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(cooldownTags))
-                    return false;
+            GameplayTagContainer cooldownTags = ability.coolDown.tags.assetTag;
+            if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(cooldownTags))
+            {
+                return false;
+            }
 
             if (RemainingCooldownTime().timeRemaining > 0)
+            {
                 return false;
+            }
 
             return true;
         }
@@ -172,11 +182,16 @@ namespace SlimeRPG.Framework.Ability
             if (ability.cost == null)
                 return true;
 
-            GameplayTagContainer costTags = ability.cost.tags.assetTag;
+            if (CanApplyGameplayEffect(ability.cost, level) == false)
+            {
+                return false;
+            }
 
-            if (costTags.Num() > 0)
-                if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(costTags))
-                    return false;
+            GameplayTagContainer costTags = ability.cost.tags.assetTag;
+            if (Source.gameplayTagCountContainer.HasAnyMatchingGameplayTags(costTags))
+            {
+                return false;
+            }
 
             return true;
         }
@@ -197,6 +212,38 @@ namespace SlimeRPG.Framework.Ability
 
             var spec = Source.MakeOutgointEffectSpec(ability.coolDown, level);
             Source.ApplyGameplayEffect(spec);
+        }
+
+        protected virtual bool CanApplyGameplayEffect(GameplayEffect gameplayEffect, float level = 0)
+        {
+            var spec = Source.MakeOutgointEffectSpec(gameplayEffect, level);
+            var mods = spec.effect.modifiers;
+
+            for (int i = 0; i < mods.Count; ++i)
+            {
+                GameplayModifierInfo modInfo = mods[i];
+
+                // It only makes sense to check additive operators
+                if (modInfo.operatorType == GameplayModifierOperator.Add)
+                {
+                    if (modInfo.definition == null)
+                    {
+                        continue;
+                    }
+
+                    // 현재 가진 attribute value보다 cost가 크면 실패.
+                    var record = Source.StatsContainer.GetRecord(modInfo.definition);
+                    float currentValue = record.GetValue();
+                    float costValue = modInfo.definition.Value.GetValue(level);
+
+                    if (currentValue + costValue < 0.0f)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public AbilityCooldownTime RemainingCooldownTime()

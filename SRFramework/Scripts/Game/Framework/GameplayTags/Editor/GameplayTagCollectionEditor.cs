@@ -36,7 +36,7 @@ namespace UnityEditor
         {
             if (!AssetDatabase.IsMainAsset(target))
                 return;
-
+            
             serializedObject.Update();
 
             if (elements.arraySize == 0)
@@ -58,9 +58,9 @@ namespace UnityEditor
                 if (treeView != null)
                 {
                     var treeViewRect = EditorGUILayout.GetControlRect(false, treeView.totalHeight + 1);
+                    // 외부에서 OnGUI호출하면 에러가 뜰것임. 허나 당장 새로운 방법이 없다. 그리고 딱히 문제도 안됨.
                     treeView.OnGUI(treeViewRect);
                     treeView.searchString = searchString;
-                    treeView.ExpandAll();
                 }
             }
 

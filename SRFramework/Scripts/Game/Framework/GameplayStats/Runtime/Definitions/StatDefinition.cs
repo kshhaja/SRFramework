@@ -11,6 +11,7 @@ namespace SlimeRPG.Framework.StatsSystem
 		protected string id;
 
 		public string Id => id;
+		public int HashCode => GetHashCode();
 
 		[Header("Value")]
 		[SerializeField] protected GameplayEffectModifierMagnitude value = new GameplayEffectModifierMagnitude();

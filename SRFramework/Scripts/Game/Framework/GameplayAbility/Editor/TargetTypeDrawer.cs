@@ -10,14 +10,21 @@ namespace UnityEditor
     [CustomPropertyDrawer(typeof(TargetType))]
     public class TargetTypeDrawer : PropertyDrawer
     {
-        private bool isDirty = true;
         protected List<string> availableTargetTypeList = new List<string>();
+
+        public TargetTypeDrawer() : base()
+        {
+            var lookup = typeof(TargetType);
+            availableTargetTypeList.Add("None");
+            availableTargetTypeList.AddRange(System.AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(x => x.IsClass && !x.IsAbstract && (x.IsSubclassOf(lookup) || x == lookup))
+                .Select(type => type.Name)
+                .ToList());
+        }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (isDirty)
-                Refresh();
-            
             EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
             var indent = EditorGUI.indentLevel;
@@ -52,17 +59,6 @@ namespace UnityEditor
             }
             EditorGUI.indentLevel = indent;
             EditorGUI.EndProperty();
-        }
-
-        void Refresh()
-        {
-            var lookup = typeof(TargetType);
-            availableTargetTypeList.Add("None");
-            availableTargetTypeList.AddRange(System.AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .Where(x => x.IsClass && !x.IsAbstract && (x.IsSubclassOf(lookup) || x == lookup))
-                .Select(type => type.Name)
-                .ToList());
         }
     }
 }

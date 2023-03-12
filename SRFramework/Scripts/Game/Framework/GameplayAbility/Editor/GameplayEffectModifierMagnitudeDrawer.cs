@@ -9,30 +9,32 @@ namespace UnityEditor
     public class GameplayEffectModifierMagnitudeDrawer : PropertyDrawer
     {
         private SerializedProperty serializedProperty;
-        private SerializedProperty valueProperty;
+        private SerializedProperty curveProperty;
 
-        private SerializedProperty ValueProperty
+        const int defaultKeyCount = 40;
+
+        private SerializedProperty CurveProperty
         {
             get
             {
                 if (serializedProperty == null)
                     return null;
 
-                if (valueProperty != null)
-                    if (valueProperty.serializedObject.targetObject != null)
-                        return valueProperty;
+                if (curveProperty != null)
+                    if (curveProperty.serializedObject.targetObject != null)
+                        return curveProperty;
 
-                valueProperty = new SerializedObject(serializedProperty.FindPropertyRelative("magnitude").objectReferenceValue)
-                    .FindProperty("value");
-                return valueProperty;
+                curveProperty = new SerializedObject(serializedProperty.FindPropertyRelative("magnitude").objectReferenceValue).FindProperty("curve");
+                return curveProperty;
             }
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            property.serializedObject.Update();
+
             serializedProperty = property;
 
-            // 에셋을 자동으로 추가해줘야하는데... 가능한가 여기서?
             EditorGUI.BeginProperty(position, label, property);
             var lineHeight = EditorGUIUtility.singleLineHeight;
             position.height = lineHeight;
@@ -56,16 +58,18 @@ namespace UnityEditor
 
             var calculationType = (GameplayEffectModifierMagnitude.MagnitudeCalculation)Enum.ToObject(typeof(GameplayEffectModifierMagnitude.MagnitudeCalculation), magnitudeCalculation.enumValueIndex);
             if (calculationChanged || magnitude.objectReferenceValue == null)
+            {
                 ChangeMagnitude(magnitude, calculationType);
+            }
 
             switch (calculationType)
             {
                 case GameplayEffectModifierMagnitude.MagnitudeCalculation.scalableFloat:
                     if (magnitude != null && magnitude.objectReferenceValue)
                     {
-                        position.y += lineHeight;
-                        EditorGUI.PropertyField(position, ValueProperty);
-                        ValueProperty.serializedObject.ApplyModifiedProperties();
+                        position.y += lineHeight + EditorGUIUtility.standardVerticalSpacing;
+                        EditorGUI.PropertyField(position, CurveProperty);
+                        // CurveProperty.serializedObject.ApplyModifiedProperties();
                     }
                     break;
             }
@@ -81,11 +85,10 @@ namespace UnityEditor
                 UnityEngine.Object.DestroyImmediate(magnitude.objectReferenceValue, true);
                 AssetDatabase.SaveAssets();
             
-                valueProperty = null;
+                curveProperty = null;
                 magnitude.objectReferenceValue = null;
             }
 
-            Debug.Log("Test....");
             switch (calculation)
             {
                 case GameplayEffectModifierMagnitude.MagnitudeCalculation.scalableFloat:

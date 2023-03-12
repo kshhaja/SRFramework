@@ -12,37 +12,32 @@ namespace UnityEditor
     {
         protected List<string> availableClasses = new List<string>();
 
-        protected List<string> AvailableClasses
+        public GameplayEffectExecutionCalculationDrawer() : base()
         {
-            get
-            {
-                var lookup = typeof(GameplayEffectExecutionCalculation);
+            var lookup = typeof(GameplayEffectExecutionCalculation);
 
-                availableClasses.Clear();
-                availableClasses.Add("None");
-                availableClasses.AddRange(System.AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(assembly => assembly.GetTypes())
-                    .Where(x => x.IsClass && !x.IsAbstract && (x.IsSubclassOf(lookup) || x == lookup))
-                    .Select(type => type.Name)
-                    .ToList());
-
-                return availableClasses;
-            }
+            availableClasses.Clear();
+            availableClasses.Add("None");
+            availableClasses.AddRange(System.AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(x => x.IsClass && !x.IsAbstract && (x.IsSubclassOf(lookup) || x == lookup))
+                .Select(type => type.Name)
+                .ToList());
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.serializedObject.Update();
+            // property.serializedObject.Update();
 
             EditorGUI.BeginProperty(position, label, property);
 
             int currentChoice = 0;
             if (property.objectReferenceValue)
-                currentChoice = AvailableClasses.IndexOf(property.objectReferenceValue.GetType().Name);
+                currentChoice = availableClasses.IndexOf(property.objectReferenceValue.GetType().Name);
 
             bool valueChanged = false;
             EditorGUI.BeginChangeCheck();
-            int choice = EditorGUI.Popup(position, label.text, currentChoice, AvailableClasses.ToArray());
+            int choice = EditorGUI.Popup(position, label.text, currentChoice, availableClasses.ToArray());
             if (EditorGUI.EndChangeCheck())
                 valueChanged = true;
 
@@ -51,8 +46,8 @@ namespace UnityEditor
                 ScriptableObject newInstance = null;
                 if (choice > 0)
                 {
-                    newInstance = ScriptableObject.CreateInstance(AvailableClasses[choice]);
-                    newInstance.name = AvailableClasses[choice];
+                    newInstance = ScriptableObject.CreateInstance(availableClasses[choice]);
+                    newInstance.name = availableClasses[choice];
                 }
 
                 if (property.objectReferenceValue)

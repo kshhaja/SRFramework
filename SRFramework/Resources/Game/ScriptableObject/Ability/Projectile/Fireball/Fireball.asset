@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-864716589077406074
+--- !u!114 &-7075666260504299251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   clip: {fileID: 0}
   effectContainers:
   - tag: {fileID: 0}
-    targetType: {fileID: -864716589077406074}
+    targetType: {fileID: -7075666260504299251}
     targetGameplayEffects:
     - {fileID: 11400000, guid: 482401f55d6c66f498c1013c34390c7d, type: 2}
   projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a,

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6473345155689089100
+--- !u!114 &-8860305694715045991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
   m_Name: ScalableMagnitude
   m_EditorClassIdentifier: 
-  value:
+  curve:
     m_Mode: 0
     m_CurveMultiplier: 0
     m_CurveMin:
@@ -29,7 +29,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0
---- !u!114 &-422683114118589643
+--- !u!114 &-8541627204840921116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,240 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
   m_Name: ScalableMagnitude
   m_EditorClassIdentifier: 
-  value:
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-7304514740233656792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-7134757770917167129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-5282263859429054943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-5194697570965948719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 1
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-3209922105957536537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-702598263573136196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &-491208476692992705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997159ad16dd1b5488cfff5b1e2b801c, type: 3}
+  m_Name: SlimeRPGDamageExecution
+  m_EditorClassIdentifier: 
+--- !u!114 &-404307047162548338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
     m_Mode: 0
     m_CurveMultiplier: 0
     m_CurveMin:
@@ -76,13 +309,13 @@ MonoBehaviour:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: 2550861908205578254}
+      magnitude: {fileID: -8541627204840921116}
   period:
     magnitude:
       magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 1
-      magnitude: {fileID: -6473345155689089100}
+      magnitude: {fileID: -8860305694715045991}
     executeOnApplication: 0
     inhibitionPolicy: 0
   modifiers:
@@ -90,9 +323,26 @@ MonoBehaviour:
     operatorType: 0
     modifierMagnitude:
       magnitudeCalculation: 0
+      roundToInt: 1
+      multiplier: 5
+      magnitude: {fileID: 745122953792197121}
+    sourceTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    targetTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+  - definition: {fileID: 0}
+    operatorType: 0
+    modifierMagnitude:
+      magnitudeCalculation: 0
       roundToInt: 0
       multiplier: 0
-      magnitude: {fileID: -422683114118589643}
+      magnitude: {fileID: 745122953792197121}
     sourceTags:
       requireTags:
         list: []
@@ -104,6 +354,60 @@ MonoBehaviour:
       ignoreTags:
         list: []
   executions:
+  - calculationClass: {fileID: 0}
+    calculationModifiers:
+    - definition: {fileID: 11400000, guid: acaa46911b7a2eb478117637490891c9, type: 2}
+      operatorType: 0
+      modifierMagnitude:
+        magnitudeCalculation: 0
+        roundToInt: 0
+        multiplier: 0
+        magnitude: {fileID: -5194697570965948719}
+      sourceTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+      targetTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+    - definition: {fileID: 0}
+      operatorType: 0
+      modifierMagnitude:
+        magnitudeCalculation: 0
+        roundToInt: 0
+        multiplier: 0
+        magnitude: {fileID: 1229507097129161849}
+      sourceTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+      targetTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+    - definition: {fileID: 0}
+      operatorType: 0
+      modifierMagnitude:
+        magnitudeCalculation: 0
+        roundToInt: 0
+        multiplier: 0
+        magnitude: {fileID: 1229507097129161849}
+      sourceTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+      targetTags:
+        requireTags:
+          list: []
+        ignoreTags:
+          list: []
+    conditionalGameplayEffects: []
   - calculationClass: {fileID: 0}
     calculationModifiers: []
     conditionalGameplayEffects: []
@@ -130,7 +434,116 @@ MonoBehaviour:
         list: []
     removeGameplayEffectsWithTags:
       list: []
+  immunity:
+    grantedApplicationImmunityTags:
+      requireTags:
+        list: []
+      ignoreTags:
+        list: []
+    grantedApplicationImmunityQuery:
+      effectSource: {fileID: 0}
+      effectDefinition: {fileID: 0}
+  stacking:
+    stackingType: 0
+    stackLimitCount: 0
+    stackDurationRefreshPolicy: 0
+    stackPeriodResetPolicy: 0
+    stackExpirationPolicy: 0
   grantedAbilities: []
+--- !u!114 &745122953792197121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 1
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &1229507097129161849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
 --- !u!114 &2550861908205578254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
   m_Name: ScalableMagnitude
   m_EditorClassIdentifier: 
-  value:
+  curve:
     m_Mode: 0
     m_CurveMultiplier: 0
     m_CurveMin:
@@ -155,6 +568,111 @@ MonoBehaviour:
     m_CurveMax:
       serializedVersion: 2
       m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &2590871079938891812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &4389480009930009024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &5032012017598511923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
+  m_Name: ScalableMagnitude
+  m_EditorClassIdentifier: 
+  curve:
+    m_Mode: 0
+    m_CurveMultiplier: 1
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -172,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e4c1805f1fac42b7ab4008ef23333, type: 3}
   m_Name: ScalableMagnitude
   m_EditorClassIdentifier: 
-  value:
+  curve:
     m_Mode: 0
     m_CurveMultiplier: 0
     m_CurveMin:

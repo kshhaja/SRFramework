@@ -51,4 +51,9 @@ MonoBehaviour:
   hidden: 0
   percentile: 0
   sortIndex: 1
-  description: 
+  description: 'Every 10 Intelligence grants
+
+    An additional 5 maximum mana
+
+    2%
+    increased maximum energy shield'

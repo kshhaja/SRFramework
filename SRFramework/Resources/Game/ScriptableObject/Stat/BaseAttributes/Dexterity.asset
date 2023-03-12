@@ -109,7 +109,8 @@ MonoBehaviour:
   hidden: 0
   percentile: 0
   sortIndex: 2
-  description: 
+  description: "Every 10 Dexterity grants\r\nAn additional 20 accuracy rating\r\n2%
+    increased evasion rating\r"
 --- !u!114 &872280630552370350
 MonoBehaviour:
   m_ObjectHideFlags: 0

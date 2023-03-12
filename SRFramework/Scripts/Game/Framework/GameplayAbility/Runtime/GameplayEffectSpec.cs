@@ -17,8 +17,7 @@ namespace SlimeRPG.Framework.Ability
         public GameplayEffectPeriod periodDefinition;
         public float timeUntilPeriodTick;
 
-
-        GameplayEffectSpec(GameplayEffect effect, AbilitySystemComponent source, float level)
+        public GameplayEffectSpec(GameplayEffect effect, AbilitySystemComponent source, float level)
         {
             this.effect = effect;
             this.source = source;

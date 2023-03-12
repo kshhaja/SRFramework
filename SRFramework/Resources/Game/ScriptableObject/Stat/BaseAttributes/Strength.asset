@@ -22,7 +22,8 @@ MonoBehaviour:
   hidden: 0
   percentile: 0
   sortIndex: 0
-  description: 
+  description: "Every 10 Strength grants\r\nAn additional 5 maximum life\r\n2% increased
+    melee physical damage\r"
 --- !u!114 &2148769362898034214
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,29 +5,30 @@ using UnityEngine;
 namespace SlimeRPG.Framework.StatsSystem
 {
     [CreateAssetMenu(fileName = "ScalableMagnitude", menuName = "Gameplay/Ability/Magnitude")]
+    [Serializable]
     public class ScalableMagnitude : GameplayMagnitudeBase
     {
-        public ParticleSystem.MinMaxCurve value;
+        [SerializeField] public ParticleSystem.MinMaxCurve curve;
 
         public override float GetValue(float index)
         {
-            return value.Evaluate(index);
+            return curve.Evaluate(index);
         }
 
         public override (float, float) MinMax(float index)
         {
-            switch (value.mode)
+            switch (curve.mode)
             {
                 case ParticleSystemCurveMode.Constant:
-                    var c = value.constant;
+                    var c = curve.constant;
                     return (c, c);
                 case ParticleSystemCurveMode.TwoConstants:
-                    return (value.constantMin, value.constantMax);
+                    return (curve.constantMin, curve.constantMax);
                 case ParticleSystemCurveMode.Curve:
-                    var v = value.curve.Evaluate(index);
+                    var v = curve.curve.Evaluate(index);
                     return (v, v);
                 case ParticleSystemCurveMode.TwoCurves:
-                    return (value.curveMin.Evaluate(index), value.curveMax.Evaluate(index));
+                    return (curve.curveMin.Evaluate(index), curve.curveMax.Evaluate(index));
                 default:
                     throw new ArgumentOutOfRangeException("StatValueSelector.value mode error");
             }

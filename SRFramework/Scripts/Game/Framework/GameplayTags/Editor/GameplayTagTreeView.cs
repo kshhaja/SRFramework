@@ -23,7 +23,6 @@ namespace UnityEditor
 
             showAlternatingRowBackgrounds = true;
             showBorder = true;
-            
             Reload();
         }
 
