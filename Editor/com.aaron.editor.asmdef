@@ -1,0 +1,19 @@
+{
+    "name": "com.aaron.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1535b629e7329ac41854183db2b7b29b",
+        "GUID:dfe1a966fc39b6a40a8d7af540307bd4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

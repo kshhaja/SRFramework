@@ -1,0 +1,16 @@
+{
+    "name": "com.aaron.runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5e28f7507a5219c4f9ed0ffcd29368c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
