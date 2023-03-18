@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     public class OverflowInfo
     {

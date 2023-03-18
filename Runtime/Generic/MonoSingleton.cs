@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace SlimeRPG.Utility
+namespace SRFramework.Utility
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {

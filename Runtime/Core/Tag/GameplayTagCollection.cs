@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Tag
+namespace SRFramework.Tag
 {
     [Serializable]
     [CreateAssetMenu(fileName = "Sample Tag Collection", menuName = "Gameplay/Tag Collection")]

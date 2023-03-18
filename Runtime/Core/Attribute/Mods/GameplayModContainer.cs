@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
+using SRFramework.Attribute.StatsContainers;
+using SRFramework.Effect;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     [Serializable]
     public class GameplayModContainer : ScriptableObject
@@ -32,7 +33,7 @@ namespace SlimeRPG.Framework.StatsSystem
             }
         }
 
-        public virtual void ApplyMods(StatsContainer target, float index = 0)
+        public virtual void ApplyMods(AttributeSet target, float index = 0)
         {
             foreach (var mod in mods)
             {
@@ -42,7 +43,7 @@ namespace SlimeRPG.Framework.StatsSystem
             }
         }
 
-        public virtual void RemoveMods(StatsContainer target)
+        public virtual void RemoveMods(AttributeSet target)
         {
             foreach (var mod in mods)
             {

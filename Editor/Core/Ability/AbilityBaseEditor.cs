@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using SlimeRPG.Gameplay.Character.Ability;
+﻿using SRFramework.Ability;
 
 
 namespace UnityEditor

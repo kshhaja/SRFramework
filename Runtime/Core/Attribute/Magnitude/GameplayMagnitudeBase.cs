@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     [Serializable]
     public abstract class GameplayMagnitudeBase : ScriptableObject

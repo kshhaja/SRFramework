@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEditorInternal;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
+using SRFramework.Effect;
 
 
 namespace UnityEditor
@@ -89,13 +90,13 @@ namespace UnityEditor
                 return;
 
             var obj = EditorGUIUtility.GetObjectPickerObject();
-            if (obj == null || !(obj is StatDefinition))
+            if (obj == null || !(obj is AttributeDefinition))
                 return;
 
             modifiersProperty.arraySize += 1;
 
             var element = modifiersProperty.GetArrayElementAtIndex(modifiersProperty.arraySize - 1);
-            var def = (StatDefinition)obj;
+            var def = (AttributeDefinition)obj;
             var propDef = element.FindPropertyRelative(nameof(GameplayModifierInfo.definition));
             propDef.objectReferenceValue = def;
         }
@@ -113,7 +114,7 @@ namespace UnityEditor
 
         protected void OnAddCallback(ReorderableList list)
         {
-            EditorGUIUtility.ShowObjectPicker<StatDefinition>(null, false, null, PICKER_CONTROL_ID);
+            EditorGUIUtility.ShowObjectPicker<AttributeDefinition>(null, false, null, PICKER_CONTROL_ID);
         }
 
         protected void OnRemoveCallback(ReorderableList list)

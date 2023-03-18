@@ -1,4 +1,4 @@
-﻿using SlimeRPG.Framework.StatsSystem;
+﻿using SRFramework.Attribute;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityEditor
 {
-    [CustomEditor(typeof(StatDefinition), true)]
+    [CustomEditor(typeof(AttributeDefinition), true)]
     public class StatDefinitionEditor : Editor
     {
 

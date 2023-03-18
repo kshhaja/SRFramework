@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor.IMGUI.Controls;
 using System.Collections.Generic;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Tag;
 
 
 namespace UnityEditor

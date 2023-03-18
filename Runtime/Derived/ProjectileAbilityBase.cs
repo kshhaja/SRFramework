@@ -1,11 +1,10 @@
-﻿using SlimeRPG.Framework.Ability;
-using System.Collections;
-using System.Collections.Generic;
+﻿using SRFramework.Ability;
+using SRFramework.Ability.Object;
+using SRFramework.Ability.Spec;
 using UnityEngine;
 
 
-
-namespace SlimeRPG.Gameplay.Character.Ability
+namespace SRFramework.Ability
 {
     [CreateAssetMenu(menuName = "Gameplay/Ability/Projectile/Projectile Action Base", order = 1)]
     public class ProjectileAbilityBase : AbilityBase

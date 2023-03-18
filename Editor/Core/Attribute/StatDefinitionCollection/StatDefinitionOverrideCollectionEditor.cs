@@ -1,16 +1,16 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEditorInternal;
-using SlimeRPG.Framework.StatsSystem;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
+using SRFramework.Attribute;
+using SRFramework.Attribute.StatsContainers;
 
 namespace UnityEditor
 {
     public class StatDefinitionOverrideCollectionEditor
     {
         public const int PICKER_CONTROL_ID = 236534;
-        private StatsContainer container;
-        private StatDefinitionOverrideCollection targetObject;
+        private AttributeSet container;
+        private AttributeDefinitionOverrideCollection targetObject;
 
         private ReorderableList reorderableList;
         private SerializedProperty definitionsProperty;
@@ -19,10 +19,10 @@ namespace UnityEditor
 
         public void Init(SerializedObject target)
         {
-            overridesProperty = target.FindProperty(nameof(StatDefinitionOverrideCollection.overrides));
+            overridesProperty = target.FindProperty(nameof(AttributeDefinitionOverrideCollection.overrides));
         }
 
-        public void SetContainer(StatsContainer container)
+        public void SetContainer(AttributeSet container)
         {
             this.container = container;
         }
@@ -47,7 +47,7 @@ namespace UnityEditor
         protected void DrawElementCallback(Rect rect, int index, bool activated, bool focused)
         {
             var element = overridesProperty.GetArrayElementAtIndex(index);
-            var stat = element.objectReferenceValue as StatDefinition;
+            var stat = element.objectReferenceValue as AttributeDefinition;
 
             if (stat)
             {

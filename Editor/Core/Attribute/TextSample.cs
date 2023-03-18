@@ -1,4 +1,4 @@
-﻿using SlimeRPG.Framework.StatsSystem;
+﻿using SRFramework.Attribute;
 using System;
 using System.Collections.Generic;
 using System.Linq;

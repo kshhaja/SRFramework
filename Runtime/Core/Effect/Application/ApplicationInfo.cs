@@ -1,14 +1,14 @@
-﻿using SlimeRPG.Framework.StatsSystem;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using SRFramework.Attribute;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
+    [Serializable]
     public class ApplicationInfo
     {
-        public ScalableMagnitude chanceToApplyToTarget;
+        public GameplayEffectModifierMagnitude chanceToApplyToTarget;
         public List<GameplayEffectCustomApplicationRequirement> applicationRequirements;
     }
 }

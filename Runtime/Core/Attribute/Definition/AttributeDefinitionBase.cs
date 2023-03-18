@@ -2,15 +2,15 @@
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     public abstract class AttributeDefinitionBase : ScriptableObject
     {
-        public List<StatDefinition> GetDefinitions()
+        public List<AttributeDefinition> GetDefinitions()
         {
             return GetDefinitions(new HashSet<AttributeDefinitionBase>());
         }
 
-        public abstract List<StatDefinition> GetDefinitions(HashSet<AttributeDefinitionBase> visited);
+        public abstract List<AttributeDefinition> GetDefinitions(HashSet<AttributeDefinitionBase> visited);
     }
 }

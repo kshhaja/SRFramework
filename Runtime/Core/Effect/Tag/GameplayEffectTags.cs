@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Tag;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public struct GameplayEffectTags

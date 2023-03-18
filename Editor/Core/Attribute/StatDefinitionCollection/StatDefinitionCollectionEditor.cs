@@ -1,16 +1,16 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEditorInternal;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
 
 
 namespace UnityEditor
 {
-    [CustomEditor(typeof(StatDefinitionCollection))]
+    [CustomEditor(typeof(AttributeDefinitionCollection))]
     public class StatDefinitionCollectionEditor : Editor 
     {
         public const int PICKER_CONTROL_ID = 236534;
-        private StatDefinitionCollection targetObject;
+        private AttributeDefinitionCollection targetObject;
 
         private ReorderableList reorderableList;
         private SerializedProperty definitionsProperty;
@@ -18,8 +18,8 @@ namespace UnityEditor
 
         private void OnEnable () 
         {
-            targetObject = (StatDefinitionCollection)target;
-            definitionsProperty = serializedObject.FindProperty(nameof(StatDefinitionCollection.definitions));
+            targetObject = (AttributeDefinitionCollection)target;
+            definitionsProperty = serializedObject.FindProperty(nameof(AttributeDefinitionCollection.definitions));
 
             if (definitionsProperty != null && definitionsProperty.isArray)
             {

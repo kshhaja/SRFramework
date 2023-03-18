@@ -1,10 +1,11 @@
-﻿using SlimeRPG.Gameplay.Character.Ability;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using SRFramework.Ability.Object;
+using SRFramework.Effect.Spec;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Ability.Spec
 {
     public class ProjectileAbilityBaseSpec : GameplayAbilitySpec<ProjectileAbilityBase>
     {

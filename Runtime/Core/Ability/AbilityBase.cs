@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using SlimeRPG.Framework.Ability;
-using System;
-using System.Linq;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Effect;
 
 
-namespace SlimeRPG.Gameplay.Character.Ability
+namespace SRFramework.Ability
 {
     // 이 클래스부터는 커스텀 클래스.
     public abstract class AbilityBase : GameplayAbility

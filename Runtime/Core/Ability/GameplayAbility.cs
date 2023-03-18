@@ -1,10 +1,11 @@
-using SlimeRPG.Framework.Tag;
-using System.Collections;
+using SRFramework.Tag;
+using SRFramework.Effect;
 using System.Collections.Generic;
 using UnityEngine;
+using SRFramework.Ability.Spec;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Ability
 {
     [CreateAssetMenu(menuName = "Gameplay/Ability/Base Ability", order = 1)]
     public class GameplayAbility : ScriptableObject

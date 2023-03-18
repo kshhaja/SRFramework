@@ -1,7 +1,6 @@
-﻿using System;
+﻿using UnityEngine;
 using UnityEditorInternal;
-using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
 
 
 namespace UnityEditor

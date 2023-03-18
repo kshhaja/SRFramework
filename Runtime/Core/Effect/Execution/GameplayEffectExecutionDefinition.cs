@@ -1,12 +1,9 @@
-﻿using SlimeRPG.Framework.StatsSystem;
-using SlimeRPG.Framework.Tag;
+﻿using SRFramework.Attribute;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public class GameplayEffectExecutionDefinition

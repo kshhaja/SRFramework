@@ -1,5 +1,5 @@
-﻿using SlimeRPG.Framework.Ability;
-using System.Collections;
+﻿using SRFramework.Ability;
+using SRFramework.Effect;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;

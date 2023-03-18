@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     [CreateAssetMenu(fileName = "ScalableMagnitude", menuName = "Gameplay/Ability/Magnitude")]
     [Serializable]

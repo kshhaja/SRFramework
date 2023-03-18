@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
+using SRFramework.Effect;
+using SRFramework.Attribute.StatsContainers;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     [Serializable]
     [CreateAssetMenu(menuName = "Gameplay/Mod/Mod Definition")]
@@ -44,7 +45,7 @@ namespace SlimeRPG.Framework.StatsSystem
         //    return string.Format(textGrab, arguments);
         //}
 
-        public override void ApplyMod(StatsContainer target, float index)
+        public override void ApplyMod(AttributeSet target, float index)
         {
             // modifiers 분해해서 하나씩 uniqueID를 적용해서 넣어주어야 한다.
             foreach (var modifier in modifiers)

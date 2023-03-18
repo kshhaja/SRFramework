@@ -1,12 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditorInternal;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
+using SRFramework.Effect;
 
 
 namespace UnityEditor
 {
-	[CustomEditor(typeof(StatAdjustmentCollection), true)]
+	[CustomEditor(typeof(AttributeAdjustmentCollection), true)]
 	public class StatAdjustmentCollectionEditor : Editor 
 	{
 		public const int PICKER_CONTROL_ID = 398473;
@@ -22,8 +22,8 @@ namespace UnityEditor
 
         protected virtual void OnEnable () 
 		{
-			idProperty = serializedObject.FindProperty(nameof(StatAdjustmentCollection.id));
-			adjustmentProperty = serializedObject.FindProperty(nameof(StatAdjustmentCollection.adjustment));
+			idProperty = serializedObject.FindProperty(nameof(AttributeAdjustmentCollection.id));
+			adjustmentProperty = serializedObject.FindProperty(nameof(AttributeAdjustmentCollection.adjustment));
 
 			if (adjustmentProperty != null && adjustmentProperty.isArray)
 			{
@@ -62,13 +62,13 @@ namespace UnityEditor
 				return;
 
 			var obj = EditorGUIUtility.GetObjectPickerObject();
-			if (obj == null || !(obj is StatDefinition)) 
+			if (obj == null || !(obj is AttributeDefinition)) 
 				return;
 
 			adjustmentProperty.arraySize += 1;
 
 			var element = adjustmentProperty.GetArrayElementAtIndex(adjustmentProperty.arraySize - 1);
-			var def = (StatDefinition)obj;
+			var def = (AttributeDefinition)obj;
 			var propDef = element.FindPropertyRelative(nameof(GameplayModifierInfo.definition));
 			propDef.objectReferenceValue = def;
 		}
@@ -86,7 +86,7 @@ namespace UnityEditor
 
 		protected void OnAddCallback(ReorderableList list)
         {
-			EditorGUIUtility.ShowObjectPicker<StatDefinition>(null, false, null, PICKER_CONTROL_ID);
+			EditorGUIUtility.ShowObjectPicker<AttributeDefinition>(null, false, null, PICKER_CONTROL_ID);
 		}
 
 		protected void OnRemoveCallback(ReorderableList list)

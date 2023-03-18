@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using SlimeRPG.Framework.Ability;
 using System;
 using System.Linq;
+using SRFramework.Effect.Spec;
 
-namespace SlimeRPG.Gameplay.Character.Ability
+
+namespace SRFramework.Ability.Object
 {
     // 이것도 ScriptableObject로부터 만들어지도록 수정할 예정.
     public class Projectile : MonoBehaviour
@@ -29,7 +30,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
 
         // custom datas
         private int pierceCount = 0;
-        private float explosionRange = 0;
         private bool useGravity = true;
 
         private int internalPierceCount = 0;

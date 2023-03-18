@@ -1,10 +1,10 @@
-﻿using SlimeRPG.Framework.StatsSystem;
+﻿using SRFramework.Attribute;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     public abstract class GameplayEffectExecutionCalculation : ScriptableObject
     {

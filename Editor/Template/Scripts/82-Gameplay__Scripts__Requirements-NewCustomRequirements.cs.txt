@@ -1,14 +1,14 @@
 /*
- * @SlimeRPG Allrights reserved.
+ * @SRFramework Allrights reserved.
  */
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     public class #SCRIPTNAME# : GameplayEffectExecutionCalculation
     {

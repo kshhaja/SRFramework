@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     [CreateAssetMenu(fileName = "OrderOfOperations", menuName = "Gameplay/Stats/Settings/Order Of Operations")]
     public class OrderOfOperations : ScriptableObject

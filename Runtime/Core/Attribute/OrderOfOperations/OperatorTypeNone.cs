@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     public enum OperatorTypeNone
     {

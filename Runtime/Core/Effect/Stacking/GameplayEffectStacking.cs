@@ -2,15 +2,15 @@
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public struct GameplayEffectStacking
     {
-        [SerializeField] public StackingType stackingType;
-        [SerializeField] public int stackLimitCount;
-        [SerializeField] public StackingDurationPolicy stackDurationRefreshPolicy;
-        [SerializeField] public StackingPeriodPolicy stackPeriodResetPolicy;
-        [SerializeField] public StackingExpirationPolicy stackExpirationPolicy;
+        public StackingType stackingType;
+        public int stackLimitCount;
+        public StackingDurationPolicy stackDurationRefreshPolicy;
+        public StackingPeriodPolicy stackPeriodResetPolicy;
+        public StackingExpirationPolicy stackExpirationPolicy;
     }
 }

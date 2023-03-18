@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Ability;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [CreateAssetMenu(menuName = "Gameplay/Effect/Base Definition", order = 1)]
     [System.Serializable]

@@ -1,9 +1,6 @@
-﻿
+﻿using System.Collections.Generic;
 
-using SlimeRPG.Framework.StatsSystem;
-using System.Collections.Generic;
-
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect.Spec
 {
     public class GameplayEffectSpec
     {

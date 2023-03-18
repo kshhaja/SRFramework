@@ -1,23 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
+using SRFramework.Attribute;
+using SRFramework.Attribute.StatsContainers;
 
 
 namespace UnityEditor
 {
-	[CustomEditor(typeof(StatsContainer))]
+	[CustomEditor(typeof(AttributeSet))]
 	public class StatsContainerEditor : Editor
 	{
 		private bool debug;
 
-		private List<StatDefinition> definitions = new List<StatDefinition>();
+		private List<AttributeDefinition> definitions = new List<AttributeDefinition>();
 		private SerializedProperty collectionProperty;
 
 		private bool IsRuntimeViewable => Application.isPlaying && Target.IsSetup;
 
-		private StatsContainer Target => (StatsContainer)target;
+		private AttributeSet Target => (AttributeSet)target;
 
 
 		private void OnEnable()
@@ -73,7 +73,7 @@ namespace UnityEditor
 			}
 		}
 
-		void PrintRuntimeStats(StatDefinition definition)
+		void PrintRuntimeStats(AttributeDefinition definition)
 		{
 			EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
@@ -103,7 +103,7 @@ namespace UnityEditor
 			EditorGUILayout.EndVertical();
 		}
 
-		void PrintModifier(string title, StatModifierCollection modifiers)
+		void PrintModifier(string title, AttributeModifierCollection modifiers)
 		{
 			if (modifiers == null || modifiers.ListValues.Count == 0) 
 				return;
@@ -114,7 +114,7 @@ namespace UnityEditor
 				EditorGUILayout.FloatField(val.id, val.value);
 		}
 
-		void DrawOverrideSelect(StatDefinition definition)
+		void DrawOverrideSelect(AttributeDefinition definition)
 		{
 			var @override = false;
 
@@ -144,12 +144,12 @@ namespace UnityEditor
 				Target.overrides.Remove(definition);
 			}
 			else if (oldResult == false)
-				Target.overrides.Add(new StatDefinitionOverride{definition = definition, value = new GameplayEffectModifierMagnitude()});
+				Target.overrides.Add(new AttributeDefinitionOverride{definition = definition, value = new GameplayEffectModifierMagnitude()});
 
 			EditorUtility.SetDirty(target);
 		}
 
-		void DrawInputOverrideOrDefault(StatDefinition definition)
+		void DrawInputOverrideOrDefault(AttributeDefinition definition)
 		{
 			if (Target.overrides.Has(definition))
 				DrawInputOverride(definition);
@@ -157,7 +157,7 @@ namespace UnityEditor
 				DrawInputDefault(definition);
 		}
 
-		void DrawInputOverride(StatDefinition definition)
+		void DrawInputOverride(AttributeDefinition definition)
 		{
 			if (!Target.overrides.Has(definition)) 
 				return;
@@ -170,14 +170,14 @@ namespace UnityEditor
 				EditorUtility.SetDirty(target);
 		}
 
-		void DrawInputDefault(StatDefinition definition)
+		void DrawInputDefault(AttributeDefinition definition)
 		{
 			EditorGUI.BeginDisabledGroup(true);
 			DrawInputField(definition);
 			EditorGUI.EndDisabledGroup();
 		}
 
-		void DrawInputField(StatDefinitionOverride o)
+		void DrawInputField(AttributeDefinitionOverride o)
         {
 			var overridesList = serializedObject.FindProperty("overrides").FindPropertyRelative("overrides");
 			if (overridesList == null)
@@ -199,7 +199,7 @@ namespace UnityEditor
 			EditorGUILayout.EndVertical();
 		}
 
-		void DrawInputField(StatDefinition stat)
+		void DrawInputField(AttributeDefinition stat)
 		{
 			var selectorProperty = new SerializedObject(stat).FindProperty("value");
 			
@@ -215,11 +215,11 @@ namespace UnityEditor
 		{
 			definitions.Clear();
 
-			List<StatDefinition> results;
+			List<AttributeDefinition> results;
 			if (Target.collection == null)
-				results = StatDefinitionsCompiled.GetDefinitions(StatsSettings.Current.DefaultStats);
+				results = AttributeDefinitionsCompiled.GetDefinitions(AttributesSettings.Current.DefaultStats);
 			else
-				results = StatDefinitionsCompiled.GetDefinitions(Target.collection);
+				results = AttributeDefinitionsCompiled.GetDefinitions(Target.collection);
 
 			if (results == null) 
 				return;

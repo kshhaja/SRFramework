@@ -1,8 +1,8 @@
 using System;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Tag;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public struct GameplayTagRequirements

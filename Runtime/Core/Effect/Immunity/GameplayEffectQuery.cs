@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
 	[System.Serializable]
     public struct GameplayEffectQuery

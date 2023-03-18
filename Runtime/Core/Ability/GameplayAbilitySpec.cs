@@ -1,13 +1,13 @@
-﻿using SlimeRPG.Framework.Tag;
+﻿using SRFramework.Tag;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
-using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
+using SRFramework.Effect;
 
-namespace SlimeRPG.Framework.Ability
+
+namespace SRFramework.Ability.Spec
 {
     // GameplayEffect와 GameplayEffectSpec을 정확히 나눌 필요가 있겠다.
     // Spec은 struct로 만들어야할듯.

@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-namespace SlimeRPG.Framework.StatsSystem
+﻿namespace SRFramework.Attribute
 {
     public class AttributeBasedValue : GameplayMagnitudeBase
     {

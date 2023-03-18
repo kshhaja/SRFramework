@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Tag;
 
 
 namespace UnityEditor

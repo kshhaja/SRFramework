@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-namespace SlimeRPG.Framework.Tag
+namespace SRFramework.Tag
 {
     [Serializable]
     public class GameplayTagContainer

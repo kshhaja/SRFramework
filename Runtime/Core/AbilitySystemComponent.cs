@@ -1,10 +1,14 @@
 using System.Collections.Generic;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Effect;
+using SRFramework.Effect.Spec;
+using SRFramework.Ability;
+using SRFramework.Ability.Spec;
+using SRFramework.Attribute.StatsContainers;
+using SRFramework.Tag;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework
 {
     public class AbilitySystemComponent : MonoBehaviour
     {
@@ -14,7 +18,7 @@ namespace SlimeRPG.Framework.Ability
         private Dictionary<GameplayEffect, GameplayEffectSpec> cachedEffectSpecs = new Dictionary<GameplayEffect, GameplayEffectSpec>();
 
         [SerializeField]
-        protected StatsContainer container;
+        protected AttributeSet container;
 
         public struct GameplayTagCountContainer
         {
@@ -39,7 +43,7 @@ namespace SlimeRPG.Framework.Ability
         }
 
         public GameplayTagCountContainer gameplayTagCountContainer;
-        public StatsContainer StatsContainer => container;
+        public AttributeSet StatsContainer => container;
 
         public List<GameplayEffectSpec> AppliedSpecs => appliedSpecs;
 

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using SlimeRPG.Framework.StatsSystem.StatsContainers;
+using SRFramework.Attribute.StatsContainers;
 
 
-namespace SlimeRPG.Framework.StatsSystem
+namespace SRFramework.Attribute
 {
     public abstract class AbstractModBase : ScriptableObject
     {
-        public abstract void ApplyMod(StatsContainer target, float index);
+        public abstract void ApplyMod(AttributeSet target, float index);
     }
 }

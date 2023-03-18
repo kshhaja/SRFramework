@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditorInternal;
-using SlimeRPG.Framework.Tag;
+using SRFramework.Tag;
 
 
 namespace UnityEditor

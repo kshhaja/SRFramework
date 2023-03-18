@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using SlimeRPG.Framework.StatsSystem;
+using SRFramework.Attribute;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     public abstract class ExecutionCalculationBase : ScriptableObject
     {
-        public abstract void Execute(List<GameplayModifierInfo> executionModifiers, AbilitySystemComponent target, float index, out StatAdjustmentCollection executionCallbackData);
+        public abstract void Execute(List<GameplayModifierInfo> executionModifiers, AbilitySystemComponent target, float index, out AttributeAdjustmentCollection executionCallbackData);
     }
 }

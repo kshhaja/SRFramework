@@ -1,13 +1,10 @@
 ﻿using System;
-using UnityEngine;
-
-
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public struct GameplayEffectImmunity
     {
-        [SerializeField] public GameplayTagRequirements grantedApplicationImmunityTags;
-        [SerializeField] public GameplayEffectQuery grantedApplicationImmunityQuery;
+        public GameplayTagRequirements grantedApplicationImmunityTags;
+        public GameplayEffectQuery grantedApplicationImmunityQuery;
     }
 }

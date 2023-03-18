@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace SlimeRPG.Framework.Tag
+namespace SRFramework.Tag
 {
     [Serializable]
     public sealed class GameplayTag : ScriptableObject, IEquatable<GameplayTag>, IComparable<GameplayTag>

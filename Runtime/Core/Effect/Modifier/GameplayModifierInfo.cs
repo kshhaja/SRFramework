@@ -1,14 +1,13 @@
-﻿using SlimeRPG.Framework.Tag;
-using System;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using System;
+using SRFramework.Attribute;
 
-namespace SlimeRPG.Framework.StatsSystem
+
+namespace SRFramework.Effect
 {
     [Serializable]
     public class GameplayModifierInfo
     {
-        public StatDefinition definition;
+        public AttributeDefinition definition;
         public GameplayModifierOperator operatorType;
         public GameplayEffectModifierMagnitude modifierMagnitude;
 
@@ -43,12 +42,5 @@ namespace SlimeRPG.Framework.StatsSystem
 
             return modifierMagnitude.MinMax(index);
         }
-    }
-
-    [Serializable]
-    public struct GameplayTagRequirements
-    {
-        public GameplayTagContainer requireTags;
-        public GameplayTagContainer ignoreTags;
     }
 }

@@ -1,8 +1,8 @@
-﻿using SlimeRPG.Framework.StatsSystem;
+﻿using SRFramework.Attribute;
 using System;
 
 
-namespace SlimeRPG.Framework.Ability
+namespace SRFramework.Effect
 {
     [Serializable]
     public struct GameplayEffectDuration
