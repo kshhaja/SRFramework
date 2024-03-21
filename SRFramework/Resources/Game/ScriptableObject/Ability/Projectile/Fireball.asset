@@ -99,8 +99,7 @@ MonoBehaviour:
   quality: 0
   icon: {fileID: 0}
   clip: {fileID: 0}
-  projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a,
-    type: 3}
+  projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a, type: 3}
   particle: {fileID: 0}
 --- !u!114 &5640411312549679744
 MonoBehaviour:
