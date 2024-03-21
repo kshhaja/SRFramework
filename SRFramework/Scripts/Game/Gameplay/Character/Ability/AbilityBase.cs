@@ -11,7 +11,6 @@ namespace SlimeRPG.Gameplay.Character.Ability
     {
         public int level = 1;
         public int quality = 0;
-        public Sprite icon;
         public AnimationClip clip;
 
 

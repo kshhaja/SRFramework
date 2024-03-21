@@ -13,6 +13,8 @@ namespace UnityEditor
 
         SerializedObject targetObject;
         SerializedProperty nameProperty;
+        SerializedProperty iconProperty;
+        SerializedProperty descriptionProperty;
         SerializedProperty tagProperty;
         SerializedProperty effectProperty;
         SerializedProperty costProperty;
@@ -31,6 +33,8 @@ namespace UnityEditor
             this.targetObject = targetObject;
 
             nameProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.abilityName));
+            iconProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.icon));
+            descriptionProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.description));
             tagProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.abilityTags));
             effectProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.effect));
             costProperty = this.targetObject.FindProperty(nameof(AbstractAbilityScriptableObject.cost));
@@ -50,6 +54,14 @@ namespace UnityEditor
         {
             // 아이콘, 디스크립션 등 추가될 듯.
             EditorGUILayout.PropertyField(nameProperty);
+            EditorGUILayout.PropertyField(iconProperty);
+            if (iconProperty.objectReferenceValue)
+            {
+                var preview = AssetPreview.GetAssetPreview(iconProperty.objectReferenceValue);
+                GUILayout.Label(preview, GUILayout.Height(64));
+                EditorGUILayout.Space();
+            }
+            EditorGUILayout.PropertyField(descriptionProperty, GUILayout.MinHeight(128));
         }
 
         public void OnAbilityGUI()

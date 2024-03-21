@@ -67,7 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088f97ec243d5da4897940877bfb9ad8, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: Fireball
+  icon: {fileID: 21300000, guid: 64eb0648ca0d11944a9517d8662508fd, type: 3}
+  description: desc test
   abilityTags:
     assetTag: {fileID: 0}
     cancelAbilitiesWithTags:
@@ -97,7 +99,6 @@ MonoBehaviour:
   secondaryAbility: {fileID: 0}
   level: 1
   quality: 0
-  icon: {fileID: 0}
   clip: {fileID: 0}
   projectile: {fileID: 4794646792832018745, guid: 18afb78fb0a241e4fbbab91350bdda3a, type: 3}
   particle: {fileID: 0}

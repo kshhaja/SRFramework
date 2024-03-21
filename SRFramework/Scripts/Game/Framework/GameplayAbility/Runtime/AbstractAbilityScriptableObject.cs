@@ -14,6 +14,9 @@ namespace SlimeRPG.Framework.Ability
     public abstract class AbstractAbilityScriptableObject : ScriptableObject
     {
         public string abilityName;
+        public Sprite icon;
+        public string description;
+
         public AbilityTags abilityTags;
         
         public GameplayEffectScriptableObject effect;
